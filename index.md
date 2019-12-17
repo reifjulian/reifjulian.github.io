@@ -7,7 +7,7 @@ My software packages are available on Github.
 
 | Package | Language | Description |
 | --------| -------- | ----------- |
-| [TextFileLoad](https://reifjulian.github.io/regsave) | C++ | 
+| [TextFileLoad](https://reifjulian.github.io/TextFileLoad) | C++ | 
 | [regsave](https://reifjulian.github.io/regsave) | Stata | 
 | [rscript](https://reifjulian.github.io/rscript) | Stata | 
 | [sortobs](https://reifjulian.github.io/sortobs) | Stata | 
