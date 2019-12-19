@@ -1,1 +1,1 @@
-This is the source for my personal website, based on the [HCZ Material theme](https://github.com/codeasashu/hcz-jekyll-blog).
+This is the source for my Github website. It is based on the [Mauricio Bravo's website](https://github.com/mcaceresb/mcaceresb.github.io), which in turn is based on the [HCZ Material theme](https://github.com/codeasashu/hcz-jekyll-blog).
