@@ -1,30 +1,23 @@
-title: Mauricio Cáceres Bravo
-description: My personal website
-author: Mauricio Cáceres Bravo
+title: Julian Reif
+description: My Github website
+author: Julian Reif
 logo: /assets/mauricio-wm-ch.jpg
-github: https://github.com/mcaceresb
-about: Economics PhD candidate at Brown University
+github: https://github.com/reifjulian
+about: Assistant Professor of Finance and Economics, University of Illinois
 description: > # this means to ignore newlines until "baseurl:"
-    Hi! I am an Economics PhD candidate at Brown University, based in
-    Providence, RI. This is my personal website, meant to force myself
-    to speed along some coding projects I've had in the back-burner
-    throughout the past year.
-
-    I double-majored in mathematics and economics at the University
-    of Utah and I have a Master's degree in economics from Columbia
-    University in New York.
+    This is my GitHub website
 baseurl: ""
-url: https://mcaceresb.github.io
+url: https://reifjulian.github.io/
 
 allowsearch: true
 
-github_username: mcaceresb
-medium_username: mcaceresb
+github_username: reifjulian
+# medium_username: mcaceresb
 # google_tags: GTM-5JHMCV7
-google_analytics: UA-91854317-1
+# google_analytics: UA-91854317-1
 
 share:
-  twitter_username: \#
+  twitter_username: julianreif
   fb_appid: 000000000000
 
 
