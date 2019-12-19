@@ -1,0 +1,124 @@
+---
+layout: default
+---
+
+<div class="well">
+
+<!--  -->
+    <div class="list-group">
+        {% if page.subtitle %}
+        <h4 class="home-subtitle">
+          {{ page.subtitle }}
+        </h4>
+        {% endif %}
+        <div class="fullw-list-group-separator"></div>
+    </div>
+<!--  -->
+
+<!--  -->
+<div>
+    {% for project in site.data.projects %}
+        <div class="list-group">
+          <div class="list-group-item">
+            {% if project.image %}
+              <div class="gh-row-action-primary">
+                <a href="{{ project.url | prepend: site.baseurl }}">
+                  <img src="{{ project.image }}"
+                       class="gh-img-circle gh-img-small">
+                </a>
+              </div>
+            {% else %}
+              <div class="row-action-primary">
+                <a href="{{ project.url | prepend: site.baseurl }}">
+                  <i class="fa fa-code"></i>
+                </a>
+              </div>
+            {% endif %}
+            <div class="row-content">
+              <div class="least-content">{{ project._date }}</div>
+              <h4 class="list-group-item-heading">
+                <a href="{{ project.url | prepend: site.baseurl }}">{{ project.name }}</a>
+              </h4>
+              <p class="list-group-item-text">{{ project.desc }}</p>
+            </div>
+          </div>
+            {% if project.repo %}
+              <div user="{{ project.gh_user }}"
+                   repo="{{ project.repo }}"
+                   class="ghbtn">
+                  <a target="_blank"
+                     href="https://github.com/{{ project.gh_user }}/{{ project.repo }}"
+                     class="gh-target btn btn-white btn-xs"
+                  ><i class="gh-api-size fa fa-github">
+                    </i></a>
+                  <a target="_blank"
+                     href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/stargazers"
+                     class="gh-target btn btn-white btn-xs star"
+                  ><i class="gh-api-size fa fa-star">
+                    </i> ...</a>
+                  <a target="_blank"
+                     href="https://github.com/{{ project.gh_user }}/{{ project.repo }}/network"
+                     class="gh-target btn btn-white btn-xs fork"
+                  ><i class="gh-api-size fa fa-code-fork">
+                    </i> ...</a>
+                  <div style="height: 10px;"></div>
+              </div>
+            {% else %}
+                  <div style="height: 10px;"></div>
+            {% endif %}
+          <br/>
+          <div class="fullw-list-group-separator"
+               style="padding-top:6px;padding-bottom:6px;"></div>
+        </div>
+    {% endfor %}
+</div>
+<!--  -->
+
+<!--  -->
+<div>
+  <br/>
+
+  <p>
+  I really like programming and it's proved to be very useful in
+  my work and daily life. I keep several of my projects in <a
+  href="https://github.com/mcaceresb">my github page</a>, and feedback
+  is always welcome!
+  </p>
+
+  <br/>
+
+  {% for project in site.data.projects-extra %}
+    <div class="list-group">
+      <div class="list-group-item">
+        <!-- <div class="row&#45;action&#45;primary"> -->
+        <!--   <i class="fa fa&#45;code"></i> -->
+        <!-- </div> -->
+        <!-- <div class="row&#45;content"> -->
+        <div>
+          <div class="least-content"></div>
+          <h4 class="list-group-item-heading">{{ project.name }}</h4>
+          <!-- <br/> -->
+          <p class="list-group-item-text">
+            <ul>
+              {% for subproject in project.subprojects %}
+              <li class="gh-listitem">
+                <a href="{{ subproject.url }}">{{ subproject.name }}</a>:
+                  {{ subproject.desc }}
+              </li>
+              {% endfor %}
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
+<!--  -->
+
+<!--  -->
+  <div>
+    {{ content }}
+  </div>
+</div>
+

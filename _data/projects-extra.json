@@ -1,0 +1,62 @@
+[
+	{
+		"name": "Stata Projects",
+		"subprojects": [
+            {
+                "name": "parquet",
+                "url": "https://github.com/mcaceresb/stata-parquet",
+                "desc": "Import and export parquet files from Stata using Arrow's C++ API."
+            },
+            {
+                "name": "diffiv",
+                "url": "https://github.com/mcaceresb/stata-diffiv",
+                "desc": "Fast implementation of Gandhi and Houde (2016) style instruments."
+            },
+            {
+                "name": "shasum",
+                "url": "https://github.com/mcaceresb/stata-shasum",
+                "desc": "Wrapper for OpenSSL implementation of various cryptographic hash functions (SHA1, etc.)."
+            },
+            {
+                "name": "mcmisc",
+                "url": "https://github.com/mcaceresb/stata-misc",
+                "desc": "Collection of miscellaneous Stata snippets and utilities."
+            },
+            {
+                "name": "matrix-tools",
+                "url": "https://github.com/mcaceresb/stata-matrix-tools",
+                "desc": "Various utilities to work with Stata matrices."
+            }
+        ]
+    },
+	{
+		"name": "Other Projects",
+		"subprojects": [
+            {
+                "name": "gmail-download",
+                "url":  "https://github.com/mcaceresb/gmail-download",
+                "desc": "Download and sort all gmail e-mails into various formats using the Gmail API."
+            },
+            {
+                "name": "gre-cli-words",
+                "url":  "https://github.com/mcaceresb/gre-cli-words",
+                "desc": "Show a random GRE vocab word in the command line."
+            },
+            {
+                "name": "highlight-sas-stata",
+                "url":  "https://github.com/mcaceresb/highlight-sas-stata",
+                "desc": "Various implementations highlighting SAS and Stata (pygments, listings, highlight.js)"
+            }
+        ]
+	},
+	{
+		"name": "Contributor",
+		"subprojects": [
+            {
+                "name": "stata_kernel",
+                "url":  "https://github.com/kylebarron/stata_kernel",
+                "desc": "Cross-platform Jupyter kernel for Stata."
+            }
+        ]
+	}
+]

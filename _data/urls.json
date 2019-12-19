@@ -1,0 +1,33 @@
+[
+  {
+    "text": "Home",
+    "url": "/",
+    "icon": "fa-home",
+    "layout": "post"
+  },
+  {
+    "text": "Coding",
+    "url": "/coding",
+    "icon": "fa-code"
+  },
+  {
+    "text": "Resume",
+    "url": "/resume/",
+    "icon": "fa-graduation-cap"
+  },
+  {
+    "text": "Research",
+    "url": "/research",
+    "icon": "fa-university"
+  },
+  {
+    "text": "Blog",
+    "url": "/blog/",
+    "icon": "fa-comments"
+  },
+  {
+    "text": "About",
+    "url": "/about/",
+    "icon": "fa-user"
+  }
+]

@@ -1,0 +1,355 @@
+{
+  "basics": {
+    "name": "Mauricio Cáceres Bravo",
+    "label": "Researcher",
+    "picture": "mauricio-wm-ch.jpg",
+    "email": "mauricio.caceres.bravo@gmail.com",
+    "_phone": "(801) 835-4677",
+    "phone": "",
+    "website": "https://mcaceresb.github.io",
+    "summary": "I am a research assistant at the Yale School of Management, based in New Haven, CT. I double-majored in mathematics and economics at the University of Utah and I have a Master's degree in economics from Columbia University in New York. I am an aspiring researcher and intend to pursue a PhD in economics. I am specially interested in public and development economics.",
+    "location": {
+      "_address": "109 Church St",
+      "address": "",
+      "postalCode": "CT 06510",
+      "city": "New Haven",
+      "countryCode": "US",
+      "region": "Connecticut"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "mcaceresb",
+        "url": "https://github.com/mcaceresb"
+      },
+      {
+        "network": "Medium",
+        "username": "mcaceresb",
+        "url": "https://medium.com/@mcaceresb"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Yale School of Management",
+      "position": "Research Assistant",
+      "location": "New Haven, CT",
+      "website": "http://som.yale.edu/",
+      "start_Date": "Jul 2017",
+      "end_Date": "Present",
+      "summary_short": "I am currently working as a research assistant for Professors Fiona Scott Morton, Jason Abaluck, Kevin Williams, and Michael Sinkinson on various projects related to health economics and IO.",
+      "summary": "I am currently working as a research assistant for Professors Fiona Scott Morton, Jason Abaluck, Kevin Williams, and Michael Sinkinson on various projects related to health economics and IO.",
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "National Bureau of Economic Research",
+      "position": "Research Assistant",
+      "location": "Cambridge, MA",
+      "website": "http://www.nber.org/",
+      "start_Date": "Jun 2015",
+      "end_Date": "Jun 2017",
+      "summary_short": [
+          "Joseph J. Doyle (MIT). Returns to medicare spending; various RCTs.",
+          "Jason Abaluck (Yale). Inattention in discrete choice models with consideration sets."
+      ],
+      "summary": [
+          "Worked for Joseph J. Doyle (MIT) on various projects investigating the returns to medicare spending, as well as several RCTs.",
+          "Worked for for Jason Abaluck (Yale) on a working paper modeling inattention in discrete choice models with consideration sets."
+      ],
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "Columbia University",
+      "position": "Teaching Assistant",
+      "location": "New York, NY",
+      "website": "http://econ.columbia.edu/",
+      "start_Date": "Sep 2014",
+      "end_Date": "May 2015",
+      "summary_short": [
+          "Professor Xavier Sala-i-Martín. Intermediate Macroeconomics (Fall).",
+          "Professor Jón Steinsson. Intermediate Macroeconomics (Spring)."
+      ],
+      "summary": [
+          "Professor Xavier Sala-i-Martín. Intermediate Macroeconomics (Fall).",
+          "Professor Jón Steinsson. Intermediate Macroeconomics (Spring)."
+      ],
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "Zions Bancorporation",
+      "position": "Credit Risk Analyst",
+      "location": "West Valley, UT",
+      "website": "http://www.nber.org/",
+      "start_Date": "Sep 2012",
+      "end_Date": "Aug 2013",
+      "summary_short": "Statistical modeling and analysis of retail lending credit risk.",
+      "summary": "Statistical modeling and analysis of retail lending credit risk.",
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "University of Utah",
+      "position": "Research Assistant",
+      "location": "Salt Lake City, UT",
+      "website": "http://econ.utah.edu/",
+      "start_Date": "Aug 2011",
+      "end_Date": "May 2012",
+      "summary_short": [
+          "Kenneth P. Jameson. The effects of the undocumented population.",
+          "Richard Fowles. Motorcycle fatalities and helmet usage in Thailand."
+      ],
+      "summary": [
+          "Kenneth P. Jameson. The effects of the undocumented population.",
+          "Richard Fowles. Motorcycle fatalities and helmet usage in Thailand."
+      ],
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "Utah Community Research Group (CRG)",
+      "position": "Analyst",
+      "location": "Salt Lake City, UT",
+      "website": "http://www.utahcrg.utah.edu/",
+      "start_Date": "Jan 2012",
+      "end_Date": "May 2012",
+      "summary_short": "Survey-based market research for Overstock.com",
+      "summary": "Survey-based market research for Overstock.com",
+      "highlights": [
+        "",
+        ""
+      ]
+    },
+    {
+      "company": "Rice University",
+      "position": "Research Assistant",
+      "location": "Houston,TX",
+      "website": "http://www.stat.rice.edu/~jrojo/RUSIS/",
+      "start_Date": "May 2011",
+      "end_Date": "Jun 2012",
+      "summary_short": "Javier Rojo. Survival analysis of liver transplantation patients.",
+      "summary": "Javier Rojo. Survival analysis of liver transplantation patients.",
+      "highlights": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Columbia University",
+      "area": "Economics",
+      "degrees": "M.A. in Economics",
+      "studyType": "Master of Arts",
+      "start_Date": "Sep 2013",
+      "end_Date": "May 2015",
+      "_gpa": "3.428",
+      "gpa": "",
+      "awards": [
+          "Dean's Fellow",
+          "Provost Diversity Fellowship"
+      ],
+      "courses": [
+        "ECON G6410; Math Methods for Economists",
+        "ECON G6211; Micro I (Choice Theory, GE Theory)",
+        "ECON G6212; Micro II (Game Theory, Contract Theory)",
+        "ECON G6215; Macro I (Growth, DSGE New Keynesian Models)",
+        "ECON G6216; Macro II (Fluctuations, New Keynesian Models)",
+        "ECON G6411; Metrics I (Regression, Time Series)",
+        "ECON G6412; Metrics II (GLM, Endogeneity, Non-Linear Models)",
+        "ECON G6930; Perspectives On Economic Studies",
+        "ECON G6905; Topics in Trade and Development: Regional and Urban Economics",
+        "ECON G6226; Applied Macroeconomics and Finance"
+      ]
+    },
+    {
+      "institution": "University of Utah",
+      "area": "Economics and Mathematics (Statistics)",
+      "degrees": ["B.S. in Mathematics (Statistics)", "B.S. in Economics"],
+      "studyType": "Bachelor",
+      "start_Date": "Aug 2009",
+      "end_Date": "Aug 2012",
+      "gpa": "3.972",
+      "awards": [
+          "Magna Cum Laude",
+          "Student Commencement Speaker",
+          "Undergraduate Research Scholar",
+          "Francis Family Foundation Assistantship Award",
+          "Mathematics Continuing Departmental Scholarship",
+          "Dean's list"
+      ],
+      "courses": [
+        "MATH 5080 & 5090; Statistical Inference I & II",
+        "MATH 5075; Time Series Analysis",
+        "MATH 5040 & 5050; Stochastic Processes and Simulation I & II",
+        "ECON 3210 & 3220; Foundations of Analysis I & II (Real Analysis)",
+        "MATH 5010; Intro to Probability",
+        "MATH 3070 & 3080; Applied Statistics I & II",
+        "MATH 2270; Linear Algebra",
+        "MATH 2200; Discrete Mathematics",
+        "MATH 2210; Calculus III (Multivariate Calculus)",
+        "ECON 5960; Special Topics: Why Business Fails",
+        "ECON 4650; Principles of Econometrics",
+        "ECON 5470; American Industry and Economic Development",
+        "ECON 5180; Poverty and Inequality",
+        "ECON 5530; Principles of Economic Development"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Dean's Fellow",
+      "_date": "2013-09 to 2015-05",
+      "date": "2013-09-03",
+      "awarder": "Columbia University",
+      "summary": ""
+    },
+    {
+      "title": "Provost Diversity Fellowship",
+      "_date": "Summer 2014",
+      "date": "2014-05-01",
+      "awarder": "Columbia University",
+      "summary": ""
+    },
+    {
+      "title": "Student Commencement Speaker",
+      "_date": "2013",
+      "date": "2013-05-01",
+      "awarder": "University of Utah",
+      "summary": ""
+    },
+    {
+      "title": "Undergraduate Research Scholar",
+      "_date": "2012-08-03",
+      "date": "2012-08-03",
+      "awarder": "University of Utah",
+      "summary": ""
+    },
+    {
+      "title": "Francis Family Foundation Assistantship Award",
+      "_date": "2011-08 to 2012-05",
+      "date": "2011-12-01",
+      "awarder": "Francis Family Foundation",
+      "summary": ""
+    },
+    {
+      "title": "Mathematics Continuing Departmental Scholarship",
+      "_date": "2011-08 to 2012-05",
+      "date": "2011-08-22",
+      "awarder": "University of Utah",
+      "summary": ""
+    },
+    {
+      "title": "Dean's list",
+      "_date": "2009-08 to 2012-08",
+      "date": "2009-12-01",
+      "awarder": "University of Utah",
+      "summary": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "Scientific Software",
+      "level": "Advanced",
+      "keywords": [
+        "Stata",
+        "R",
+        "SAS",
+        "Python",
+        "Julia",
+        "LaTeX"
+      ]
+    },
+    {
+      "name": "Other",
+      "level": "Intermediate",
+      "keywords": [
+        "MATLAB",
+        "VBA (Excel)",
+        "MS Word",
+        "MS Excel",
+        "MS PowerPoint"
+      ]
+    },
+    {
+      "name": "General Purpose",
+      "level": "Intermediate",
+      "keywords": [
+        "C",
+        "Bash",
+        "VBScript",
+        "MS Batch"
+      ]
+    },
+    {
+      "name": "Version Control",
+      "level": "Intermediate",
+      "keywords": [
+        "Git",
+        "SVN"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "name": "The effects on insurance costs of restricting undocumented immigrants' access to driver licenses",
+      "publisher": "Southern Economic Journal",
+      "releaseDate": "2015-02-26",
+      "website": "http://onlinelibrary.wiley.com/doi/10.1002/soej.12022/abstract",
+      "summary": "This paper uses panel data on US states to examine the impact of imposing documented presence and social security number requirements to obtain a driver's license."
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Native speaker"
+    }
+  ],
+  "presentations": [
+    {
+        "description": "16th International Industrial Organization Conferences",
+        "_date":       "Apr 2018"
+    },
+    {
+        "description": "Southern Economic Association 83rd Annual Meetings",
+        "_date":       "Nov 2013"
+    },
+    {
+        "description": "University of Utah Spring 2012 Undergraduate Research Symposium",
+        "_date":       "Apr 2012"
+    },
+    {
+        "description": "National Conference on Undergraduate Research 2012",
+        "_date":       "Mar 2012"
+    },
+    {
+        "description": "Rice University Summer Institute of Statistics Research Presentations",
+        "_date":       "Jul 2011"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Chess",
+      "keywords": [
+        "",
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/mcaceresb
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mcaceresb.github.io
+  * I am mcaceresb (https://keybase.io/mcaceresb) on keybase.
+  * I have a public key ASBDVLkRIVhYevgYIGtleDn-H6DIO0atzke6ddBaRLeUyAo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01204354b9112158587af818206b657839fe1fa0c83b46adce47ba75d05a44b794c80a",
+            "host": "keybase.io",
+            "kid": "01204354b9112158587af818206b657839fe1fa0c83b46adce47ba75d05a44b794c80a",
+            "uid": "154bf51c34fc87fac71c5cac1d854f19",
+            "username": "mcaceresb"
+        },
+        "merkle_root": {
+            "ctime": 1495805601,
+            "hash": "e0acb7e32ed37f581a1c918705d032b4886141862ef096cd1754a60ce4a5b0cb5e254b815d4dd050a827be9dc1926ab597784ad1e1b403256d1986528bb396ca",
+            "hash_meta": "58ea2651a8ee9b12cbaa7625113ed494fd71c2631629eb40d99c0b12936c42d5",
+            "seqno": 1115266
+        },
+        "service": {
+            "hostname": "mcaceresb.github.io",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.24"
+    },
+    "ctime": 1495805643,
+    "expire_in": 504576000,
+    "prev": "67b027e6bb3e20fe1e73a2d38078bb9f21bb12af1b73aab0c20deb600e4e07ce",
+    "seqno": 8,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgQ1S5ESFYWHr4GCBrZXg5/h+gyDtGrc5HunXQWkS3lMgKp3BheWxvYWTFA0x7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTIwNDM1NGI5MTEyMTU4NTg3YWY4MTgyMDZiNjU3ODM5ZmUxZmEwYzgzYjQ2YWRjZTQ3YmE3NWQwNWE0NGI3OTRjODBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwNDM1NGI5MTEyMTU4NTg3YWY4MTgyMDZiNjU3ODM5ZmUxZmEwYzgzYjQ2YWRjZTQ3YmE3NWQwNWE0NGI3OTRjODBhIiwidWlkIjoiMTU0YmY1MWMzNGZjODdmYWM3MWM1Y2FjMWQ4NTRmMTkiLCJ1c2VybmFtZSI6Im1jYWNlcmVzYiJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ5NTgwNTYwMSwiaGFzaCI6ImUwYWNiN2UzMmVkMzdmNTgxYTFjOTE4NzA1ZDAzMmI0ODg2MTQxODYyZWYwOTZjZDE3NTRhNjBjZTRhNWIwY2I1ZTI1NGI4MTVkNGRkMDUwYTgyN2JlOWRjMTkyNmFiNTk3Nzg0YWQxZTFiNDAzMjU2ZDE5ODY1MjhiYjM5NmNhIiwiaGFzaF9tZXRhIjoiNThlYTI2NTFhOGVlOWIxMmNiYWE3NjI1MTEzZWQ0OTRmZDcxYzI2MzE2MjllYjQwZDk5YzBiMTI5MzZjNDJkNSIsInNlcW5vIjoxMTE1MjY2fSwic2VydmljZSI6eyJob3N0bmFtZSI6Im1jYWNlcmVzYi5naXRodWIuaW8iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4yNCJ9LCJjdGltZSI6MTQ5NTgwNTY0MywiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiI2N2IwMjdlNmJiM2UyMGZlMWU3M2EyZDM4MDc4YmI5ZjIxYmIxMmFmMWI3M2FhYjBjMjBkZWI2MDBlNGUwN2NlIiwic2Vxbm8iOjgsInRhZyI6InNpZ25hdHVyZSJ9o3NpZ8RAI6n4+FIfT61BYnyuQrThnnYa6gBDboU8P3AcVeBETVHMX+lNWeEhsLj3Opu1BSjt4rbElcSq54JERs//poVRCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIBgjFjFrwROxkwYO/Um4rZsN6Ggd9xS8nXtwPAgNG7w9o3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mcaceresb
+
+==================================================================

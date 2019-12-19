@@ -1,0 +1,218 @@
+---
+layout: default
+---
+
+<div class="cv-well">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <!-- <i class="fa fa&#45;file&#45;pdf&#45;o"></i> -->
+          <i class="fa fa-external-link"></i>
+        <!-- <a href="/assets/cv.pdf"><a> -->
+      </div>
+      <div class="row-content">
+        <span class="cv-heading"><a href="/assets/cv.pdf">PDF Version</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="well">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa fa-suitcase"></i>
+      </div>
+      <div class="row-content">
+        <span class="cv-heading">Experience</span>
+      </div>
+    </div>
+    <!-- <div class="list&#45;group&#45;separator"></div> -->
+  </div>
+
+  {% for work in site.data.resume.work %}
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa" style="color:transparent;opacity:0.0;"></i>
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading cv-bolditem">{{ work.company }}</h4>
+        <p class="cv-position">{{ work.position }}</p>
+        <div class="cv-date">
+          {{ work.start_Date }}-{{ work.end_Date }}
+        </div>
+        {% for summary in work.summary_short %}
+          <p class="list-group-item-text cv-summary">{{ summary }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="list-group-separator"></div>
+  </div>
+  {% endfor %}
+</div>
+
+<br/>
+
+<div class="well">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa fa-graduation-cap"></i>
+      </div>
+      <div class="row-content">
+        <span class="cv-heading">Education</span>
+      </div>
+    </div>
+    <!-- <div class="list&#45;group&#45;separator"></div> -->
+  </div>
+
+  {% for edu in site.data.resume.education %}
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa" style="color:transparent;opacity:0.0;"></i>
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading cv-bolditem">{{ edu.institution }}</h4>
+        {% for degree in edu.degrees %}
+          <p class="cv-position">{{ degree }}</p>
+        {% endfor %}
+        <ul>
+        {% for award in edu.awards %}
+          <li class="cv-listitem">{{ award }}</li>
+        {% endfor %}
+        </ul>
+        <div class="cv-date">
+          {{ edu.end_Date }}
+        </div>
+      </div>
+    </div>
+    <div class="list-group-separator"></div>
+  </div>
+  {% endfor %}
+</div>
+
+<br/>
+
+<div class="well cv-div-spanlist">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa fa-code"></i>
+      </div>
+      <div class="row-content">
+        <span class="cv-heading">Skills</span>
+      </div>
+    </div>
+    <!-- <div class="list&#45;group&#45;separator"></div> -->
+  </div>
+
+  {% for skill in site.data.resume.skills %}
+  <div class="list-group cv-spanlist">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa" style="color:transparent;opacity:0.0;"></i>
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading cv-bolditem">{{ skill.name }}</h4>
+        <p class="cv-position">{{ skill.level }}</p>
+        <div class="cv-date"></div>
+        <ul>
+        {% for kw in skill.keywords %}
+          <li class="cv-listitem">{{ kw }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="cv-list-group-separator"></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<br/>
+
+<div class="well">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa fa-slideshare"></i>
+      </div>
+      <div class="row-content">
+        <span class="cv-heading">Presentations</span>
+      </div>
+    </div>
+    <!-- <div class="list&#45;group&#45;separator"></div> -->
+  </div>
+
+  {% for pres in site.data.resume.presentations %}
+  <div class="list-group cv-shorten">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa" style="color:transparent;opacity:0.0;"></i>
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading cv-item" style="line-height:1;">{{ pres.description }}</h4>
+        <div class="cv-date" style="top:-3px;">{{ pres._date }}</div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="list-group cv-shorten">
+    <div class="list-group-item">
+    </div>
+    <div class="list-group-separator"></div>
+  </div>
+</div>
+
+<br/>
+
+<div class="well">
+<!-- <div> -->
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa fa-language"></i>
+      </div>
+      <div class="row-content">
+        <span class="cv-heading">Languages</span>
+      </div>
+    </div>
+    <!-- <div class="list&#45;group&#45;separator"></div> -->
+  </div>
+
+  <div class="list-group">
+    <div class="list-group-item">
+      <div class="row-action-primary">
+        <i class="fa" style="color:transparent;opacity:0.0;"></i>
+      </div>
+      <div class="row-content">
+        <h4 class="list-group-item-heading cv-bolditem"></h4>
+        <p class="cv-position"></p>
+        <div class="cv-date"></div>
+        <ul>
+  {% for lang in site.data.resume.languages %}
+    <li class="cv-listitem">{{ lang.language }}, {{ lang.fluency }}</li>
+  {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!--
+  <div class="list-group cv-shorten">
+    <div class="list-group-item">
+    </div>
+    <div class="list-group-separator"></div>
+  </div>
+-->
+</div>
+

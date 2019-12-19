@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mauricio Cáceres Bravo</title>
+    <description>Hi! I am a research assistant at the Yale School of Management, based in New Haven, CT. This is my personal website, meant to force myself to speed along some coding projects I've had in the back-burner throughout the past year.
+I double-majored in mathematics and economics at the University of Utah and I have a Master's degree in economics from Columbia University in New York.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/sitemap.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 13 Jun 2019 18:55:44 -0400</pubDate>
+    <lastBuildDate>Thu, 13 Jun 2019 18:55:44 -0400</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Writing my first Stata plugin: A real world use case</title>
+        <description>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], [&quot;\\(&quot;,&quot;\\)&quot;] ],
+      processEscapes: true
+    }
+  });
+&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;I’m not the biggest fan of Stata. Though I use it every day for RA work,
+and Stata does shine when all you want to do is explore one data set (or
+a series of data sets that are easy to merge), it’s become increasingly
+apparent over time that whenever I want to do something complex or
+computationally intensive, it pales.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;www.stata.com/features/overview/introduction-to-mata/&quot;&gt;Mata&lt;/a&gt; makes many
+of the rougher corners of Stata rather bearable. However, optimizing
+Stata for a speedy run is really difficult. Enter &lt;a href=&quot;www.stata.com/plugins/&quot;&gt;Stata plugins&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-are-stata-plugins&quot;&gt;What are Stata plugins?&lt;/h2&gt;
+
+&lt;p&gt;A Stata plugin is pre-recompiled code, written in C or C++, that can
+interact with Stata using the “Stata Plugin Interface (SPI).” Stata
+provides a C source file and header that allows a C program to interact
+with Stata’s data sets and matrices.&lt;/p&gt;
+
+&lt;p&gt;The implementation is relatively crude. Stata can write/read to/from
+C one observation at a time from/to existing variables and matrices.
+&lt;a href=&quot;www.stata.com/plugins/&quot;&gt;Stata has pretty good documentation&lt;/a&gt; for the
+functionality of their plugins, and I will not repeat all of it here.&lt;/p&gt;
+
+&lt;p&gt;A simple hello world program would be as follows:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Get a C compiler (&lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt;, the GNU Compiler Collection, is standard and should be included on Mac and Linux; look into &lt;a href=&quot;http://www.mingw.org&quot;&gt;MinGW&lt;/a&gt; if you are on Windows to use &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;Download the Stata Splugin Interface (SPI) version 2 (Stata &amp;lt;= 13) or 3 (Stata &amp;gt;= 14).
+    &lt;ul&gt;
+      &lt;li&gt;Version 2: &lt;a href=&quot;http://www.stata.com/plugins/version2/stplugin.c&quot;&gt;stplugin.c&lt;/a&gt;, &lt;a href=&quot;http://www.stata.com/plugins/version2/stplugin.h&quot;&gt;stplugin.h&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;Version 3: &lt;a href=&quot;http://www.stata.com/plugins/stplugin.c&quot;&gt;stplugin.c&lt;/a&gt;, &lt;a href=&quot;http://www.stata.com/plugins/stplugin.h&quot;&gt;stplugin.h&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create hello.c (Note you should have stplugin.h and stplugin.c in the same directory).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;stplugin.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;STDLL&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stata_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SF_display&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now from the command line, run&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;gcc &lt;span class=&quot;nt&quot;&gt;-shared&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-fPIC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-DSYSTEM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;OPUNIX stplugin.c hello.c &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; hello.plugin &lt;span class=&quot;c&quot;&gt;# Linux&lt;/span&gt;
+gcc &lt;span class=&quot;nt&quot;&gt;-bundle&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-DSYSTEM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;APPLEMAC stplugin.c hello.c &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; hello.plugin     &lt;span class=&quot;c&quot;&gt;# Mac&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Last, from Stata navigate to your working directory and run&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;program hello, plugin using(&quot;./hello.plugin&quot;)
+plugin call hello&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;is-it-worth-the-hassle&quot;&gt;Is it worth the hassle?&lt;/h2&gt;
+
+&lt;p&gt;Stata says that it’s only worth it if you are replacing a lot of interpreted
+ado-code and the task is not very complex. Though I agree on the latter
+(complex tasks will likely take more time to code in C than the time they
+will save) I &lt;em&gt;strongly&lt;/em&gt; disagree on the former.&lt;/p&gt;
+
+&lt;p&gt;Perhaps most people realize this, but my understanding of for loops in
+Stata is that they are run as if you printed each block within the for
+loop however many times you tell it to execute. Thus&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;forvalues i = 1 / 1000 {
+    // Stuff to do
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;may look like three lines of code, but it’s really equivalent to 1000.
+The reason I started using Stata plugins was to speed up a simulation.
+The C code is longer and the base case are only a handful of lines in
+Stata, but it’s painfully slow because the bulk of the computation takes
+place inside a loop that does a simulation.&lt;/p&gt;
+
+&lt;p&gt;Below I document a real-world use case where C was 50 times faster than
+Stata, so for me the work was definitely worthwhile.&lt;/p&gt;
+
+&lt;h2 id=&quot;a-real-world-use-case&quot;&gt;A real world use case&lt;/h2&gt;
+
+&lt;p&gt;Several of the projects I work on are Randomized Control Trials. It is
+standard to conduct a power analysis for such projects in order to put
+together a proposal, etc. Having a well-powered trial is essential for
+the success of an RCT.&lt;/p&gt;
+
+&lt;p&gt;Since RCTs can give you a truly independent treatment variable, we can
+recover the treatment effect via simple OLS. Though parametric methods
+are well known and widely used to estimate power under this setup,
+they rely on strong assumptions. When clustering or stratification are
+involved, specially when the number of clusters is not very large,
+parametric calculations can be inaccurate.&lt;/p&gt;
+
+&lt;p&gt;One suggestion I got was to &lt;em&gt;simulate&lt;/em&gt; power. I won’t outline the full
+rationale (&lt;a href=&quot;https://github.com/mcaceresb/stata-power/blob/master/notes/power-simulation-notes.pdf&quot;&gt;read about it here&lt;/a&gt;), but the crux of the idea is to simulate a large number of
+coefficients $b$ for the equation:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Y_{ij} = a + b T_{ij} + g X_{ij} + e_{ij}&lt;/script&gt;
+
+&lt;p&gt;where at each step of the simulation, $T_{ij}$ is simulated so that
+there are $NP$ individuals/clusters in treatment and $(1 - P)N$
+in control. Since treatment is assigned randomly, the resulting
+distribution is a sample of the true distribution of $b$ under the null
+$H_0: b = 0$.&lt;/p&gt;
+
+&lt;p&gt;This does not tell us anything about power by itself, but the confidence
+interval can be used as the basis of an iterative procedure to simulate
+power. Hence coding the simulation efficiently is crucial.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-write-a-plugin&quot;&gt;Why write a plugin?&lt;/h2&gt;
+
+&lt;p&gt;The problem above is actually very simple to implement. In pseudo-code:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;function simci (X, y, P, reps)
+{
+    n = rows(X)
+    b = zeros(reps)
+    T = ones(ceil(n * P)) \ zeros(floor(n * (1 - P)))
+
+    for (r = 1; r &amp;lt;= reps; r++)
+    {
+        XT   = shuffle(T), X
+        b[r] = (inv(XT' * XT) * (XT' * y))[1]
+    }
+
+    return (b)
+}&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Though simple, doing this &lt;em&gt;&lt;strong&gt;efficiently&lt;/strong&gt;&lt;/em&gt; is impossible in
+Stata. There are three prominent issues:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;There is no way to shuffle a vector in Stata. That’s not a thing.
+Variables all exist in relation to each other and sorting one
+variable randomly will sort the entire data set. Shuffling an entire
+data set is much slower than shuffling one vector.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There is no way to compute just the regression coefficients in Stata.
+Stata’s &lt;code class=&quot;highlighter-rouge&quot;&gt;regress&lt;/code&gt; computes a host of things along with the least
+squares solution This adds unnecessary overhead. (I have asked about
+how to do this before; the suggestion I got was to run &lt;code class=&quot;highlighter-rouge&quot;&gt;quietly
+regress, notable&lt;/code&gt; which just controls what Stata outputs, not what it
+computes).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It’s not obvious how to store the results, specially with Stata/IC.
+Though the buffer versions of Stata should be able to handle most
+simulations after setting a larger &lt;code class=&quot;highlighter-rouge&quot;&gt;matsize&lt;/code&gt;, the fact matrix sizes
+are capped (and in Stata/IC capped at 800), makes the function
+difficult to code.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The solution in Stata would look like this&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;program stataSimci, rclass sortpreserve
+    syntax varlist [if] [in] , [ Ptreat(real 0.5) reps(int 100) ]
+
+    gettoken depvar controls: varlist
+    marksample touse
+    _rmcoll `controls' if `touse'
+    local controls `r(varlist)'
+
+    qui {
+    preserve
+        keep if `touse'
+        local NP = ceil(`=_N' * `ptreat')
+
+        tempname b
+        tempvar treatment randsort
+        gen byte   `treatment' = .
+        gen double `randsort'  = .
+
+        forvalues r = 1 / `reps' {
+            replace `randsort'  = runiform()
+            sort `randsort'
+            replace `treatment' = (_n &amp;lt;= `NP')
+            regress `depvar' `treatment' `controls' if `touse'
+            matrix `b' = nullmat(`b') \ `:di _b[`treatment']'
+        }
+    restore
+    }
+
+    return matrix b = `b'
+end
+
+sysuse auto, clear
+stataSimci price mpg foreign, p(0.5) reps(10)
+matrix list r(b)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This is a hugely inefficient program!&lt;/p&gt;
+
+&lt;h2 id=&quot;wait-cant-mata-handle-these-things&quot;&gt;Wait, can’t Mata handle these things?&lt;/h2&gt;
+
+&lt;p&gt;Right, Mata is the elephant in the room. If you don’t know,
+&lt;a href=&quot;http://www.stata.com/features/overview/introduction-to-mata/&quot;&gt;Mata&lt;/a&gt; is
+a programming language that is shipped with every version of Stata and
+it can interact with Stata relatively easily. If you have ever used an
+object-oriented programming language then you will recognize Mata as a
+more standard programming language than Stata.&lt;/p&gt;
+
+&lt;p&gt;Mata does afford us &lt;em&gt;some&lt;/em&gt; efficiency, but not a lot (yes, I know about
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.mlib&lt;/code&gt; files and that technically Stata compiles mata into bytecode
+when read into memory, but I have never found the speed improvement to
+be significant).&lt;/p&gt;
+
+&lt;p&gt;In this case, Mata will run faster largely because it can&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Shuffle just a single vector.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the OLS coefficients without any additional computations.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The implementation is very straightforward:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;program mataSimci, rclass sortpreserve
+    syntax varlist [if] [in] , [ Ptreat(real 0.5) reps(int 100) ]
+    gettoken depvar controls: varlist
+    marksample touse
+    _rmcoll `controls' if `touse'
+    local controls `r(varlist)'
+    mata: b = simci(&quot;`depvar'&quot;, &quot;`controls'&quot;, &quot;`touse'&quot;, `ptreat', `reps')
+    mata: st_matrix(&quot;b&quot;, b)
+    return matrix b = b
+end
+
+mata:
+real colvector function simci(string scalar depvar,
+                              string scalar controls,
+                              string scalar touse,
+                              real scalar P,
+                              real scalar reps)
+{
+    real scalar n
+    real colvector b, T, y
+    real matrix X
+
+    y = X = .
+    st_view(y, ., depvar,   touse)
+    st_view(X, ., controls, touse)
+
+    n = rows(X)
+    b = J(reps, 1, missingof(X))
+    T = J(ceil(n * P), 1, 1) \ J(floor(n * (1 - P)), 1, 0)
+
+    for (r = 1; r &amp;lt;= reps; r++)
+    {
+        XT   = (jumble(T), X)
+        b[r] = (invsym(cross(XT, 1, XT, 1)) * cross(XT, 1, y, 0))[1]
+    }
+
+    return(b)
+}
+end
+
+sysuse auto, clear
+mataSimci price mpg foreign, p(0.5) reps(10)
+matrix list r(b)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;There are two problems:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Matrix operations in Mata are not terribly fast (certainly not
+compered to a compiled language like C or even a JIT-compiled
+language like Julia). Yes, I know Mata uses LAPACK and BLAS
+underneath, but it’s still largely an interpreted language.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There is no reason to run the loop sequentially! It is conceptually
+trivial to parallelize the loop. Granted, parallelism is not trivial
+but the fact it cannot be done, even in Stata/MP, is frustrating.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;how-does-the-solution-in-c-look-like&quot;&gt;How does the solution in C look like?&lt;/h2&gt;
+
+&lt;p&gt;C is certainly harder to write, and Stata’s primitive interaction with
+C makes it so getting the results back from C is annoying. BUT there is
+a MASSIVE speed improvement. For this particular use case it’s an order
+of magnitude (around 10x) over Mata (and that implementation was already
+faster than Stata).&lt;/p&gt;
+
+&lt;p&gt;Writing the wrapper for this is not too hard thanks to the GNU
+Scientific Library. Noting the 0-based indexing:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;math.h&amp;gt;
+#include &amp;lt;omp.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;time.h&amp;gt;
+#include &amp;lt;gsl/gsl_blas.h&amp;gt;
+#include &amp;lt;gsl/gsl_linalg.h&amp;gt;
+#include &amp;lt;gsl/gsl_matrix_double.h&amp;gt;
+#include &amp;lt;gsl/gsl_permutation.h&amp;gt;
+#include &amp;lt;gsl/gsl_randist.h&amp;gt;
+#include &amp;lt;gsl/gsl_rng.h&amp;gt;
+#include &quot;stplugin.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// These functions are to be used after reading Stata data into X, y.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Crucially, in this example the first column of X must be empty.&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;simci&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sim_ols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// This function would read the data from stata&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;STDLL&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stata_call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Initialize the variables to use&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ST_int&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ST_double&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ST_retcode&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Get P and number of reps. Note the 0-based indexing! So the&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// functiona ssumes P and reps were the 2nd and 3rd argument.&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;P&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strtod&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strtod&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_in2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_nvars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Not sure if there is another way to read data vs the double loop.&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Again, careful with the 0-based indexing!&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_in1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_in2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SF_ifobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Variables 2 through k are covariates&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;// Note we leave the first column empty&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_vdata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;gsl_matrix_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Note we add the constant&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gsl_matrix_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+            &lt;span class=&quot;c1&quot;&gt;// Variable 1 is the dependent variable&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SF_vdata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gsl_vector_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Now we call the simulation function and output the results into b&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;simci&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;gsl_matrix_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Note the first argument passed to the plugin call must be the&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// name of a matrix that exists in Stata.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SF_mat_store&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_get&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// The method above is a hassle because Stata limits matrix size and&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// the matrix has to exist. Some workarounds:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// - Space-delimited local macro, then read using mata: tokens()&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// - Write to a temporary file then read using mata: cat()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// This will output the results into b&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;simci&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ceil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;P&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Set the random seed based on the time of day (seconds)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;srand&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_rng&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_rng_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsl_rng_default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_rng_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Get vector of 1s and 0s&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector_set_zero&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gsl_vector_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Initialize elements for parallel loop&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Parallelize execution&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;#pragma omp parallel private(Xp, Tp) shared(y, b)
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Allocate to each therad their own copy&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;gsl_vector_memcpy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gsl_matrix_memcpy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Parallel for loop through simulation&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;#pragma omp for
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gsl_ran_shuffle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sizeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;size_t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gsl_matrix_set_col&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;gsl_vector_set&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sim_ols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// Cleanup&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gsl_matrix_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Xp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;gsl_vector_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Cleanup&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_rng_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rng&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sim_ols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Allocate memory to express the system as Ax = b&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_matrix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_matrix_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gsl_vector_alloc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Set A = X' X and b = X' y&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_blas_dgemm&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CblasTrans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CblasNoTrans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_blas_dgemv&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CblasTrans&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Cholesky decomposition&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_linalg_cholesky_decomp1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_linalg_cholesky_solve&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Cleanup&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_matrix_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;gsl_vector_free&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gsl_vector_get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Save the code to &lt;code class=&quot;highlighter-rouge&quot;&gt;pluginSimci.c&lt;/code&gt;. To compile &lt;code class=&quot;highlighter-rouge&quot;&gt;pluginSimci.plgin&lt;/code&gt;, on top
+of &lt;code class=&quot;highlighter-rouge&quot;&gt;gcc&lt;/code&gt; and the SPI, you will need&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;a href=&quot;https://www.gnu.org/software/gsl&quot;&gt;GNU Scientific Library (GSL)&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.openmp.org&quot;&gt;OpenMP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Again, you should have &lt;code class=&quot;highlighter-rouge&quot;&gt;stplugin.c&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;stplugin.h&lt;/code&gt; in the same directory. Now on Linux/Unix, run&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-Wall -fopenmp -shared -fPIC -DSYSTEM=OPUNIX&quot;&lt;/span&gt;
+gcc &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; stplugin.o    stplugin.c
+gcc &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; pluginSimci.o pluginSimci.c
+gcc &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt; stplugin.o pluginSimci.o &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-lgsl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lgslcblas&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; pluginSimci.plugin&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Depending on your system, you may also need to add &lt;code class=&quot;highlighter-rouge&quot;&gt;-std=c99&lt;/code&gt; as a flag and point to the location of the &lt;code class=&quot;highlighter-rouge&quot;&gt;libgsl*so&lt;/code&gt; files. For instance, I regularly SSH into a RedHat server, and to compile I ran&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-Wall -std=c99 -fopenmp -shared -fPIC -DSYSTEM=OPUNIX&quot;&lt;/span&gt;
+gcc &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt;/usr/local/lib &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; stplugin.o    stplugin.c
+gcc &lt;span class=&quot;nt&quot;&gt;-I&lt;/span&gt;/usr/local/lib &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; pluginSimci.o pluginSimci.c
+gcc &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt;/usr/local/lib &lt;span class=&quot;nv&quot;&gt;$CFLAGS&lt;/span&gt;  stplugin.o pluginSimci.o &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-lgsl&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lgslcblas&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-lm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; pluginSimci.plugin&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;To compile in other system, you should consult &lt;a href=&quot;http://www.stata.com/plugins&quot;&gt;Stata’s documentation&lt;/a&gt;. Once compiled, from Stata:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;matrix b = J(10, 1, .)
+sysuse auto
+program pluginSimci, plugin using(./pluginSimci.plugin)
+plugin call pluginSimci price mpg foreign, b 0.5 10
+matrix list b&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;timing-performance&quot;&gt;Timing performance&lt;/h2&gt;
+
+&lt;p&gt;I don’t really know of good Stata tools to profile performance. However,
+it’s not too hard to time how long a command takes to run. I wrote a
+simple wrapper for it, which we use with the programs above:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-stata&quot; data-lang=&quot;stata&quot;&gt;. local github https://raw.githubusercontent.com
+. net install benchmark, from(`github'/mcaceresb/stata-benchmark/master/)
+. local benchmark benchmark, disp reps(5): qui
+
+. set seed 42
+. set matsize 800
+. sysuse auto, clear
+. tempfile auto
+. save `auto'
+. qui forvalues i = 1 / 100 {
+.     append using `auto'
+. }
+
+. `benchmark' stataSimci  price mpg foreign, p(0.5) reps(800)
+1: 10.52 seconds
+2: 9.143 seconds
+3: 12.13 seconds
+4: 14.25 seconds
+5: 12.54 seconds
+Average over 5 runs: 11.7166 seconds
+
+. `benchmark' mataSimci  price mpg foreign, p(0.5) reps(800)
+ 2.546 seconds
+ 2.692 seconds
+ 2.68 seconds
+ 2.368 seconds
+ 2.426 seconds
+Average over 5 runs: 2.5424 seconds
+
+. matrix b = J(800, 1, .)
+. `benchmark' plugin call pluginSimci price mpg foreign, b 0.5 800
+1: .283 seconds
+2: .273 seconds
+3: .262 seconds
+4: .238 seconds
+5: .288 seconds
+Average over 5 runs: 0.2688 seconds&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;In the example Mata ran 5x vs Stata and the plugin ran 10x vs Mata. For
+a 50x speed improvement, I’d say the hassle was worth it! My real-world
+use-case for this was power simulations for a cluster-randomized trial
+where the underlying clusters were comprised of 200k observations
+overall. Running this in Mata took on the order of days. To have it run
+in hours was a massive boon.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Feb 2017 20:13:24 -0500</pubDate>
+        <link>http://localhost:4000/stata/plugins/2017/02/14/writing-stata-plugins-example.html</link>
+        <guid isPermaLink="true">http://localhost:4000/stata/plugins/2017/02/14/writing-stata-plugins-example.html</guid>
+        
+        
+        <category>stata</category>
+        
+        <category>plugins</category>
+        
+      </item>
+    
+      <item>
+        <title>Installing Arch: Setting up the system</title>
+        <description>&lt;p&gt;I am a fan of &lt;a href=&quot;https://en.wikipedia.org/wiki/GNU/Linux&quot;&gt;GNU/Linux&lt;/a&gt; (or
+just “Linux” if you hate Richard Stallman). My first Linux distro was
+&lt;a href=&quot;https://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; but, alas, it was not meant to be.
+Though Ubuntu is truly awesome for putting ease of use front and center,
+over time my idea of “ease of use” started to drift from Ubuntu’s idea
+of ease of use.&lt;/p&gt;
+
+&lt;p&gt;These days I have gravitated towards Arch. The
+&lt;a href=&quot;https://wiki.archlinux.org&quot;&gt;Arch wiki&lt;/a&gt; is awesome
+and a half, and they have a full &lt;a href=&quot;https://wiki.archlinux.org/index.php/Beginners%27_guide&quot;&gt;installation
+guide&lt;/a&gt;
+available. However, there is a specific setup I like most and this is
+meant to summarize that setup into an easy-to-follow step-by-step guide.&lt;/p&gt;
+
+&lt;p&gt;Commands between &lt;code class=&quot;highlighter-rouge&quot;&gt;[encryption-lvm]&lt;/code&gt; tags need only be run if you want
+to set up encryption with LVM and they are run in lieu of commands
+in &lt;code class=&quot;highlighter-rouge&quot;&gt;[standatd]&lt;/code&gt; tags (LVM is recommended; easiest guide I found is
+&lt;a href=&quot;http://www.brandonkester.com/tech/2013/03/16/full-disk-encryption
+-in-arch-linux-with-uefi.html&quot;&gt;here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;step-1-partition-and-format-the-drive&quot;&gt;Step 1: Partition and format the drive&lt;/h2&gt;
+
+&lt;p&gt;Some basic sanity checks&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /sys/firmware/efi/efivars &lt;span class=&quot;c&quot;&gt;# Should be populated&lt;/span&gt;
+wifi-menu                    &lt;span class=&quot;c&quot;&gt;# Will connect automatically&lt;/span&gt;
+timedatectl set-ntp &lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;timedatectl status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now partition the disk (EFI)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# I use parted; alternatively use gdisk or cdisk&lt;/span&gt;
+parted /dev/sda
+mklabel gpt
+mkpart ESP fat32 1MiB 513MiB
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;1 boot on
+
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+mkpart primary ext4 513MiB 100%
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+mkpart primary linux-swap 513MiB 8.5GiB
+mkpart primary ext4 8.5GiB 100%
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+
+quit
+mkfs.vfat /dev/sda1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Format drive and mount&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+cryptsetup luksFormat /dev/sda2
+cryptsetup open &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt; luks /dev/sda2 lvm
+pvcreate /dev/mapper/lvm
+vgcreate vol0 /dev/mapper/lvm
+lvcreate &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; lvswap &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; 6GB vol0
+lvcreate &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; lvroot &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; 100%FREE vol0
+mkswap /dev/mapper/vol0-lvswap
+swapon /dev/mapper/vol0-lvswap
+mkfs.ext4 /dev/mapper/vol0-lvroot
+mount /dev/mapper/vol0-lvroot /mnt
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+mkfs.ext4 /dev/sda3
+mkswap /dev/sda2
+swapon /dev/sda2
+mount /dev/sda3 /mnt
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /mnt/boot
+mount /dev/sda1 /mnt/boot
+pacstrap &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; /mnt base base-devel
+&lt;span class=&quot;c&quot;&gt;# If you get a PGP key error, do&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# dirmngr &amp;lt;/dev/null&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# pacman-key --populate archlinux&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# pacman-key --refresh-keys&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Then retun pacstrap&lt;/span&gt;
+genfstab &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; /mnt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /mnt/etc/fstab
+&lt;span class=&quot;nb&quot;&gt;cp&lt;/span&gt; /etc/netctl/yournetworkname /mnt/etc/netctl/yournetworkname
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; If you want to mount extra partitions, make sure you mounted them here. For instance, &lt;code class=&quot;highlighter-rouge&quot;&gt;mkdir  /mnt/mnt/large &amp;amp;&amp;amp; mount /dev/sdY1 /mnt/mnt/large&lt;/code&gt; or something, &lt;em&gt;BEFORE&lt;/em&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;genfstab&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-2-chroot-and-install-base-system&quot;&gt;Step 2: Chroot and install base system&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;arch-chroot /mnt /bin/bash
+
+locale-gen
+localectl set-locale &lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;en_US.UTF-8
+vi /etc/locale.gen &lt;span class=&quot;c&quot;&gt;# Uncomment en_US.UTF-8&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;LANG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;en_US.UTF-8 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/locale.conf
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /etc/locale.conf&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+locale-gen
+
+tzselect
+&lt;span class=&quot;nb&quot;&gt;ln&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /usr/share/zoneinfo/America/New_York /etc/localtime
+hwclock &lt;span class=&quot;nt&quot;&gt;--systohc&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--utc&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;vm.swappiness&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/sysctl.d/99-sysctl.conf
+vi /etc/pacman.conf &lt;span class=&quot;c&quot;&gt;# Uncomment multilib&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo hostname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /etc/hostname
+vi /etc/hosts
+&lt;span class=&quot;c&quot;&gt;# Copy the 127.0.0.1 and replace localhost with hostname&lt;/span&gt;
+
+pacman &lt;span class=&quot;nt&quot;&gt;-Sy&lt;/span&gt;
+pacman &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; iw wpa_supplicant dialog intel-ucode
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-3-configure-the-boot-loader&quot;&gt;Step 3: Configure the boot loader&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Pro-tip:&lt;/strong&gt;&lt;/em&gt; I have occasionally messed up my bootloader; when that happens I fire up a live arch USB, mount my partitions (using lvm if applicable), chroot into the system, and fix the bootloader here.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bootctl &lt;span class=&quot;nb&quot;&gt;install
+cp&lt;/span&gt; /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;blkid /dev/sdb2&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; /boot/loader/entries/arch.conf
+&lt;span class=&quot;c&quot;&gt;# File should look like this&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   title   Arch Lnux&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   linux   /vmlinuz-linux&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   initrd  /initramfs-linux.img&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   options cryptdevice=UUID=&amp;lt;INSERT-UUID-HERE&amp;gt;:lvm:allow-discards resume=/dev/mapper/vol0-lvswap root=/dev/mapper/vol0-lvroot rw quiet&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   options root=PARTUUID=&amp;lt;INSERT-PARTUUID-HERE&amp;gt; rootfstype=ext4 rw&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [standard]&lt;/span&gt;
+
+bootctl update
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# vi /etc/mkinitcpio.conf&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   Add &quot;keymap encrypt lvm2 resume&quot; to HOOKS=&quot;...&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   HOOKS=&quot;base udev autodetect modconf block keymap encrypt lvm2 resume filesystems keyboard fsck&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# [encryption-lvm]&lt;/span&gt;
+
+mkinitcpio &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; linux
+passwd
+&lt;span class=&quot;nb&quot;&gt;exit
+&lt;/span&gt;umount &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; /mnt/boot
+umount &lt;span class=&quot;nt&quot;&gt;-R&lt;/span&gt; /mnt
+reboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-4-set-up-your-own-user-account&quot;&gt;Step 4: Set up your own user account&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useradd &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; /bin/bash user
+passwd user
+visudo &lt;span class=&quot;c&quot;&gt;# Add to end of file: user ALL=(ALL) ALL&lt;/span&gt;
+pacman &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bash-completion git rfkill
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Log in and install install pacaur. You can use &lt;code class=&quot;highlighter-rouge&quot;&gt;pacaur&lt;/code&gt; (though I think using &lt;code class=&quot;highlighter-rouge&quot;&gt;yaourt&lt;/code&gt; is more standard) to query the &lt;a href=&quot;aur.archlinux.org&quot;&gt;Arch User Repositories (AUR)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/Documents
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/Downloads
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/Pictures
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/Music
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/Videos
+
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/Downloads
+git clone https://aur.archlinux.org/package-query
+git clone https://aur.archlinux.org/yaourt
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;package-query
+makepkg &lt;span class=&quot;nt&quot;&gt;-si&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../yaourt
+makepkg &lt;span class=&quot;nt&quot;&gt;-si&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# yaourt is supposedly standard but can be very annoying.&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# I've been trying out pacaur&lt;/span&gt;
+gpg &lt;span class=&quot;nt&quot;&gt;--recv-keys&lt;/span&gt; 1EB2638FF56C0C53
+yaourt &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; pacaur
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can now follow my preferred setup or go to &lt;a href=&quot;http://https://wiki.archlinux.org/index.php/General_recommendations&quot;&gt;the recommendations page&lt;/a&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 10 Feb 2017 08:28:24 -0500</pubDate>
+        <link>http://localhost:4000/linux/arch/install/2017/02/10/install-arch-partI.html</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/arch/install/2017/02/10/install-arch-partI.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>arch</category>
+        
+        <category>install</category>
+        
+      </item>
+    
+    
+      <item>
+        <title>Gtools</title>
+        <description>Gtools</description>
+        <link>http://localhost:4000https://gtools.readthedocs.io/</link>
+        <pubDate>Wed, 31 May 2017 00:00:00 -0400</pubDate>
+        
+        <category>Stata</category>
+        
+        <category>C</category>
+        
+      </item>
+    
+      <item>
+        <title>alogit</title>
+        <description>alogit</description>
+        <link>http://localhost:4000https://sites.google.com/view/alogit/</link>
+        <pubDate>Fri, 30 Jun 2017 00:00:00 -0400</pubDate>
+        
+        <category>Stata</category>
+        
+        <category>C</category>
+        
+      </item>
+    
+      <item>
+        <title>Power Tools</title>
+        <description>Power Tools</description>
+        <link>http://localhost:4000https://github.com/mcaceresb/stata-power</link>
+        <pubDate>Sun, 28 Feb 2016 00:00:00 -0500</pubDate>
+        
+        <category>Stata</category>
+        
+        <category>C</category>
+        
+      </item>
+    
+      <item>
+        <title>Tablefill</title>
+        <description>Tablefill</description>
+        <link>http://localhost:4000https://github.com/mcaceresb/tablefill</link>
+        <pubDate>Fri, 31 Jul 2015 00:00:00 -0400</pubDate>
+        
+        <category>Python</category>
+        
+        <category>Latex</category>
+        
+        <category>Lyx</category>
+        
+      </item>
+    
+  </channel>
+</rss>

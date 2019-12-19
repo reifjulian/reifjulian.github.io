@@ -1,0 +1,122 @@
+---
+---
+@charset "utf-8";
+
+$mc-font-family:     Ubuntu, sans-serif;
+$mc-font-size:       16px;
+$mc-font-size-title: 39px;
+$mc-font-weight:     400;
+$mc-font-size-small: $mc-font-size * 0.875;
+$mc-line-height:     1.5;
+
+$mc-highlight-color-link: #006064;
+
+/*********************************************************************
+ *                           Color Themes                            *
+ *********************************************************************/
+
+// Blue Grey (1)
+// -------------
+
+// [Currently live]
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #263238;
+// $mc-background-color-nav: #263238;
+// $mc-highlight-color-nav:  #455A64;
+
+// Grey theme
+// ----------
+
+// sed -i -e 's/263238/212121/g' static/css/bootstrap-material-design.min.css
+// [pending] sed -i -e 's/212121/263238/g' static/css/bootstrap-material-design.min.css
+
+$mc-text-color:           #111;
+$mc-title-color:          #263238;
+$mc-background-color-top: #212121;
+$mc-background-color-nav: #212121;
+$mc-highlight-color-nav:  #505050;
+
+// Blue Grey (2)
+// -------------
+
+// sed -i -e 's/263238/37474F/g' static/css/bootstrap-material-design.min.css
+// sed -i -e 's/37474F/263238/g' static/css/bootstrap-material-design.min.css
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #37474F;
+// $mc-background-color-nav: #37474F;
+// $mc-highlight-color-nav:  #546E7A;
+
+// Indigo
+// ------
+
+// sed -i -e 's/263238/283593/g' static/css/bootstrap-material-design.min.css
+// sed -i -e 's/283593/263238/g' static/css/bootstrap-material-design.min.css
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #1A237E;
+// $mc-background-color-nav: #283593;
+// $mc-highlight-color-nav:  #5C6BC0;
+
+// Teal
+// ----
+
+// sed -i -e 's/263238/004D40/g' static/css/bootstrap-material-design.min.css
+// sed -i -e 's/004D40/263238/g' static/css/bootstrap-material-design.min.css
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #004D40;
+// $mc-background-color-nav: #004D40;
+// $mc-highlight-color-nav:  #00796B;
+
+// Light Blue
+// ----------
+
+// sed -i -e 's/263238/01579B/g' static/css/bootstrap-material-design.min.css
+// sed -i -e 's/01579B/263238/g' static/css/bootstrap-material-design.min.css
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #01579B;
+// $mc-background-color-nav: #01579B;
+// $mc-highlight-color-nav:  #0277BD;
+
+// Pink
+// ----
+
+// sed -i -e 's/263238/880E4F/g' static/css/bootstrap-material-design.min.css
+// sed -i -e 's/880E4F/263238/g' static/css/bootstrap-material-design.min.css
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #880E4F;
+// $mc-background-color-nav: #880E4F;
+// $mc-highlight-color-nav:  #AD1457;
+
+// Original
+// --------
+
+// $mc-text-color:           #111;
+// $mc-title-color:          #263238;
+// $mc-background-color-top: #009587;
+// $mc-background-color-nav: #212121;
+// $mc-highlight-color-nav:  #007D72;
+
+/*********************************************************************
+ *                               Misc                                *
+ *********************************************************************/
+
+// $grey-color:       #828282;
+// $grey-color-light: lighten($grey-color, 40%);
+// $grey-color-dark:  darken($grey-color, 25%);
+
+// @import "bootstrap.min";
+// @import "bootstrap-material-design.min";
+// @import "main";
+@import "styles";
+

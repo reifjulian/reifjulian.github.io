@@ -1,0 +1,18 @@
+v1:
+background:    121216 (009587, 009688)
+hover:         2d2d33 (007D72, 009688)
+accent:        121216 (B8CA28)
+home-subtitle: 263238 (01c87b)
+
+v2:
+background:    37474F (009587, 009688)
+hover:         2d2d33 (007D72, 009688)
+accent:        37474F (B8CA28)
+home-subtitle: 263238 (01c87b)
+
+v3:
+background:    212121 (009587, 009688)
+hover:         424242 (007D72, 009688)
+accent:        212121 (B8CA28)
+home-subtitle: 263238 (01c87b)
+
