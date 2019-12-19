@@ -5,4 +5,4 @@ subtitle: Research
 permalink: /research/
 ---
 
-My research projects are available on my [personal website](http://julianreif.com/research/index.html)
+My research projects are available on my [personal website](http://julianreif.com/research/index.html).
