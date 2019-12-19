@@ -5,8 +5,7 @@ subtitle: About
 permalink: /about/
 ---
 
-This is Julian Reif's test website. My main website is available here:
-http://www.julianreif.com
+This is my Github website. My personal website is available [here](http://www.julianreif.com).
 
 <head>
 <style>
@@ -29,5 +28,5 @@ img {
 </head>
 
 <div class="image-cropper">
-    <img src="{{ "/assets/mauricio-wm-ch.jpg" | relateive_url }}" class="rounded" />
+    <img src="{{ "/assets/reif.jpg" | relateive_url }}" class="rounded" />
 </div>
