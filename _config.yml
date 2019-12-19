@@ -1,7 +1,7 @@
 title: Julian Reif
 description: My Github website
 author: Julian Reif
-logo: /assets/mauricio-wm-ch.jpg
+logo: /assets/reif.jpg
 github: https://github.com/reifjulian
 about: Assistant Professor of Finance and Economics, University of Illinois
 description: > # this means to ignore newlines until "baseurl:"
@@ -12,9 +12,6 @@ url: https://reifjulian.github.io/
 allowsearch: true
 
 github_username: reifjulian
-# medium_username: mcaceresb
-# google_tags: GTM-5JHMCV7
-# google_analytics: UA-91854317-1
 
 share:
   twitter_username: julianreif
