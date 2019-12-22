@@ -28,5 +28,5 @@ img {
 </head>
 
 <div class="image-cropper">
-    <img src="{{ "/assets/reif.jpg" | relateive_url }}" class="rounded" />
+    <img src="{{ "/assets/reif.jpg" | relateive_url }}" />
 </div>
