@@ -11,7 +11,7 @@ This is my Github website. My personal website is available [here](http://www.ju
 <style>
 .image-cropper {
     margin-top: 24px;
-    width: 200px;
+    width: 175px;
     height: 200px;
     position: relative;
     overflow: hidden;
