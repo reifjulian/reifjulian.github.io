@@ -7,6 +7,8 @@ permalink: /about/
 
 This is my Github website. My personal website is available [here](http://www.julianreif.com).
 
+<img src="/assets/reif.jpg" width="50%" title="Profile pic">
+
 <head>
 <style>
 .image-cropper {
