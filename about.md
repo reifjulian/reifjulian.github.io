@@ -10,6 +10,7 @@ This is my Github website. My personal website is available [here](http://www.ju
 <head>
 <style>
 .image-cropper {
+    margin-top: 24px;
     width: 200px;
     height: 200px;
     position: relative;
@@ -27,5 +28,5 @@ img {
 </head>
 
 <div class="image-cropper">
-    <img src="{{ "/assets/reif.jpg" | relateive_url }}" class="rounded" />
+    <img src="{{ "/assets/reif.jpg" | relateive_url }}" />
 </div>
