@@ -7,8 +7,6 @@ permalink: /about/
 
 This is my Github website. My personal website is available [here](http://www.julianreif.com).
 
-<img src="/assets/reif.jpg" width="50%" title="Profile pic">
-
 <head>
 <style>
 .image-cropper {
@@ -29,6 +27,6 @@ img {
 </style>
 </head>
 
-<div class="image-cropper">
+<div class="image-cropper"; width=100px>
     <img src="{{ "/assets/reif.jpg" | relateive_url }}" />
 </div>
