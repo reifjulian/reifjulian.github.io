@@ -1,5 +1,5 @@
 ---
-layout: coding
+layout: page
 title: Coding
 subtitle: Coding
 permalink: /coding/
