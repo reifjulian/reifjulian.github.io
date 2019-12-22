@@ -1,3 +1,10 @@
+---
+layout: page
+title: Guide
+subtitle: Guide
+permalink: /guide/
+---
+
 # Managing an analysis in Stata
 Author: [Julian Reif](http://www.julianreif.com), University of Illinois
 
