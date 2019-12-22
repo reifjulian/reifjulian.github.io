@@ -10,8 +10,6 @@ This is my Github website. My personal website is available [here](http://www.ju
 <head>
 <style>
 .image-cropper {
-    margin-top: 24px;
-    margin-right: 24px;
     width: 200px;
     height: 200px;
     position: relative;
