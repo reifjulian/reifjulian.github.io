@@ -15,7 +15,7 @@ This is my Github website. My personal website is available [here](http://www.ju
     height: 200px;
     position: relative;
     overflow: hidden;
-    border-radius: 50%;
+
 }
 img {
     display: inline;
