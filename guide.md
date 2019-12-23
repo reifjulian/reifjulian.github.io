@@ -18,22 +18,8 @@ Two simple examples of polished analyses accompany this guide. You can download 
 1. Example 2: Same as example 1, but also incorporates a supplemental R analysis automated in Stata
 
 
-**Table of contents**
-- [Overview](#overview)
-- [Setting up your environment](#setting-up-your-environment)
-  * [Dropbox](#dropbox)
-  * [Stata profile](#stata-profile)
-  * [R profile](#r-profile)
-- [Organizing the project](#organizing-the-project)
-  * [Folder structure](#folder-structure)
-  * [Libraries](#libraries)
-- [Good Stata coding practice](#good-stata-coding-practice)
-- [Example](#example)
-- [Other helpful links](#other-helpful-links)
-- [Acknowledgments](#acknowledgments)
-- [Author](#author)
-
-<!--See:  https://ecotrust-canada.github.io/markdown-toc/ -->
+1. TOC 
+{:toc}
 
 -----------
 
