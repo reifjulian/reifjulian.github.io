@@ -14,7 +14,7 @@ This is my Github website. My personal website is available [here](http://www.ju
     width: 200px;
     height: 300px;
     position: relative;
-
+    overflow: hidden;
 }
 img {
     display: inline;
@@ -29,3 +29,7 @@ img {
 <div class="image-cropper">
     <img src="{{ "/assets/reif.jpg" }}"  />
 </div>
+
+<br>
+<br>
+<br>
