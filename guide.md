@@ -6,6 +6,7 @@ permalink: /guide/
 ---
 
 # Managing an analysis in Stata
+{:.no_toc}
 Author: [Julian Reif](http://www.julianreif.com), University of Illinois
 
 This guide describes how to put together a publication-quality analysis in Stata. Following this guide will help:
