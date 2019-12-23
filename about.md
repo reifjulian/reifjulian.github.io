@@ -27,6 +27,6 @@ img {
 </style>
 </head>
 
-<div >
-    <img src="{{ "/assets/reif.jpg" }}" />
+<div class="image-cropper">
+    <img src="{{ "/assets/reif.jpg" }}"  />
 </div>
