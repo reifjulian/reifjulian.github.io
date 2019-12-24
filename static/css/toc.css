@@ -1,6 +1,6 @@
 // Adding 'Contents' headline to the TOC
 #markdown-toc::before {
-    content: "Contents";
+    content: "Table of contents";
     font-weight: bold;
 }
 
