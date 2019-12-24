@@ -19,7 +19,6 @@ Two simple examples of polished analyses accompany this guide. You can download 
 1. Example 2: Same as example 1, but also incorporates a supplemental R analysis automated in Stata
 
 
-**Table of contents**
 1. TOC 
 {:toc}
 
