@@ -1,6 +1,6 @@
 /* Add title at the top */
 #markdown-toc::before {
-    content: "Table of contents 2";
+    content: "Table of contents";
     font-weight: bold;
 }
 
