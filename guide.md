@@ -20,6 +20,7 @@ Two simple examples of polished analyses accompany this guide. You can download 
 
 **Table of contents**
 
+1. toc1
 {:toc}
 
 
