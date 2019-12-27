@@ -6,7 +6,7 @@
 
 
 #markdown-toc {
-    position: fixed;
+    /*position: fixed;*/
     border: 1px solid #aaa;
     padding: 1.5em;
     list-style: decimal;
