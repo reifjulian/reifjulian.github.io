@@ -62,6 +62,10 @@ In this example I have defined the location of only one project, `MyProject`. In
 *Stata runs your profile automatically on startup*<br>
 <img src="assets/guide/stata_profile.PNG" width="50%" title="Stata profile">
 
+<div class="image-cropper">
+    <img src="{{ "/assets/guide/stata_profile.PNG" }}"  />
+</div>
+
 ### R profile
 
 R automatically runs `Rprofile.site` upon launch. On Windows, the file is in the `C:/Program Files/R/R-n.n.n/etc` directory.  Alternatively you can store these settings in .Rprofile, which is run after Rprofile.site. Type `.libPaths()` at the R prompt to view a list of the paths for your particular computer.
@@ -122,9 +126,11 @@ An example of a fully replicable analysis is available in the folder `MyProject`
 
 ## Other helpful links
 
-http://www.econ.uiuc.edu/~roger/research/repro/
-
 [Grant McDermott's data science lectures](https://github.com/uo-ec607/lectures)
+
+[Roger Koenker's guide](http://www.econ.uiuc.edu/~roger/research/repro)
+
+
 
 ## Acknowledgments
 
