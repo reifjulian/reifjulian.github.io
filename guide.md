@@ -43,30 +43,24 @@ Stata automatically runs `profile.do` upon launch.
 Here is my Stata profile, stored in `C:/ado/personal/profile.do`:
 ```stata
 * Settings specific to local environment
-global Dropbox "C:/Users/jreif/Dropbox"
-global R344_path "C:/Program Files/R/R-3.4.4/bin/x64/Rscript.exe"
+global DROPBOX "C:/Users/jreif/Dropbox"
+global RSCRIPT_PATH "C:/Program Files/R/R-3.6.2/bin/x64/Rscript.exe"
 
 * Run file containing settings common to all environments
-run "$Dropbox/stata_profile.do"
+run "$DROPBOX/stata_profile.do"
 ```
 
-This file contains settings specific to my computer, such as the location of Dropbox and my R installation. I could also define my project directories here. But instead, I store those in `$Dropbox/stata_profile.do`, along with any other settings that are common across my computers:
+This file contains settings specific to my computer, such as the location of Dropbox and my R installation. I could also define my project directories here. But instead, I store those in `$DROPBOX/stata_profile.do`, along with any other settings that are common across my computers:
 
 ```stata
 set varabbrev off
-global MyProject "$Dropbox/my_project"
+global MyProject "$DROPBOX/my_project"
 ```
 
 In this example I have defined the location of only one project, `MyProject`. In practice I have a large number of globals defined here, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to `$Dropbox/stata_profile.do`. Because all my computers are synced to Dropbox, I only have to do this one time. I do not need to repeat it for all my workstations.
 
 *Stata runs your profile automatically on startup*<br>
 <img src="/assets/guide/stata_profile.PNG" width="50%" title="Stata profile">
-
-<div class="image-cropper">
-    <img src="{{ "/assets/guide/stata_profile.PNG" }}"  />
-</div>
-
-<img src="/assets/guide/stata_profile.PNG" alt="hi" class="inline"/>
 
 ### R profile
 
