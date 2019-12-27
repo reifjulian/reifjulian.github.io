@@ -1,14 +1,12 @@
 /* Add title at the top */
 #markdown-toc::before {
-    content: "Table of contents";
+    content: "Table of Contents";
     font-weight: bold;
 }
 
 
 #markdown-toc {
     position: fixed;
-    right: 0;
-    top: 0;    
     border: 1px solid #aaa;
     padding: 1.5em;
     list-style: decimal;
