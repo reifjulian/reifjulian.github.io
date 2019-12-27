@@ -124,6 +124,8 @@ An example of a fully replicable analysis is available in the folder `MyProject`
 
 http://www.econ.uiuc.edu/~roger/research/repro/
 
+[Grant McDermott's data science lectures](https://github.com/uo-ec607/lectures)
+
 ## Acknowledgments
 
 The coding practices outlined in this guide have been developed and improved over many years and over the course of many coauthored projects. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project management over the yeras.
