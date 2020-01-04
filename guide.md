@@ -57,7 +57,7 @@ set varabbrev off
 global MyProject "$DROPBOX/my_project"
 ```
 
-In this example I have defined the location of only one project, `MyProject`. In practice I have a large number of globals defined here, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to `$Dropbox/stata_profile.do`. Because all my computers are synced to Dropbox, I only have to do this once.
+In this example I have defined the location of only one project, `MyProject`. In practice I have a large number of globals defined here, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to `$DROPBOX/stata_profile.do`. Because all my computers are synced to Dropbox, I only have to do this once.
 
 *Stata runs your profile automatically on startup*<br>
 <img src="/assets/guide/stata_profile.PNG" width="50%" title="Stata profile">
@@ -140,7 +140,7 @@ Checking the numbers can be difficult and tedious. Include lots of asserts in yo
 
 ## Good Stata coding practice
 
-Use forward slashes for pathnames (`$Dropbox/project` not `$Dropbox\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Stick with forward slashes to ensure cross-platform compatibility.
+Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Stick with forward slashes to ensure cross-platform compatibility.
 
 Never use hard-coded paths like `C:/Users/jreif/Dropbox/MyProject`. All pathnames should reference a global variable defined in your Stata profile. This way, anybody can run the entire analysis from their own computer without having to edit any project scripts.
 
