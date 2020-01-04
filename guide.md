@@ -84,14 +84,20 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
 ```text
 .
 └── analysis
-  └── data
-    ├── proc
-    ├── raw
-  └── results
+    └── data
+        ├── proc
+        └── raw
+    └── results
+        ├── figures
+        └── tables
+    └── scripts
+        ├── 0_run_all.do
+        └── 1_...
+└── paper
+    ├── manuscript.tex
     ├── figures
-    ├── tables
-  └── scripts
-└── paper  
+    └── tables
+
 ```
 
 
