@@ -81,6 +81,20 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
 
 ### Folder structure
 
+```text
+.
+├── paper
+└── analysis
+  ├── data
+    ├── proc
+    ├── raw
+  ├── results
+    ├── figures
+    ├── tables
+  └── scripts
+```
+
+
 - `/analysis`
   -  `/data`
      -  `/raw`
