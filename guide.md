@@ -83,24 +83,17 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
 
 ```text
 .
-├── paper
 └── analysis
-  ├── data
+  └── data
     ├── proc
     ├── raw
-  ├── results
+  └── results
     ├── figures
     ├── tables
   └── scripts
+└── paper  
 ```
 
-
-- `/analysis`
-  -  `/data`
-     -  `/raw`
-     -  `/proc`
-  -  `/results`
-  -  `/scripts`
 
 The top level of a project directory should always contain at least two folders. `analysis` includes all relevant scripts, data, and results. When the project is complete, a copy of `analysis` can serve as a standalone replication package. (All you have to change is where the project global points to.) `paper` contains manuscript files. Additional documents such as literature references can be stored there or in a separate folder at the top of project directory.
 
