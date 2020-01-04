@@ -81,6 +81,41 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
 
 ### Folder structure
 
+An analysis starts with raw data (e.g., a dataset downloaded from the web). Scripts process these data, run analyses, and create tables.
+
+```text
+.
+└── analysis
+    └── data
+        └── raw
+    └── scripts
+        ├── 0_run_all.do
+        └── 1_...
+```
+
+The master script, `0_run_all.do`, executes the entire analysis. Running this script creates all necessary additional folders, intermediate files, and results:
+
+```text
+.
+└── analysis
+    └── data
+        ├── proc
+        └── raw
+    └── results
+        ├── figures
+        └── tables
+    └── scripts
+        ├── 0_run_all.do
+        └── 1_...
+```
+
+At any time, you can delete all these extra folders, keeping only `data/raw` and `scripts`, and then rerun your analysis from scratch. When the project is complete, a copy of `analysis` serves as a standalone replication package. 
+
+The analysis folder contains three subfolders. `scripts` stores all scripts and libraries required to run the analysis. `data` includes raw and processed data. `data/raw` is read-only. Scripts write only to `data/proc` or `results`
+
+`results` contains all final output, including tables and figures. These can be linked to a LaTeX document on Overleaf or stored in an adjacent folder: 
+
+
 ```text
 .
 └── analysis
@@ -97,13 +132,9 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
     ├── manuscript.tex
     ├── figures
     └── tables
-
 ```
 
-
-The top level of a project directory should always contain at least two folders. `analysis` includes all relevant scripts, data, and results. When the project is complete, a copy of `analysis` can serve as a standalone replication package. (All you have to change is where the project global points to.) `paper` contains manuscript files. Additional documents such as literature references can be stored there or in a separate folder at the top of project directory.
-
-The analysis folder contains three subfolders. `analysis/scripts` stores all necessary scripts and libraries to run the entire project analysis from beginning to end. `analysis/data` includes all data, both raw and processed. `analysis/results` contains all final output, including tables and figures.
+When you are ready to update the paper, copy `analysis/results/figures` and `analysis/results/tables` to `paper`. `paper` contains manuscript files. Additional documents such as literature references can be stored there or in a separate folder at the top of project directory.
 
 
 ### Libraries
@@ -112,19 +143,25 @@ My code frequently employs user-written Stata commands, such as [regsave](https:
 1. Unless a user has a local copy of the program, she won't be able to run your code if you don't supply this program.
 1. These commands are updated over time and newer versions may not work with older code implementations.
 
-Many people do not appreciate how code updates can inhibit replication. Here is an example. You perform a Stata analysis using a new, user-written estimation command called, say, `regols`. You publish your paper, along with your replication code, but do not include the code for `regols`. 10 years later a researcher tries to replicate your analysis. The code breaks because she has not installed `regols`. She opens Stata and type `ssc install regols`, which installs the newest version of that command. But, in the intervening 10 years the author of `regols` fixed a bug in how the standard errors are calculated. When the researcher runs your code she finds your estimates are no longer significant. Is this because you included the wrong dataset with your replication, or because there is mistake in the analysis code, or because you failed to correctly copy/paste your output into your publication? The researcher does not know. She cannot replicate your published results and must now decide what to do.
+Many people do not appreciate how code updates can inhibit replication. Here is an example. You perform a Stata analysis using a new, user-written estimation command called, say, `regols`. You publish your paper, along with your replication code, but do not include the code for `regols`. 10 years later a researcher tries to replicate your analysis. The code breaks because she has not installed `regols`. She opens Stata and type `ssc install regols`, which installs the newest version of that command. But, in the intervening 10 years the author of `regols` fixed a bug in how the standard errors are calculated. When the researcher runs your code she finds your estimates are no longer significant. Is this because you included the wrong dataset with your replication, because there is mistake in the analysis code, or because you failed to correctly copy/paste your output into your publication? The researcher does not know. She cannot replicate your published results and must now decide what to do.
 
 When I start a new project, I include a script called `_install_stata_packages.do` that installs a copy of all required add-ons into a subdirectory of the project folder. Rerunning this script will install updated versions of these add-on's (if available). I delete the script when my project is ready to be published, which locks down the code for these packages and ensures I can replicate my analysis forever.
 
-In theory, one can also install copies of add-on packages for *R* in your local project folder. In practice, I run into difficulties. Standard add-ons such as `tidyverse` have file sizes of several hundreds of megabytes. Installing *R* libraries locally also frequently generates installation errors, or result in only partial installations. Packages such as [packrat](https://rstudio.github.io/packrat/) may provide better solutions. In my example, I include a script called `_install_R_packages.R` that installs these packages for the user. This solution requires an internet connection, and is also vulnerable to the replication challenges mentioned above.
+In theory, one can also install copies of add-on packages for *R* in your local project folder. In practice, I run into difficulties. Standard add-ons such as `tidyverse` take up hundreds of megabytes of space. Duplicating these large files for every new project is unappealing. Installing *R* libraries locally also frequently generates installation errors, or result in only partial installations. Packages such as [packrat](https://rstudio.github.io/packrat/) may provide better solutions. In my example, I include a script called `_install_R_packages.R` that installs these packages for the user. This solution requires an internet connection, and is vulnerable to the two replication concerns mentioned above.
 
-Overall, I am confident that my Stata analyses will be forever replicable, provided that Stata remains in business. I am less confident about my *R* analyses.
+I am confident that Stata analyses will be forever replicable, provided that Stata remains in business. I am less confident about my *R* analyses.
 
-## Replication checklist
+## Publishing your code
 
-Follow these steps before submitting your "final materials" to ensure replication.
+Follow these steps before publishing your code to ensure replication.
 
-1. Remove `_install_stata_packages.do` from `/scripts`. 
+1. Add a README file to the `analysis` folder. It should include the following information:
+  1. Title and authors of the paper
+  1. Required software, including version numbers
+  1. **Clear** instructions for how to run the analysis. If the analysis cannot be run--because the data are proprietary, for example--this should be noted.
+  1. Description of whether the output is stored
+
+1. Remove `_install_stata_packages.do` from the `scripts` folder.
 
 1. Disable all locally installed Stata programs not located in your Stata folder. (This will ensure that your analysis is actually using programs installed in your project subdirectory, rather than somewhere else on your machine.) On Windows, this can usually be done by renaming `c:/ado` to `c:/_ado`. You can test whether you succeeded as follows. Suppose you have a copy of `regsave` somewhere on your machine and also in your local project directory. Open up a new instance of Stata and type `which regsave`. Stata should report "command regsave not found". If not, Stata will tell you where the command is located, and you can then rename that folder by adding an underscore. 
 
@@ -132,17 +169,19 @@ Follow these steps before submitting your "final materials" to ensure replicatio
 
 1. Run `0_run_all.do`, which should rerun the entire analysis and regenerate all tables and figures.
 
-1. Copy `/results/figures` and `/results/tables` to `paper`. 
+1. Copy `/results/figures` and `/results/tables` to the `paper` folder. 
 
-1. Recompile the paper and check the nubmers.
+1. Recompile the paper and check the numbers.
 
-Checking the numbers can be difficult and tedious. Include lots of asserts in your code when writing up your results to reduce errors. (See an example of an `assert` in `4_make_tables_figures.do`.) 
+1. Rename the `analysis` folder to something more descriptive, and zip it.
+
+Checking numbers can be difficult and tedious. Include lots of asserts in your code when writing up your results to reduce errors. (See an example of an `assert` in `4_make_tables_figures.do`.) 
 
 ## Good Stata coding practice
 
-Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Stick with forward slashes to ensure cross-platform compatibility.
+Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Use forward slashes to ensure cross-platform compatibility.
 
-Never use hard-coded paths like `C:/Users/jreif/Dropbox/MyProject`. All pathnames should reference a global variable defined in your Stata profile. This way, anybody can run the entire analysis from their own computer without having to edit any project scripts.
+Never use hard-coded paths like `C:/Users/jreif/Dropbox/MyProject`. All pathnames should reference a global variable defined in your Stata profile. I should be able to run your entire analysis from my personal computer without having to edit any of your scripts.
 
 Include `set varabbrev off` in your Stata profile.  Most professional Stata programmers I know do this in order to avoid unexpected behaviors such as [this](https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf).
 
@@ -155,10 +194,10 @@ An example of a fully replicable analysis is available in the folder `MyProject`
 
 [Grant McDermott's data science lectures](https://github.com/uo-ec607/lectures)
 
-[Roger Koenker's guide](http://www.econ.uiuc.edu/~roger/research/repro)
+[Roger Koenker's guide on reproducibility](http://www.econ.uiuc.edu/~roger/research/repro)
 
 
 
 ## Acknowledgments
 
-The coding practices outlined in this guide have been developed and improved over many years and over the course of many coauthored projects. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project management over the yeras.
+The coding practices outlined in this guide have been developed and improved over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization over the years.
