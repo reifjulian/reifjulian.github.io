@@ -1,7 +1,7 @@
 ---
 layout: guide
 title: Stata Coding Guide
-subtitle: Guide
+subtitle: Stata Coding Guide
 permalink: /guide/
 ---
 
