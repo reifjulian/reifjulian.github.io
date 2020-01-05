@@ -7,7 +7,7 @@ permalink: /guide/
 
 Author: [Julian Reif](http://www.julianreif.com), University of Illinois
 
-This guide describes how to put together a publication-quality analysis in Stata. Following this guide will help:
+This guide describes how to put together a "push-button" publication-quality analysis in Stata. Following this guide will help:
 1. Minimize coding errors during analysis
 1. Automate the creation of tables and figures
 1. Produce a replication folder suitable for publication
@@ -194,10 +194,7 @@ Never use hard-coded paths like `C:/Users/jreif/Dropbox/MyProject`. All pathname
 
 Include `set varabbrev off` in your Stata profile.  Most professional Stata programmers I know do this in order to avoid unexpected behaviors such as [this](https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf).
 
-
-## Example
-
-An example of a fully replicable analysis is available in the folder `MyProject`. Running the script `0_run_all.do` 
+ 
 
 ## Other helpful links
 
