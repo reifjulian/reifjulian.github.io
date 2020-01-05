@@ -5,8 +5,6 @@ subtitle: Stata Coding Guide
 permalink: /guide/
 ---
 
-# Managing an analysis in Stata
-{:.no_toc}
 Author: [Julian Reif](http://www.julianreif.com), University of Illinois
 
 This guide describes how to put together a publication-quality analysis in Stata. Following this guide will help:
@@ -14,8 +12,8 @@ This guide describes how to put together a publication-quality analysis in Stata
 1. Automate the creation of tables and figures
 1. Produce a replication folder suitable for publication
 
-Two simple examples of polished analyses accompany this guide. You can download and run those analyses yourself to assess how easy (or not!) it is to replicate them. The first example assumes you have a working installation of Stata. The second assumes you also have a working installation of R.
-1. Example 1: Simple Stata analysis that produces figures and LaTeX tables
+Two simple examples of polished analyses accompany this guide. You can download and run those analyses yourself to assess how easy (or not!) it is to replicate them. The first example assumes you have a working installation of Stata. The second assumes you also have a working installation of *R*.
+1. Example 1: Stata analysis that produces figures and LaTeX tables
 1. Example 2: Same as example 1, but also incorporates a supplemental R analysis automated in Stata
 
 1. toc1
@@ -23,8 +21,6 @@ Two simple examples of polished analyses accompany this guide. You can download 
 
 
 -----------
-
-## Overview 
 
 ## Setting up your environment
 
@@ -136,20 +132,33 @@ The analysis folder contains three subfolders. `scripts` stores all scripts and 
 
 When you are ready to update the paper, copy `analysis/results/figures` and `analysis/results/tables` to `paper`. `paper` contains manuscript files. Additional documents such as literature references can be stored there or in a separate folder at the top of project directory.
 
+### Functions
+
+Functions are pieces of code that are called repeatedly by your scripts. In Stata these are are called ADO-files. An introduction is available [here](https://blog.stata.com/2015/11/10/programming-an-estimation-command-in-stata-a-first-ado-command). Because these subroutines are not called directly by the master script, `0_run_all.do`, they should be stored in the subdirectory `scripts/functions`.
 
 ### Libraries
 
-My code frequently employs user-written Stata commands, such as [regsave](https://github.com/reifjulian/regsave) or [reghdfe](http://scorreia.com/software/reghdfe/install.html). To ensure replication, it is **very important** to include a copy of these programs with your code:
+My code frequently employs user-written Stata commands, such as [regsave](https://github.com/reifjulian/regsave) or [reghdfe](http://scorreia.com/software/reghdfe/install.html). To ensure replication, it is **very important** to include copies of these programs with your code:
 1. Unless a user has a local copy of the program, she won't be able to run your code if you don't supply this program.
 1. These commands are updated over time and newer versions may not work with older code implementations.
 
 Many people do not appreciate how code updates can inhibit replication. Here is an example. You perform a Stata analysis using a new, user-written estimation command called, say, `regols`. You publish your paper, along with your replication code, but do not include the code for `regols`. 10 years later a researcher tries to replicate your analysis. The code breaks because she has not installed `regols`. She opens Stata and type `ssc install regols`, which installs the newest version of that command. But, in the intervening 10 years the author of `regols` fixed a bug in how the standard errors are calculated. When the researcher runs your code she finds your estimates are no longer significant. Is this because you included the wrong dataset with your replication, because there is mistake in the analysis code, or because you failed to correctly copy/paste your output into your publication? The researcher does not know. She cannot replicate your published results and must now decide what to do.
 
-When I start a new project, I include a script called `_install_stata_packages.do` that installs a copy of all required add-ons into a subdirectory of the project folder. Rerunning this script will install updated versions of these add-on's (if available). I delete the script when my project is ready to be published, which locks down the code for these packages and ensures I can replicate my analysis forever.
+When I start a new project, I include a script called `_install_stata_packages.do` that installs a copy of all required add-ons into a subdirectory of the project folder. Rerunning this script will install updated versions of these add-on's (if available). I delete the script when my project is ready to be published, which locks down the code for these packages and ensures I can replicate my analysis forever. 
 
-In theory, one can also install copies of add-on packages for *R* in your local project folder. In practice, I run into difficulties. Standard add-ons such as `tidyverse` take up hundreds of megabytes of space. Duplicating these large files for every new project is unappealing. Installing *R* libraries locally also frequently generates installation errors, or result in only partial installations. Packages such as [packrat](https://rstudio.github.io/packrat/) may provide better solutions. In my example, I include a script called `_install_R_packages.R` that installs these packages for the user. This solution requires an internet connection, and is vulnerable to the two replication concerns mentioned above.
+```text
+.
+└── analysis
+    ├── data
+    	└── raw
+    └── scripts
+        ├── functions
+        └── libraries
+    	    └── stata
+```
 
-I am confident that Stata analyses will be forever replicable, provided that Stata remains in business. I am less confident about my *R* analyses.
+In theory, one can also install copies of add-on packages for *R* into `scripts/libraries`. In practice, I run into difficulties. Standard add-ons such as `tidyverse` take up hundreds of megabytes of space. Duplicating these large files for every new project is unappealing. Installing *R* libraries locally also frequently generates installation errors, or result in only partial installations. Packages such as [packrat](https://rstudio.github.io/packrat/) may provide better solutions. In my example, I include a script called `_install_R_packages.R` that installs these packages for the user. This solution requires an internet connection, and is vulnerable to the two replication concerns mentioned above.
+
 
 ## Publishing your code
 
