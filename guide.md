@@ -149,7 +149,7 @@ When I start a new project, I include a script called `_install_stata_packages.d
 ```text
 .
 └── analysis
-    ├── data
+    └── data
     	└── raw
     └── scripts
         ├── functions
