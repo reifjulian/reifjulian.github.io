@@ -12,11 +12,10 @@ Author: [Julian Reif](http://www.julianreif.com), University of Illinois
 This guide describes how to put together a publication-quality analysis in Stata. Following this guide will help:
 1. Minimize coding errors during analysis
 1. Automate the creation of tables and figures
+1. Provide seamless integration with supporting *R* analyses
 1. Produce a replication folder suitable for publication
 
-Two simple examples of polished analyses accompany this guide. You can download and run those analyses yourself to assess how easy (or not!) it is to replicate them. The first example assumes you have a working installation of Stata. The second assumes you also have a working installation of R.
-1. Example 1: Simple Stata analysis that produces figures and LaTeX tables
-1. Example 2: Same as example 1, but also incorporates a supplemental R analysis automated in Stata
+A working example of a LaTeX paper with its accompanying replication code is available [here](https://github.com/reifjulian/coding-example). This example is intended to be used as template. Try it out! If you encounter problems let me know.
 
 1. toc1
 {:toc}
