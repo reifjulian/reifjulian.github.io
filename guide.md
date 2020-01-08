@@ -1,4 +1,4 @@
----
+﻿---
 layout: guide
 title: Stata Coding Guide
 subtitle: Stata Coding Guide
@@ -202,6 +202,7 @@ Include `set varabbrev off` in your Stata profile.  Most professional Stata prog
 
 [Roger Koenker's guide on reproducibility](http://www.econ.uiuc.edu/~roger/research/repro)
 
+[Gentzkow and Shapiro coding guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)
 
 
 ## Acknowledgments
