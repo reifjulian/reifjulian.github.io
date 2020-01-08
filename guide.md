@@ -13,7 +13,9 @@ This guide describes how to put together a "push-button" publication-quality ana
 1. Provide seamless integration with supporting *R* analyses
 1. Produce a replication folder suitable for publication
 
-A working example of a LaTeX paper with its accompanying replication code is available [here](https://github.com/reifjulian/coding-example). This example is intended to be used as template. Try it out! If you encounter problems let me know.
+As part of this guide, I created a comprehensive template that includes an example paper along with an accompanying replication package, available [here](https://github.com/reifjulian/coding-example). Try it out and see how easy (or not!) it is for you to reproduce my example analysis. If you encounter problems let me know.
+
+The rest of this guide explains the logic behind the organization of this template and provides instructions for how to set up a robust environment for your Stata projects.
 
 1. toc1
 {:toc}
@@ -193,6 +195,25 @@ Never use hard-coded paths like `C:/Users/jreif/Dropbox/MyProject`. All pathname
 
 Include `set varabbrev off` in your Stata profile.  Most professional Stata programmers I know do this in order to avoid unexpected behaviors such as [this](https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf).
 
+Sometimes an analysis will produce different results each time you run it. Here are two common reasons why this happens:
+1. One of your commands requires randon numbers and you forgot to use `set seed #`
+1. You have a nonunique sort. Add `isid` checks to your code prior to sorting to ensure uniqueness. (Another option is to add the `unique` option to your sorts.) Nonunique sorts can be hard to predict:
+```stata
+
+* The random variable r here is not unique, because Stata's default type (float) does not have enough precision when N=100,000. (isid will generate an error, unless you have changed Stata's default type to double)
+clear
+set seed 100
+set obs 100000
+gen r = uniform()
+isid r
+
+* Cast r as a double to avoid this problem. (isid no longer generates an error)
+clear
+set seed 100
+set obs 100000
+gen double r = uniform()
+isid r
+```
 
 
 ## Other helpful links
