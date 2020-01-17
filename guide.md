@@ -1,4 +1,4 @@
-﻿---
+---
 layout: guide
 title: Stata Coding Guide
 subtitle: Stata Coding Guide
@@ -22,12 +22,12 @@ The rest of this guide explains the logic behind the organization of this templa
 
 
 
-## Setting up your environment
+##1. Setting up your environment
 -----------
 
 I generally work on many projects at the same time and access them from different computers (laptop, home, work, etc.). A working project needs to be synced across my computers, and the analysis code must allow the project folder to have a different path on the different computers.  
 
-### Dropbox
+###1. Dropbox
 
 I use Dropbox to sync my projects across different computers. Dropbox has several appealing features. It creates backups of my projects across multiple computers and the Dropbox server, and in my experience has fewer bugs than alternatives such as Box. Dropbox makes it easy to share files with coauthors. Finally, all files inside of Dropbox have the same relative paths, which is helpful when writing scripts (more on this below).
 
