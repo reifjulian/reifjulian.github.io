@@ -21,9 +21,9 @@ The rest of this guide explains the logic behind the organization of this templa
 {:toc}
 
 
------------
 
 ## Setting up your environment
+-----------
 
 I generally work on many projects at the same time and access them from different computers (laptop, home, work, etc.). A working project needs to be synced across my computers, and the analysis code must allow the project folder to have a different path on the different computers.  
 
@@ -218,11 +218,15 @@ isid r
 
 ## Other helpful links
 
+[Dan Sullivan's best practices for coding](http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
+
+[Gentzkow and Shapiro coding guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)
+
 [Grant McDermott's data science lectures](https://github.com/uo-ec607/lectures)
 
 [Roger Koenker's guide on reproducibility](http://www.econ.uiuc.edu/~roger/research/repro)
 
-[Gentzkow and Shapiro coding guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)
+
 
 
 ## Acknowledgments
