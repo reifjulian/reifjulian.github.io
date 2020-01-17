@@ -1,3 +1,0 @@
-
-<!-- Custom CSS for guide -->
-<link rel="stylesheet" href="{{ site.baseurl }}/static/css/hnumbering.css">
