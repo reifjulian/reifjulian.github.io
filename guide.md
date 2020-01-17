@@ -75,6 +75,7 @@ Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the
 
 
 ## Organizing the project
+-----------
 
 ### Folder structure
 
@@ -162,6 +163,7 @@ In theory, one can also install copies of add-on packages for *R* into `scripts/
 
 
 ## Publishing your code
+-----------
 
 Follow these steps before publishing your code to ensure replication.
 
@@ -188,6 +190,7 @@ Follow these steps before publishing your code to ensure replication.
 Checking numbers can be difficult and tedious. Include lots of asserts in your code when writing up your results to reduce errors. (See an example of an `assert` in `4_make_tables_figures.do`.)
 
 ## Good Stata coding practice
+-----------
 
 Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Use forward slashes to ensure cross-platform compatibility.
 
@@ -217,6 +220,7 @@ isid r
 
 
 ## Other helpful links
+-----------
 
 [Dan Sullivan's best practices for coding](http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
 
@@ -230,5 +234,6 @@ isid r
 
 
 ## Acknowledgments
+-----------
 
 The coding practices outlined in this guide have been developed and improved over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization over the years.
