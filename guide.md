@@ -15,23 +15,27 @@ This guide describes how to put together a "push-button" publication-quality ana
 
 As part of this guide, I created a comprehensive template that includes an example paper along with an accompanying replication package, available [here](https://github.com/reifjulian/coding-example). Try it out and see how easy (or not!) it is for you to reproduce my example analysis. If you encounter problems let me know.
 
+
 The rest of this guide explains the logic behind the organization of this template and provides instructions for how to set up a robust environment for your Stata projects.
 
+<!--
 1. toc1
 {:toc}
+-->
 
+- toc
+{:toc}
 
-
-## Setting up your environment
+##1. Setting up your environment
 -----------
 
 I generally work on many projects at the same time and access them from different computers (laptop, home, work, etc.). A working project needs to be synced across my computers, and the analysis code must allow the project folder to have a different path on the different computers.  
 
-### Dropbox
+###1. Dropbox
 
 I use Dropbox to sync my projects across different computers. Dropbox has several appealing features. It creates backups of my projects across multiple computers and the Dropbox server, and in my experience has fewer bugs than alternatives such as Box. Dropbox makes it easy to share files with coauthors. Finally, all files inside of Dropbox have the same relative paths, which is helpful when writing scripts (more on this below).
 
-### Stata profile
+###1. Stata profile
 
 Stata automatically runs `profile.do` upon launch.
 
@@ -59,7 +63,7 @@ In this example I have defined the location of only one project, `MyProject`. In
 *Stata runs your profile automatically on startup*<br>
 <img src="/assets/guide/stata_profile.PNG" width="50%" title="Stata profile">
 
-### *R* profile
+###1. *R* profile
 
 *R* automatically runs `Rprofile.site` upon launch. On Windows, this file is located in the `C:/Program Files/R/R-n.n.n/etc` directory.  Alternatively you can store these settings in .Rprofile, which is run after Rprofile.site. Type `.libPaths()` at the R prompt to view a list of the paths for your particular computer.
 
@@ -74,10 +78,10 @@ source(file.path(Sys.getenv("DROPBOX"), "R_profile.R"))
 Store your general *R* settings on Dropbox. Store this file `R_profile.R` at the top level of your Dropbox folder. Define the paths for all your projects here. In this example, we have defined the location for one project, `MyProject`.
 
 
-## Organizing the project
+##1. Organizing the project
 -----------
 
-### Folder structure
+###1. Folder structure
 
 An analysis starts with raw data (e.g., a dataset downloaded from the web). Scripts process these data, run analyses, and create tables.
 
@@ -134,11 +138,11 @@ The analysis folder contains three subfolders. `scripts` stores all scripts and 
 
 When you are ready to update the paper, copy `analysis/results/figures` and `analysis/results/tables` to `paper`. `paper` contains manuscript files. Additional documents such as literature references can be stored there or in a separate folder at the top of project directory.
 
-### Functions
+###1. Functions
 
 Functions are pieces of code that are called repeatedly by your scripts. In Stata these are are called ADO-files. An introduction is available [here](https://blog.stata.com/2015/11/10/programming-an-estimation-command-in-stata-a-first-ado-command). Because these subroutines are not called directly by the master script, `0_run_all.do`, they should be stored in the subdirectory `scripts/functions`.
 
-### Libraries
+###1. Libraries
 
 My code frequently employs user-written Stata commands, such as [regsave](https://github.com/reifjulian/regsave) or [reghdfe](http://scorreia.com/software/reghdfe/install.html). To ensure replication, it is **very important** to include copies of these programs with your code:
 1. Unless a user has a local copy of the program, she won't be able to run your code if you don't supply this program.
@@ -162,7 +166,7 @@ When I start a new project, I include a script called `_install_stata_packages.d
 In theory, one can also install copies of add-on packages for *R* into `scripts/libraries`. In practice, I run into difficulties. Standard add-ons such as `tidyverse` take up hundreds of megabytes of space. Duplicating these large files for every new project is unappealing. Installing *R* libraries locally also frequently generates installation errors, or result in only partial installations. Packages such as [packrat](https://rstudio.github.io/packrat/) may provide better solutions. In my example, I include a script called `_install_R_packages.R` that installs these packages for the user. This solution requires an internet connection, and is vulnerable to the two replication concerns mentioned above.
 
 
-## Publishing your code
+##1. Publishing your code
 -----------
 
 Follow these steps before publishing your code to ensure replication.
@@ -189,7 +193,7 @@ Follow these steps before publishing your code to ensure replication.
 
 Checking numbers can be difficult and tedious. Include lots of asserts in your code when writing up your results to reduce errors. (See an example of an `assert` in `4_make_tables_figures.do`.)
 
-## Good Stata coding practice
+##1. Good Stata coding practice
 -----------
 
 Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause issues depending on what operating system you are running. Use forward slashes to ensure cross-platform compatibility.
@@ -219,7 +223,7 @@ isid r
 ```
 
 
-## Other helpful links
+##1. Other helpful links
 -----------
 
 [Dan Sullivan's best practices for coding](http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
@@ -233,7 +237,7 @@ isid r
 
 
 
-## Acknowledgments
+##1. Acknowledgments
 -----------
 
 The coding practices outlined in this guide have been developed and improved over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization over the years.
