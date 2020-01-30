@@ -2,7 +2,7 @@
 layout: guide
 title: Stata Coding Guide
 subtitle: Stata Coding Guide
-permalink: /guide/
+permalink: /guide2/
 ---
 
 Author: [Julian Reif](http://www.julianreif.com), University of Illinois
