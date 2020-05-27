@@ -11,4 +11,5 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'kramdown'
   gem 'rouge'
+  gem 'activesupport', '>= 6.0.3.1'
 end
