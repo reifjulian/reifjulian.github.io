@@ -9,7 +9,7 @@ group :jekyll_plugins do
   gem 'jekyll-gist'
   gem 'jekyll-watch'
   gem 'jekyll-sitemap'
-  gem 'kramdown'
+  gem 'kramdown', '>= 2.3.0'
   gem 'rouge'
   gem 'activesupport', '>= 6.0.3.1'
 end
