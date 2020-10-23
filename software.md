@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Coding
-subtitle: Coding
-permalink: /coding/
+title: Software
+subtitle: Software
+permalink: /software/
 ---
 
 My software projects are available on <a
