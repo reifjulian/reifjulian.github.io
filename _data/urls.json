@@ -6,8 +6,8 @@
     "layout": "post"
   },
   {
-    "text": "Coding",
-    "url": "/coding",
+    "text": "Software",
+    "url": "/Software",
     "icon": "fa-code"
   },
   {
@@ -19,15 +19,5 @@
     "text": "Research",
     "url": "/research",
     "icon": "fa-university"
-  },
-  {
-    "text": "Blog",
-    "url": "/blog/",
-    "icon": "fa-comments"
-  },
-  {
-    "text": "About",
-    "url": "/about/",
-    "icon": "fa-user"
   }
 ]
