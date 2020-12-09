@@ -1,23 +1,18 @@
 [
   {
     "text": "Home",
-    "url": "/",
-    "icon": "fa-home",
-    "layout": "post"
+    "url": "/"
   },
   {
     "text": "Research",
-    "url": "/research",
-    "icon": "fa-university"
+    "url": "/research"
   },  
   {
     "text": "CV",
-    "url": "/CV/",
-    "icon": "fa-graduation-cap"
+    "url": "/CV/"
   },
   {
     "text": "Software",
-    "url": "/software",
-    "icon": "fa-code"
+    "url": "/software"
   }  
 ]
