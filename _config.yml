@@ -3,7 +3,7 @@ description: My Github website
 author: Julian Reif
 logo: /assets/reif.jpg
 github: https://github.com/reifjulian
-about: Assistant Professor of Finance and Economics, University of Illinois
+about: Assistant Professor of Finance and Economics
 description: > # this means to ignore newlines until "baseurl:"
     This is my GitHub website
 baseurl: ""

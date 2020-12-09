@@ -6,18 +6,18 @@
     "layout": "post"
   },
   {
-    "text": "Software",
-    "url": "/software",
-    "icon": "fa-code"
-  },
+    "text": "Research",
+    "url": "/research",
+    "icon": "fa-university"
+  },  
   {
     "text": "CV",
     "url": "/CV/",
     "icon": "fa-graduation-cap"
   },
   {
-    "text": "Research",
-    "url": "/research",
-    "icon": "fa-university"
-  }
+    "text": "Software",
+    "url": "/software",
+    "icon": "fa-code"
+  }  
 ]
