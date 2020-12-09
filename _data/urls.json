@@ -2,8 +2,7 @@
   {
     "text": "Home",
     "url": "/",
-	"icon": "fa-home",
-	"layout": "post"
+	"icon": "fa-home"
   },
   {
     "text": "Research",
