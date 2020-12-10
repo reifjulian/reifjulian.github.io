@@ -27,4 +27,4 @@ Source code and installation instructions for my software packages are available
 
 
 ## Supplementary materials for `wyoung`
-Additional documentation for `wyoung` is available [here](https://reifjulian.github.io/wyoung/documentation/wyoung.pdf). The accompanying Stata code for the simulations reported in that documentation is available [here](https://reifjulian.github.io/wyoung/documentation/simulations/wyoung_simulations.do).
+Additional documentation for `wyoung` is available [here](/wyoung/documentation/wyoung.pdf). The accompanying Stata code for the simulations reported in that documentation is available [here](/wyoung/documentation/simulations/wyoung_simulations.do).
