@@ -26,5 +26,5 @@ Source code and installation instructions for my software packages are available
 | `wyoung` | Stata | `wyoung` controls the family-wise error rate when performing multiple hypothesis tests by estimating adjusted p-values using the free step-down resampling methodology of Westfall and Young (1993). |
 
 
-## Supplementary materials for `wyoung`
+## Supplementary materials for wyoung
 Additional documentation for `wyoung` is available [here](/wyoung/documentation/wyoung.pdf). The accompanying Stata code for the simulations reported in that documentation is available [here](/wyoung/documentation/simulations/wyoung_simulations.do).
