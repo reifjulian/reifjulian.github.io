@@ -1,51 +1,51 @@
 [
   {
-    "Package": "`TextFileLoad`",
+    "Package": "[TextFileLoad](/TextFileLoad)",
 	"Language": "C++",
     "Description": "`TextFileLoad` is an ANSI-compliant class that enables programs to import data from text files in a user-friendly manner. Data can be loaded by column name or number and are automatically converted to the appropriate data types."
   },  
   {
-    "Package": "[`appendfile`](/appendfile)",
+    "Package": "[appendfile](/appendfile)",
 	"Language": "Stata",
     "Description": "`appendfile` appends a text file to another text file."
   },  
   {
-    "Package": "[`autorename `](/autorename )",
+    "Package": "[autorename](/autorename )",
 	"Language": "Stata",
     "Description": "`autorename` renames variables using a row of data. This can be useful when reading oddly formatted datasets."
   },  
   {
-    "Package": "[`regsave `](/regsave )",
+    "Package": "[regsave](/regsave )",
 	"Language": "Stata",
     "Description": "`regsave` stores regression output into a Stata-formatted dataset."
   },  
   {
-    "Package": "[`rscript`](/rscript)",
+    "Package": "[rscript](/rscript)",
 	"Language": "Stata",
     "Description": "`rscript` calls an R script from Stata."
   },  
   {
-    "Package": "[`sortobs`](/sortobs)",
+    "Package": "[sortobs](/sortobs)",
 	"Language": "Stata",
     "Description": "`sortobs` allows the user to sort observations by variable values or observation numbers."
   },  
   {
-    "Package": "[`strgroup`](/strgroup)",
+    "Package": "[strgroup](/strgroup)",
 	"Language": "Stata/C",
     "Description": "`strgroup` matches strings based on their Levenshtein edit distance."
   },  
   {
-    "Package": "[`svret`](/svret)",
+    "Package": "[svret](/svret)",
 	"Language": "Stata",
     "Description": "`svret` replaces the dataset in memory with the scalars and macros stored in `e()`, `r()`, and `s()`."
   },  
   {
-    "Package": "[`texsave`](/texsave)",
+    "Package": "[texsave](/texsave)",
 	"Language": "Stata",
     "Description": "`texsave` outputs the dataset currently in memory to a file in LaTeX format."
   },  
   {
-    "Package": "[`wyoung`](/wyoung)",
+    "Package": "[wyoung](/wyoung)",
 	"Language": "Stata",
     "Description": "`wyoung` controls the family-wise error rate when performing multiple hypothesis tests by estimating adjusted p-values using the free step-down resampling methodology of Westfall and Young (1993)."
   }
