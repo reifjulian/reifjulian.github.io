@@ -1,5 +1,10 @@
 _site
-.DS_Store
 .sass-cache
-.jekyll-cache
 .jekyll-metadata
+Gemfile.lock
+.DS_Store
+
+# build artifacts
+*.gem
+.bundle
+/vendor

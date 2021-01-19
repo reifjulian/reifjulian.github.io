@@ -1,0 +1,73 @@
+[
+  {
+    "title": "An Impact Evaluation of i.c. stars Internship and Residency Program",
+    "role": "Investigator",
+    "coauthors": "Bill Skimmyhorn and Patrick Turner",
+    "details": "",
+    "amount": "$75,000", 
+    "other": [
+		{ 
+			"entity": "J-PAL North America",
+			"number": "",
+			"date": "07/2020–06/2021",
+			"amount": "$50,000"
+		},
+		{
+			"entity": "University of Michigan Poverty Solutions",
+			"number": "",
+			"date": "07/2020–06/2021",
+			"amount": "$25,000"
+		},
+    ],
+  },
+  
+  {
+    "title": "The Impact of Temperature and Pollution on Mortality, Morbidity, and Health Care Cost Among the Elderly",
+    "role": "Investigator",
+    "coauthors": "Tatyana Deryugina, Garth Heutel, Nolan Miller, and David Molitor",
+    "details": "National Institute on Aging, R01 AG053350, 07/2016-06/20211",
+    "amount": "$1.9 million"
+  },
+  
+  {
+    "title": "The Illinois Workplace Wellness Study",
+    "role": "Principle Investigator",
+    "coauthors": "Damon Jones, David Molitor, and Laura Payne",
+    "details": "",
+    "amount": "$2.1 million", 
+    "other": [
+		{ 
+			"entity": "National Institute on Aging",
+			"number": "R01 AG050701",
+			"date": "08/2015-04/2019",
+			"amount": "$1,230,680"
+		},
+		{
+			"entity": "J-PAL North America",
+			"number": "5710004125",
+			"date": "07/2016-06/2018",
+			"amount": "$321,990"
+		},
+		{
+			"entity": "National Science Foundation",
+			"number": "1730546",
+			"date": "08/2017-07/2020",
+			"amount": "$300,000"
+		},
+		{
+			"entity": "Robert Wood Johnson Foundation",
+			"number": "73730",
+			"date": "07/2016-01/2018",
+			"amount": "$200,000"
+		}
+    ],
+  },
+  
+  {
+    "title": "Worksite Wellness: A Field Experiment on Participation Incentives and Selection into Wellness Programs",
+    "role": "Early Career Research Award",
+    "coauthors": "David Molitor",
+    "details": "Upjohn Institute, 2017",
+    "amount": "$5,000"
+  }
+]

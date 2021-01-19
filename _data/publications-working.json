@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Teenage Driving, Mortality, and Risky Behaviors",
+	"coauthors": "Jason Huh",
+    "publication": "*American Economic Review: Insights*, conditionally accepted",
+	"other": [
+	  "[Manuscript](../research/reif.wp.driving.pdf)",
+	],	
+	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that motor vehicle fatalities rise by 40% at the minimum legal driving age cutoff, implying a mortality risk per additional mile driven 6-9 times higher than the risk faced by adult drivers. We also find a stark 80% increase in female deaths from drug overdoses and carbon monoxide poisoning at the cutoff, caused by changes in both suicides and accidental deaths. Our analysis suggests driving regulations could be an effective tool to improve teenage health.",
+  },
+  
+  {
+    "title": "Mortality Risk, Insurance, and the Value of Life",
+	"coauthors": "Daniel Bauer and Darius Lakdawalla",
+    "publication": "",
+	"other": [
+	  "[Manuscript](../research/reif.wp.mortalityrisk.pdf)",
+	  "[Data and code](../research/reif.wp.mortalityrisk.zip)",
+	],	
+	"abstract": "We develop a new framework for valuing health and longevity improvements that departs from
+conventional but unrealistic assumptions of full annuitization and deterministic health. Our framework
+can value the prevention of mortality and of illness, and it can quantify the effects of retirement policies
+on the value of life. We apply the framework to life-cycle data and generate new insights absent from the
+conventional approach. First, treatment is up to five times more valuable than prevention, even when both
+extend life equally. This asymmetry helps explain low observed investment in preventive care. Second,
+severe illness can significantly increase the value of statistical life, helping to reconcile theory with
+empirical findings that consumers value life-extension more in bleaker health states. Third, retirement
+annuities boost aggregate demand for life-extension. We calculate that Social Security adds $10.6 trillion
+(11 percent) to the value of post-1940 longevity gains and would add $127 billion to the value of a one
+percent decline in future mortality."
+  }
+]
