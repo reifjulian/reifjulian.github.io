@@ -6,7 +6,7 @@ layout: splash
 
 {: style="display: flex; justify-content: space-evenly"}
 [Research statement](/research/reif.research.2020.05.pdf)
-[Google Scholar profile](https://scholar.google.com/citations?user=Tpe9XEcAAAAJ)
+[Google Scholar](https://scholar.google.com/citations?user=Tpe9XEcAAAAJ)
 
 <div class="card">
 
