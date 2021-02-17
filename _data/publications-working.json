@@ -6,7 +6,7 @@
 	"other": [
 	  "[Manuscript](../research/reif.wp.driving.pdf)",
 	],	
-	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that motor vehicle fatalities rise by 40% at the minimum legal driving age cutoff, implying a mortality risk per additional mile driven 6-9 times higher than the risk faced by adult drivers. We also find a stark 80% increase in female deaths from drug overdoses and carbon monoxide poisoning at the cutoff, caused by changes in both suicides and accidental deaths. Our analysis suggests driving regulations could be an effective tool to improve teenage health.",
+	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that total mortality rises by 5.84 deaths per 100,000 (15%) at the minimum legal driving age cutoff, driven by an increase in motor vehicle fatalities of 4.92 deaths per 100,000 (44%). We also find that poisoning deaths, which are caused primarily by drug overdoses, rise by 0.31 deaths per 100,000 (29%) at the cutoff and that this effect is concentrated among females. Our findings show that teenage driving contributes to sex differences in risky drug use behaviors.",
   },
   
   {
