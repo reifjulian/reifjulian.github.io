@@ -15,7 +15,7 @@ These recent developments introduce complexity and the potential for non-transpa
 This guide describes how to set up a robust coding environment and write a "push-button" analysis in Stata. Its purpose is to help researchers:
 1. Minimize coding errors
 1. Automate the creation of tables and figures
-1. Integrate their Stata code with supporting *R* analyses
+1. Integrate their Stata code with supporting R analyses
 1. Produce a replication package with the following features: 
   - Compliant with the AEA's [data and code availability policy](https://www.aeaweb.org/journals/policies/data-code)
   - Cross-platform (Mac, Windows, Unix)
@@ -29,7 +29,7 @@ The guide includes an accompanying AEA-compliant [sample replication package](ht
 
 I work on several projects at the same time, access them from multiple computers (laptop, home, work), and share them with multiple coauthors. Using multiple environments makes it hard to define the pathname (location) of a folder. A project's location may be **/Users/jreif/my-project** on one computer and **/Users/coauthor/my-project** on another computer. You could manually change this pathname every time a different person or different computer runs the code, but this solution is cumbersome for large projects with thousands or millions of lines of code. Likewise, when you install an add-on, by default it will not be available on other computer systems.
 
-Below I describe how I set up my working environment to address these challenges. Note that users are NOT required to do this in order to run my published code. But, setting up your environment like I do will make it easier to develop your analysis in environments with multiple computers and coauthors. I focus on a setting where code is written in Stata and *R*. Stata provides native support for running [Python code](https://blog.stata.com/2020/08/18/stata-python-integration-part-1-setting-up-stata-to-use-python/), which I do not discuss here.
+Below I describe how I set up my working environment to address these challenges. Note that users are NOT required to do this in order to run my published code. But, setting up your environment like I do will make it easier to develop your analysis in environments with multiple computers and coauthors. I focus on a setting where code is written in Stata and R. Stata provides native support for running [Python code](https://blog.stata.com/2020/08/18/stata-python-integration-part-1-setting-up-stata-to-use-python/), which I do not discuss here.
 
 ## Dropbox
 
@@ -53,7 +53,7 @@ global RSCRIPT_PATH "C:/Program Files/R/R-3.6.2/bin/x64/Rscript.exe"
 run "$DROPBOX/stata_profile.do"
 ```
 
-This file contains settings specific to my PC, namely the location of my Dropbox folder and my *R* executable (used by [rscript](https://github.com/reifjulian/rscript)). The Stata profile stored on my mac is identical except that it defines different locations for `DROPBOX` and `RSCRIPT_PATH`. I could also define the locations of all my projects in **profile.do**. But instead, I store those definitions, along with any other settings that are common across my computers, on Dropbox in a script called **stata_profile.do** and then call that script from **profile.do**.
+This file contains settings specific to my PC, namely the location of my Dropbox folder and my R executable (used by [rscript](https://github.com/reifjulian/rscript)). The Stata profile stored on my mac is identical except that it defines different locations for `DROPBOX` and `RSCRIPT_PATH`. I could also define the locations of all my projects in **profile.do**. But instead, I store those definitions, along with any other settings that are common across my computers, on Dropbox in a script called **stata_profile.do** and then call that script from **profile.do**.
 
 Here are the contents of an example **stata_profile.do** stored on Dropbox:
 ```stata
@@ -63,13 +63,13 @@ global MyProject "$DROPBOX/my-project/analysis"
 
 The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata_coding_tips). The second line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to do this once.
 
-## *R* profile
+## R profile
 
-I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an *R* function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I find it convenient to setup an *R* environment that is consistent with my Stata environment.
+I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an R function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I find it convenient to setup an R environment that is consistent with my Stata environment.
 
-Similar to Stata, *R* automatically runs **.Rprofile** upon launch (if found). (More background available [here](https://csgillespie.github.io/efficientR/3-3-r-startup.html#r-startup) if you're interested.) This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the *R* prompt.
+Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). (More background available [here](https://csgillespie.github.io/efficientR/3-3-r-startup.html#r-startup) if you're interested.) This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the R prompt.
 
-Here are the contents of my *R* profile, stored in **C:/Users/jreif/Documents/.Rprofile**:
+Here are the contents of my R profile, stored in **C:/Users/jreif/Documents/.Rprofile**:
 ```R
 # Settings specific to local environment
 Sys.setenv(DROPBOX = "C:/Users/jreif/Dropbox")
@@ -78,7 +78,7 @@ Sys.setenv(DROPBOX = "C:/Users/jreif/Dropbox")
 source(file.path(Sys.getenv("DROPBOX"), "R_profile.R"))
 ```
 
-As with my Stata profile, my *R* profile in turn runs a second script located at the top level of my Dropbox directory. This file, **R_profile.R**, stores *R* settings common across all my computers, such as the paths for all my projects. Here is an example for the MyProject analysis:
+As with my Stata profile, my R profile in turn runs a second script located at the top level of my Dropbox directory. This file, **R_profile.R**, stores R settings common across all my computers, such as the paths for all my projects. Here is an example for the MyProject analysis:
 
 ```R
 Sys.setenv(MyProject = file.path(Sys.getenv("DROPBOX"), "my-project/analysis"))
@@ -151,7 +151,7 @@ To update the MyProject manuscript, copy **analysis/results/figures/** and **ana
 
 ## Programs
 
-Programs (AKA functions, subroutines) are additional pieces of code called by your scripts. These might be do-files, ado-files, or scripts written in another programming language such as *R*. An introduction to ado-files is available [here](https://blog.stata.com/2015/11/10/programming-an-estimation-command-in-stata-a-first-ado-command). Because programs are not called directly by the master script, **run.do**, I usually store them in the subdirectory **scripts/programs/**. This reduces clutter in large projects with many scripts.
+Programs (AKA functions, subroutines) are additional pieces of code called by your scripts. These might be do-files, ado-files, or scripts written in another programming language such as R. An introduction to ado-files is available [here](https://blog.stata.com/2015/11/10/programming-an-estimation-command-in-stata-a-first-ado-command). Because programs are not called directly by the master script, **run.do**, I usually store them in the subdirectory **scripts/programs/**. This reduces clutter in large projects with many scripts.
 
 ## Libraries
 
@@ -163,13 +163,26 @@ Many people do not appreciate how code updates can inhibit replication. Here is 
 
 Stata takes version control [seriously](https://www.stata.com/features/integrated-version-control/). At a minimum, you should always include a `version` statement in the final version of your published code. Writing `version 15` instructs all future versions of Stata to run your code the same way Stata 15 did. (Your [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) is a good place for the version statement.) Unfortunately, many user-written packages (including my own) are not carefully version controlled.  To address this, I include a script called [_install_stata_packages.do](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/_install_stata_packages.do) in all my working projects. This script installs copies of any user-written packages used by the project into a subdirectory of the project folder: **analysis/scripts/libraries/stata**. Rerunning this script will install updated versions of these add-on's, if desired. I delete this script when my project is ready to be published, which effectively locks down the code for these user-written packages and thus ensures I can exactly replicate my Stata analysis forever. In addition, including these user-written packages allows my project to be replicated on a non-networked computer that does not have access to the internet.
 
-I am unaware of a version control statement for *R*, which means the behavior of built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of *R* you are running. As a second-best solution, my replication packages include an *R* program, [_rversion.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R), which checks whether the user: (1) is running a sufficiently recent version of *R*; and (2) has installed necessary add-on programs such as [tidyverse](https://tidyverse.tidyverse.org/). As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in *R* creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
+
+<div class="notice--info" markdown="1">
+**Stata tip:** I recommend disabling Stata's ability to search for add-ons outside of your project folder. My [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) includes the following code to ensure Stata only looks for add-ons in the local project folder:
+```stata
+tokenize `"$S_ADO"', parse(";")
+while `"`1'"' != "" {
+  if `"`1'"'!="BASE" cap adopath - `"`1'"'
+  macro shift
+}
+adopath ++ "$MyProject/scripts/programs"
+```
+</div>
+
+I am unaware of a version control statement for R, which means the behavior of built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of R you are running. As a second-best solution, my replication packages include an R program, [_rversion.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R), which checks whether the user: (1) is running a sufficiently recent version of R; and (2) has installed necessary add-on programs such as [tidyverse](https://tidyverse.tidyverse.org/). As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
 1. Manually by typing, e.g., `install.packages(“tidyverse”)` at the R prompt
 1. Automatically by opening R and running [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R)
 1. Automatically by uncommenting line 52 of [run.do](https://github.com/reifjulian/my-project/blob/master/analysis/run.do)
  
 
-If you don't mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your *R* packages in the project subdirectory just like I did with Stata. See the commented out code in [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R) for an example. Following this example will result in a folder structure that looks like this:
+If you don't mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your R packages in the project subdirectory just like I did with Stata. See the commented out code in [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R) for an example. Following this example will result in a folder structure that looks like this:
 
 ```text
 .
@@ -187,7 +200,7 @@ If you don't mind potentially using up lots of disk space and want to ensure rep
         └── 2_...
     └── run.do		
 ```
-Other alternatives--used frequently by serious users of *R*--include [packrat](https://rstudio.github.io/packrat/) and [renv](https://rstudio.github.io/renv/articles/renv.html).
+Other alternatives--used frequently by serious users of R--include [packrat](https://rstudio.github.io/packrat/) and [renv](https://rstudio.github.io/renv/articles/renv.html).
 
 ### Stata plugins (advanced)
 
@@ -332,24 +345,12 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 1. Rerun your analysis from scratch:
 
-    - Prior to rerunning, disable all locally installed Stata programs not located in your project folder. Doing this ensures your analysis is actually using the add-ons installed in your project subdirectory, rather than add-ons installed somewhere else on your machine. Disabling locally installed programs can usually be accomplished by adding the following code to your master script:
-	```stata
-	cap adopath - PERSONAL
-	cap adopath - PLUS
-	cap adopath - SITE
-	cap adopath - OLDPLACE
-	```
-	You can test whether this code is sufficient as follows. Suppose you had previously installed `regsave` on your computer system. Open a new instance of Stata, execute this code, and then type `which regsave`. Stata should report "command regsave not found." If not, Stata will report where the command is located, and you can then temporarily remove/rename that folder. Repeat until Stata can no longer find `regsave`. 
-
     - Delete the **processed/** and **results/** folders.
 
     - Execute **run.do** to regenerate all tables and figures using just the raw data.
 
 1. Confirm that the reproduced output in **results/figures/** and **results/tables/** matches the results reported in your manuscript.
 
-If you are publishing your paper, you should also complete the following additional steps:
-
-{:start="4"}
 1. Remove **_install_stata_packages.do** from **scripts/**.
 
 1. Add a [README file](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf). A minimal README should include the following information:
@@ -361,14 +362,11 @@ If you are publishing your paper, you should also complete the following additio
   - Description of each script
   - Description of where the output is stored
 
-1. (Optional) Rename the copy of your **analysis/** folder.
-
-1. Zip (compress) the analysis folder.
-
-1. Upload to a secure data archive.
+1. (Optional) Upload to a secure data archive.
   - The [ICPSR data enclave](https://www.icpsr.umich.edu/icpsrweb/content/ICPSR/access/restricted/enclave.html) is one option.
 
-Step 3--confirming output--can be tedious. Include lots of asserts in your code when writing up your results to make this process easier. (See an example of how to use `assert` commands [here](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/4_make_tables_figures.do).) For example, if the main result of your study is a regression estimate of $1.2 million, include an assert in your code that will fail should this number change following a new data update.
+{: .notice--info}
+**Tip:** Step 3--confirming output--can be tedious. Including `assert` (Stata) or `stopifnot()` statements (R) can make this easier. For example, if the main result of your study is a regression estimate of $1.2 million, include an assertion in your code that will fail should this number change following a new data update. Stata examples are available in this [sample script](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/4_make_tables_figures.do).
 
 # Stata coding tips
 
@@ -428,4 +426,4 @@ isid r
 
 # Acknowledgments
 
-The coding practices outlined in this guide have been developed over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization. I also thank Grant McDermott for several helpful conversations regarding version control and reproducibility in *R*.
+The coding practices outlined in this guide have been developed over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization. I also thank Grant McDermott for several helpful conversations regarding version control and reproducibility in R.
