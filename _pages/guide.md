@@ -1,6 +1,6 @@
 ﻿---
 title: Stata Coding Guide
-permalink: /newguide/
+permalink: /guide/
 layout: single
 classes: wide
 sidebar:
