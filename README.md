@@ -7,9 +7,6 @@ I've made the following custom adjustments:
     - turns off blue underlines for hyperlinks
 	- makes the avatar larger in the author sidebar
 	- removes fading from the author sidebar
-  - Commented out code in `/_includes/footer.html` to remove the RSS feed link from the bottom of the pages
   - Added code to `/_includes/head/custom.html` to use the favicon `/assets/images/favicon.ico`
-  - Added code to `/_includes/head/custom.html` to use custom syntax highlighting (`thankful_eyes`)
-    - Syntax file was created by executing the following Ruby code: `rougify style thankful_eyes > assets/css/syntax.css`
-  
+  - Commented out code in `/_includes/footer.html` to remove the RSS feed link from the bottom of the pages
   
