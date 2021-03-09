@@ -361,6 +361,8 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 1. Remove **_install_stata_packages.do** from **scripts/**.
 
+1. Include a license. The Creative Commons [CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/) is a popular one that I [often use](https://github.com/reifjulian/my-project/blob/master/analysis/LICENSE.txt).
+
 1. Add a [README file](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf). A minimal README should include the following information:
   - Title and authors of the paper
   - Required software, including version numbers
