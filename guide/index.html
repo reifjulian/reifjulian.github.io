@@ -664,10 +664,10 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <p>Use forward slashes for pathnames (<code class="language-plaintext highlighter-rouge">$DROPBOX/project</code> not <code class="language-plaintext highlighter-rouge">$DROPBOX\project</code>). Backslashes are an escape character in Stata and can cause problems depending on what operating system you are running. Using forward slashes ensures cross-platform compatibility.</p>
   </li>
   <li>
-    <p>Rewrite your code frequently and make it readable. In addition to providing comments in the code, make your variable names meaningful (but short). Provide more detailed descriptions using the <code class="language-plaintext highlighter-rouge">label variable</code> command. Always include units in the label.</p>
+    <p>Never use hard-coded paths like <strong>C:/Users/jreif/Dropbox/my-project</strong>. All pathnames should reference a global variable defined either in your Stata profile or in your <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a>. Anyone should be able to run your entire analysis from their computer without having to edit any scripts, with the exception of defining a single global variable in <strong>run.do</strong>.</p>
   </li>
   <li>
-    <p>Never use hard-coded paths like <strong>C:/Users/jreif/Dropbox/my-project</strong>. All pathnames should reference a global variable defined either in your Stata profile or in your <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a>. Anyone should be able to run your entire analysis from their computer without having to edit any scripts, with the exception of defining a single global variable in <strong>run.do</strong>.</p>
+    <p>Avoid spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!)</p>
   </li>
   <li>
     <p>Include <code class="language-plaintext highlighter-rouge">set varabbrev off</code> in your Stata profile.  This helps you avoid mistakes such as accidently <a href="https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf">referencing the wrong variable</a>.</p>
@@ -676,7 +676,10 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <p>When working with large datasets, use Mauricio Bravo’s <a href="https://github.com/mcaceresb/stata-gtools">gtools</a> and Sergio Correia’s <a href="http://scorreia.com/software/reghdfe/">reghdfe</a>.</p>
   </li>
   <li>
-    <p>Sometimes an analysis will inexplicably produce different results each time it is run despite no changes to the code. Here are two common reasons why this happens:</p>
+    <p>Rewrite your code frequently and make it readable. Provide helpful comments in the code and make your variable names meaningful (but short). Provide more detailed descriptions using the <code class="language-plaintext highlighter-rouge">label variable</code> command. Always include units in the label.</p>
+  </li>
+  <li>
+    <p>Sometimes an analysis may inexplicably produce different results despite no changes to the code. Here are two common reasons why this happens:</p>
     <ol>
       <li>One of your commands requires random numbers and you forgot to use <code class="language-plaintext highlighter-rouge">set seed #</code></li>
       <li>You have a nonunique sort. Add <code class="language-plaintext highlighter-rouge">isid</code> checks to your code prior to sorting to ensure uniqueness. (Another option is to add the <code class="language-plaintext highlighter-rouge">stable</code> option to your sorts.) Nonunique sorts can be hard to spot:</li>

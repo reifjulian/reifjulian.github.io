@@ -382,15 +382,17 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 - Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause problems depending on what operating system you are running. Using forward slashes ensures cross-platform compatibility.
 
-- Rewrite your code frequently and make it readable. In addition to providing comments in the code, make your variable names meaningful (but short). Provide more detailed descriptions using the `label variable` command. Always include units in the label.
-
 - Never use hard-coded paths like **C:/Users/jreif/Dropbox/my-project**. All pathnames should reference a global variable defined either in your Stata profile or in your [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do). Anyone should be able to run your entire analysis from their computer without having to edit any scripts, with the exception of defining a single global variable in **run.do**.
+
+- Avoid spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!) 
 
 - Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidently [referencing the wrong variable](https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf).
 
 - When working with large datasets, use Mauricio Bravo's [gtools](https://github.com/mcaceresb/stata-gtools) and Sergio Correia's [reghdfe](http://scorreia.com/software/reghdfe/).
 
-- Sometimes an analysis will inexplicably produce different results each time it is run despite no changes to the code. Here are two common reasons why this happens:
+- Rewrite your code frequently and make it readable. Provide helpful comments in the code and make your variable names meaningful (but short). Provide more detailed descriptions using the `label variable` command. Always include units in the label.
+
+- Sometimes an analysis may inexplicably produce different results despite no changes to the code. Here are two common reasons why this happens:
   1. One of your commands requires random numbers and you forgot to use `set seed #`
   1. You have a nonunique sort. Add `isid` checks to your code prior to sorting to ensure uniqueness. (Another option is to add the `stable` option to your sorts.) Nonunique sorts can be hard to spot:
 
