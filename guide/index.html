@@ -58,6 +58,7 @@
 
 
 
+
 <!-- end _includes/seo.html -->
 
 
@@ -453,7 +454,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 <p>Stata takes version control <a href="https://www.stata.com/features/integrated-version-control/">seriously</a>. You should always include a <code class="language-plaintext highlighter-rouge">version</code> statement in your <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a>. Writing <code class="language-plaintext highlighter-rouge">version 15</code> instructs all future versions of Stata to run your code the same way Stata 15 did. Unfortunately, many user-written packages (including my own) are not carefully version controlled.  To address this, I include a script called <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/_install_stata_packages.do">_install_stata_packages.do</a> in all my working projects. This script installs copies of any user-written packages used by the project into a subdirectory of the project folder: <strong>analysis/scripts/libraries/stata</strong>. Rerunning this script will install updated versions of these add-ons as desired. I delete this script when my project is ready to be published, which effectively locks down the code for these user-written packages and ensures I can replicate my Stata analysis forever into the future. In addition, including these user-written packages ensures my code will run on a non-networked computer that does not have access to the internet.</p>
 
 <div class="notice--info">
-  <p><strong>Stata tip:</strong> I recommend disabling Stata’s ability to search for add-ons outside of your project folder. My <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a> includes the following code to instructs Stata to look for add-ons only in the local project folder:</p>
+  <p><strong>Stata tip:</strong> By default, Stata searches for add-on packages in multiple folders. I recommend disabling this behavior when working on a long-term project, which will ensure that Stata looks for add-ons only in your local project folder when running your project code. The following code in my <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a> removes these non-project folders from the search path:</p>
   <div class="language-stata highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">tokenize</span><span class="w"> </span><span class="s2">`"$S_ADO"'</span><span class="p">,</span><span class="w"> </span><span class="n">parse</span><span class="p">(</span><span class="s2">";"</span><span class="p">)</span>
 <span class="kr">while</span><span class="w"> </span><span class="s2">`"`1'"'</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="s2">`"`1'"'</span><span class="o">!=</span><span class="s2">"BASE"</span><span class="w"> </span><span class="n">cap</span><span class="w"> </span><span class="n">adopath</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s2">`"`1'"'</span>
@@ -461,6 +462,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 <span class="p">}</span>
 <span class="k">adopath</span><span class="w"> </span><span class="o">++</span><span class="w"> </span><span class="s2">"$MyProject/scripts/programs"</span>
 </code></pre></div>  </div>
+  <p>Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.</p>
 </div>
 
 <p>I am unaware of a version control statement for R, which means the behavior of built-in functions may <a href="https://f.briatte.org/r/change-in-sample-function-r-3-6-0">depend</a> on what version of R you are running. As a second-best solution, my replication packages include an R program, <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R">_rversion.R</a>, which checks whether the user: (1) is running a sufficiently recent version of R; and (2) has installed necessary add-on programs such as <a href="https://tidyverse.tidyverse.org/">tidyverse</a>. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and–if you want to ensure cross-platform replicability–need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project’s file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README</a>, the user can install these packages in three different ways:</p>
@@ -746,6 +748,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 
 
         
+
 
       </footer>
 

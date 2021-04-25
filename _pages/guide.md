@@ -170,7 +170,7 @@ Stata takes version control [seriously](https://www.stata.com/features/integrate
 
 
 <div class="notice--info" markdown="1">
-**Stata tip:** I recommend disabling Stata's ability to search for add-ons outside of your project folder. My [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) includes the following code to instructs Stata to look for add-ons only in the local project folder:
+**Stata tip:** By default, Stata searches for add-on packages in multiple folders. I recommend disabling this behavior when working on a long-term project, which will ensure that Stata looks for add-ons only in your local project folder when running your project code. The following code in my [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) removes these non-project folders from the search path:
 ```stata
 tokenize `"$S_ADO"', parse(";")
 while `"`1'"' != "" {
@@ -179,6 +179,7 @@ while `"`1'"' != "" {
 }
 adopath ++ "$MyProject/scripts/programs"
 ```
+Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.
 </div>
 
 I am unaware of a version control statement for R, which means the behavior of built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of R you are running. As a second-best solution, my replication packages include an R program, [_rversion.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R), which checks whether the user: (1) is running a sufficiently recent version of R; and (2) has installed necessary add-on programs such as [tidyverse](https://tidyverse.tidyverse.org/). As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
