@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
   Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
@@ -77,21 +77,6 @@
 <link rel="stylesheet" href="/assets/css/main.css">
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
-
-<!--[if IE]>
-  <style>
-    /* old IE unsupported flexbox fixes */
-    .greedy-nav .site-title {
-      padding-right: 3em;
-    }
-    .greedy-nav button {
-      position: absolute;
-      top: 0;
-      right: 0;
-      height: 100%;
-    }
-  </style>
-<![endif]-->
 
 
 
@@ -170,22 +155,22 @@
   
 
 
-<div itemscope itemtype="https://schema.org/Person">
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
 
   
     <div class="author__avatar">
-      
-        <img src="/assets/images/reif.jpg" alt="Julian Reif" itemprop="image">
-      
+      <a href="/">
+        <img src="/assets/images/reif.jpg" alt="Julian Reif" itemprop="image" class="u-photo">
+      </a>
     </div>
   
 
   <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="/" itemprop="url">Julian Reif</a>
+    </h3>
     
-      <h3 class="author__name" itemprop="name">Julian Reif</h3>
-    
-    
-      <div class="author__bio" itemprop="description">
+      <div class="author__bio p-note" itemprop="description">
         <p>Assistant Professor of Finance and Economics</p>
 
       </div>
@@ -200,19 +185,19 @@
       
         
           
-            <li><a href="/cv/reif.cv.pdf" rel="nofollow noopener noreferrer"><i class="fa fa-fw fa-file-pdf" aria-hidden="true"></i><span class="label">CV</span></a></li>
+            <li><a href="/cv/reif.cv.pdf" rel="nofollow noopener noreferrer me"><i class="fa fa-fw fa-file-pdf" aria-hidden="true"></i><span class="label">CV</span></a></li>
           
         
           
-            <li><a href="https://github.com/reifjulian" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Github</span></a></li>
+            <li><a href="https://github.com/reifjulian" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">Github</span></a></li>
           
         
           
-            <li><a href="https://scholar.google.com/citations?user=Tpe9XEcAAAAJ" rel="nofollow noopener noreferrer"><i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i><span class="label">Google Scholar</span></a></li>
+            <li><a href="https://scholar.google.com/citations?user=Tpe9XEcAAAAJ" rel="nofollow noopener noreferrer me"><i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i><span class="label">Google Scholar</span></a></li>
           
         
           
-            <li><a href="https://twitter.com/JulianReif" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
+            <li><a href="https://twitter.com/JulianReif" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i><span class="label">Twitter</span></a></li>
           
         
       
@@ -267,7 +252,7 @@
 
       <!--
   <li>
-    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
       <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
     </a>
   </li>
@@ -275,13 +260,12 @@
     </ul>
   </div>
 </div>
-
   
   </div>
 
 
 
-  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     
     
     
@@ -297,7 +281,7 @@
         </header>
       
 
-      <section class="page__content" itemprop="text">
+      <section class="page__content e-content" itemprop="text">
         
         <p>Julian Reif is an Assistant Professor of Finance and Economics in the Gies College of Business at the University of Illinois. He is also a Senior Scholar at the Institute of Government and Public Affairs and a Faculty Research Fellow at the National Bureau of Economic Research. He is on sabbatical at the Toulouse School of Economics for the 2021-2022 academic year.</p>
 
@@ -316,7 +300,6 @@
 
         
 
-
       </footer>
 
       
@@ -330,7 +313,6 @@
   
   
 </div>
-
     </div>
 
     
