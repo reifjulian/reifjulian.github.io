@@ -453,11 +453,11 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
   <p>Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.</p>
 </div>
 
-<p>I am unaware of a version control statement for R, which means the behavior of built-in functions may <a href="https://f.briatte.org/r/change-in-sample-function-r-3-6-0">depend</a> on what version of R you are running. As a second-best solution, my replication packages include an R program, <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R">_rversion.R</a>, which checks whether the user: (1) is running a sufficiently recent version of R; and (2) has installed necessary add-on programs such as <a href="https://tidyverse.tidyverse.org/">tidyverse</a>. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and–if you want to ensure cross-platform replicability–need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project’s file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README</a>, the user can install these packages in three different ways:</p>
+<p>I am unaware of a version control statement for R, which means the behavior of its built-in functions may <a href="https://f.briatte.org/r/change-in-sample-function-r-3-6-0">depend</a> on what version of R you are running. As a second-best solution, my <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a> uses the Stata add-on command <a href="https://github.com/reifjulian/rscript">rscript</a> to check whether the user (1) is running a sufficiently recent version of R; and (2) has installed R libraries required by my analysis, such as tidyverse. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and–if you want to ensure cross-platform replicability–need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project’s file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README</a>, the user can install these packages in three different ways:</p>
 <ol>
   <li>Manually by typing, e.g., <code class="language-plaintext highlighter-rouge">install.packages(“tidyverse”)</code> at the R prompt</li>
   <li>Automatically by opening R and running <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a></li>
-  <li>Automatically by uncommenting line 52 of <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">run.do</a></li>
+  <li>Automatically by uncommenting line 53 of <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">run.do</a></li>
 </ol>
 
 <p>If you don’t mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your R packages in the project subdirectory just like I did with Stata. See the commented out code in <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a> for an example. Following this example will result in a folder structure that looks like this:</p>
@@ -705,6 +705,8 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 </code></pre></div></div>
 
 <h1 id="other-helpful-links">Other helpful links</h1>
+
+<p><a href="https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856">Asjad Naqvi’s Stata-to-LaTeX guide</a></p>
 
 <p><a href="https://aeadataeditor.github.io/aea-de-guidance/">AEA Data Editor’s guide</a></p>
 <ul>

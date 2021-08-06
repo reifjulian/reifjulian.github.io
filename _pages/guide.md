@@ -182,10 +182,10 @@ adopath ++ "$MyProject/scripts/programs"
 Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.
 </div>
 
-I am unaware of a version control statement for R, which means the behavior of built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of R you are running. As a second-best solution, my replication packages include an R program, [_rversion.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_rversion.R), which checks whether the user: (1) is running a sufficiently recent version of R; and (2) has installed necessary add-on programs such as [tidyverse](https://tidyverse.tidyverse.org/). As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
+I am unaware of a version control statement for R, which means the behavior of its built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of R you are running. As a second-best solution, my [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) uses the Stata add-on command [rscript](https://github.com/reifjulian/rscript) to check whether the user (1) is running a sufficiently recent version of R; and (2) has installed R libraries required by my analysis, such as tidyverse. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
 1. Manually by typing, e.g., `install.packages(“tidyverse”)` at the R prompt
 1. Automatically by opening R and running [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R)
-1. Automatically by uncommenting line 52 of [run.do](https://github.com/reifjulian/my-project/blob/master/analysis/run.do)
+1. Automatically by uncommenting line 53 of [run.do](https://github.com/reifjulian/my-project/blob/master/analysis/run.do)
  
 
 If you don't mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your R packages in the project subdirectory just like I did with Stata. See the commented out code in [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R) for an example. Following this example will result in a folder structure that looks like this:
@@ -418,9 +418,10 @@ isid r
 
 # Other helpful links
 
+[Asjad Naqvi's Stata-to-LaTeX guide](https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856)
+
 [AEA Data Editor's guide](https://aeadataeditor.github.io/aea-de-guidance/)
 - Additional guidance at the [Social Science Data Editors site](https://social-science-data-editors.github.io/guidance/)
-
 
 [Dan Sullivan's best practices for coding](http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
 
