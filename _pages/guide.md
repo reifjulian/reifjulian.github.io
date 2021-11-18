@@ -133,7 +133,7 @@ The folder **results/** contains all final output, including tables and figures.
 
 ```text
 .
-└── analysis/
+├── analysis/
     ├── data/
     ├── processed/
     ├── results/
@@ -362,7 +362,7 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 1. Remove **_install_stata_packages.do** from **scripts/**.
 
-1. Include a license. If your package includes both data and code, the AEA suggesting using a [dual license](https://aeadataeditor.github.io/aea-de-guidance/licensing-guidance#dual-license-example) that combines a Modified BSD License (for code) with a Creative Commons Attribution 4.0 International Public License (for data). To do this, copy their [license template](https://raw.githubusercontent.com/AEADataEditor/aeadataeditor.github.io/main/_guidance/LICENSE-template.txt) to your folder and edit the line `COPYRIGHT <YEAR> <COPYRIGHT HOLDER>` to reflect the year and the authors.
+1. Include a license. If your package includes both data and code, the AEA suggests [combining](https://aeadataeditor.github.io/aea-de-guidance/licensing-guidance#dual-license-example) a Modified BSD License (for code) with a Creative Commons Attribution 4.0 International Public License (for data). To do this, copy their [dual license template](https://raw.githubusercontent.com/AEADataEditor/aeadataeditor.github.io/main/_guidance/LICENSE-template.txt) to your folder and edit the line `COPYRIGHT <YEAR> <COPYRIGHT HOLDER>` to reflect the year and the authors.
 
 1. Add a [README file](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf). The AEA provides a number of [templates](https://zenodo.org/record/4319999#.YZYla5DML0o) in different formats. A minimal README should include the following information:
   - Title and authors of the paper
