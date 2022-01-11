@@ -435,6 +435,8 @@ isid r
 
 [Roger Koenker's guide on reproducibility](http://www.econ.uiuc.edu/~roger/research/repro)
 
+[Sean Higgin's Stata guide](https://github.com/skhiggins/Stata_guide)
+
 
 
 
