@@ -108,10 +108,6 @@
   </ul>
 </nav>
 
-    <!--[if lt IE 9]>
-<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
-<![endif]-->
-
     
 
 <div class="masthead">
@@ -146,6 +142,8 @@
 
     <div class="initial-content">
       
+
+
 
 
 
@@ -351,7 +349,9 @@
 <p class="notice--info"><strong>R Tip:</strong> Additional details regarding how R sets up its environment at startup are available in this <a href="https://web.archive.org/web/20190907041505/https://csgillespie.github.io/efficientR/3-3-r-startup.html#r-startup">R programming guide</a>.</p>
 
 <p>Here are the contents of my R profile, stored in <strong>C:/Users/jreif/Documents/.Rprofile</strong>:</p>
-<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Settings specific to local environment</span><span class="w">
+<div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cat</span><span class="p">(</span><span class="s2">"Running .Rprofile...\n\n"</span><span class="p">)</span><span class="w">
+
+</span><span class="c1"># Settings specific to local environment</span><span class="w">
 </span><span class="n">Sys.setenv</span><span class="p">(</span><span class="n">DROPBOX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C:/Users/jreif/Dropbox"</span><span class="p">)</span><span class="w">
 
 </span><span class="c1"># Run file containing settings common to all environments</span><span class="w">
@@ -754,6 +754,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
   
   
 </div>
+
     </div>
 
     

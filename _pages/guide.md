@@ -73,6 +73,8 @@ Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). Thi
 
 Here are the contents of my R profile, stored in **C:/Users/jreif/Documents/.Rprofile**:
 ```R
+cat("Running .Rprofile...\n\n")
+
 # Settings specific to local environment
 Sys.setenv(DROPBOX = "C:/Users/jreif/Dropbox")
 
