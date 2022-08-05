@@ -172,14 +172,14 @@ Stata takes version control [seriously](https://www.stata.com/features/integrate
 
 
 <div class="notice--info" markdown="1">
-**Stata tip:** By default, Stata searches for add-on packages in multiple folders. I recommend disabling this behavior when working on a long-term project, which will ensure that Stata looks for add-ons only in your local project folder when running your project code. The following code in my [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) removes these non-project folders from the search path:
+**Stata tip:** By default, Stata searches for add-on packages in multiple folders. I recommend disabling this behavior when working on a long-term project, which will ensure that Stata looks for add-ons only in your local project folder when running your project code. The following code in my [configuration script](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_config.do) removes these non-project folders from the search path:
 ```stata
 tokenize `"$S_ADO"', parse(";")
 while `"`1'"' != "" {
   if `"`1'"'!="BASE" cap adopath - `"`1'"'
   macro shift
 }
-adopath ++ "$MyProject/scripts/programs"
+adopath ++ "`ProjectDir'/scripts/libraries/stata"
 ```
 Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.
 </div>
