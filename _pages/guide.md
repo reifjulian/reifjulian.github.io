@@ -364,7 +364,7 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 1. Remove **_install_stata_packages.do** from **scripts/**.
 
-1. Include a license. If your package includes both data and code, the AEA suggests [combining](https://aeadataeditor.github.io/aea-de-guidance/licensing-guidance#dual-license-example) a Modified BSD License (for code) with a Creative Commons Attribution 4.0 International Public License (for data). To do this, copy their [dual license template](https://raw.githubusercontent.com/AEADataEditor/aeadataeditor.github.io/main/_guidance/LICENSE-template.txt) to your folder and edit the line `COPYRIGHT <YEAR> <COPYRIGHT HOLDER>` to reflect the year and the authors.
+1. Include a license. You can use the AEA's [mixed license template](https://aeadataeditor.github.io/aea-de-guidance/LICENSE-template.html), which covers both your code and your data. After downloading the license, edit the line `COPYRIGHT <YEAR> <COPYRIGHT HOLDER>` to reflect the year and the authors. See the [AEA Data Editor website](https://aeadataeditor.github.io/aea-de-guidance/FAQ.html#licensing) for additional discussion.
 
 1. Add a [README file](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf). The AEA provides a number of [templates](https://zenodo.org/record/4319999#.YZYla5DML0o) in different formats. A minimal README should include the following information:
   - Title and authors of the paper
@@ -389,7 +389,7 @@ You completed your analysis, wrote up your results, and are ready to submit to a
 
 - Avoid spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!) 
 
-- Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidently [referencing the wrong variable](https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf).
+- Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidently [referencing the wrong variable](https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf).
 
 - When working with large datasets, use Mauricio Bravo's [gtools](https://github.com/mcaceresb/stata-gtools) and Sergio Correia's [reghdfe](http://scorreia.com/software/reghdfe/).
 

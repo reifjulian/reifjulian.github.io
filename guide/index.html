@@ -635,7 +635,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <p>Remove <strong>_install_stata_packages.do</strong> from <strong>scripts/</strong>.</p>
   </li>
   <li>
-    <p>Include a license. If your package includes both data and code, the AEA suggests <a href="https://aeadataeditor.github.io/aea-de-guidance/licensing-guidance#dual-license-example">combining</a> a Modified BSD License (for code) with a Creative Commons Attribution 4.0 International Public License (for data). To do this, copy their <a href="https://raw.githubusercontent.com/AEADataEditor/aeadataeditor.github.io/main/_guidance/LICENSE-template.txt">dual license template</a> to your folder and edit the line <code class="language-plaintext highlighter-rouge">COPYRIGHT &lt;YEAR&gt; &lt;COPYRIGHT HOLDER&gt;</code> to reflect the year and the authors.</p>
+    <p>Include a license. You can use the AEA’s <a href="https://aeadataeditor.github.io/aea-de-guidance/LICENSE-template.html">mixed license template</a>, which covers both your code and your data. After downloading the license, edit the line <code class="language-plaintext highlighter-rouge">COPYRIGHT &lt;YEAR&gt; &lt;COPYRIGHT HOLDER&gt;</code> to reflect the year and the authors. See the <a href="https://aeadataeditor.github.io/aea-de-guidance/FAQ.html#licensing">AEA Data Editor website</a> for additional discussion.</p>
   </li>
   <li>Add a <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README file</a>. The AEA provides a number of <a href="https://zenodo.org/record/4319999#.YZYla5DML0o">templates</a> in different formats. A minimal README should include the following information:
     <ul>
@@ -670,7 +670,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <p>Avoid spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!)</p>
   </li>
   <li>
-    <p>Include <code class="language-plaintext highlighter-rouge">set varabbrev off</code> in your Stata profile.  This helps you avoid mistakes such as accidently <a href="https://www.ifs.org.uk/docs/stata_gotchasJan2014.pdf">referencing the wrong variable</a>.</p>
+    <p>Include <code class="language-plaintext highlighter-rouge">set varabbrev off</code> in your Stata profile.  This helps you avoid mistakes such as accidently <a href="https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf">referencing the wrong variable</a>.</p>
   </li>
   <li>
     <p>When working with large datasets, use Mauricio Bravo’s <a href="https://github.com/mcaceresb/stata-gtools">gtools</a> and Sergio Correia’s <a href="http://scorreia.com/software/reghdfe/">reghdfe</a>.</p>
