@@ -333,7 +333,10 @@ This code first removes output I didn't want to report in this table, such as t-
 <img src="../assets/guide/regsave_tbl_clean.PNG" width="100%" title="Cleaned table">
 
 {: .notice--info}
-**LaTeX Tip:** You can indicate a math environment in LaTeX using either `\(...\)` or `$...$` syntax. It's usually easier to use the `\(...\)` syntax because `$` marks global macros in Stata.
+**LaTeX Tip 1:** You can indicate a math environment in LaTeX using either `\(...\)` or `$...$` syntax. It's usually easier to use the `\(...\)` syntax because `$` marks global macros in Stata.
+
+{: .notice--info}
+**LaTeX Tip 2:** If your dataset includes LaTeX code (e.g., `\(R^2\)` in table above), instruct texsave not to modify it by specifying the `nofix` option. (See code below for an example.)
 
 We are now ready to save the table in LaTeX format using `texsave`. We will provide a title, some additional LaTeX code for the header of the table, and a footnote:
 

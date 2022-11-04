@@ -594,7 +594,9 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 
 <p><img src="../assets/guide/regsave_tbl_clean.PNG" width="100%" title="Cleaned table" /></p>
 
-<p class="notice--info"><strong>LaTeX Tip:</strong> You can indicate a math environment in LaTeX using either <code class="language-plaintext highlighter-rouge">\(...\)</code> or <code class="language-plaintext highlighter-rouge">$...$</code> syntax. It’s usually easier to use the <code class="language-plaintext highlighter-rouge">\(...\)</code> syntax because <code class="language-plaintext highlighter-rouge">$</code> marks global macros in Stata.</p>
+<p class="notice--info"><strong>LaTeX Tip 1:</strong> You can indicate a math environment in LaTeX using either <code class="language-plaintext highlighter-rouge">\(...\)</code> or <code class="language-plaintext highlighter-rouge">$...$</code> syntax. It’s usually easier to use the <code class="language-plaintext highlighter-rouge">\(...\)</code> syntax because <code class="language-plaintext highlighter-rouge">$</code> marks global macros in Stata.</p>
+
+<p class="notice--info"><strong>LaTeX Tip 2:</strong> If your dataset includes LaTeX code (e.g., <code class="language-plaintext highlighter-rouge">\(R^2\)</code> in table above), instruct texsave not to modify it by specifying the <code class="language-plaintext highlighter-rouge">nofix</code> option. (See code below for an example.)</p>
 
 <p>We are now ready to save the table in LaTeX format using <code class="language-plaintext highlighter-rouge">texsave</code>. We will provide a title, some additional LaTeX code for the header of the table, and a footnote:</p>
 
