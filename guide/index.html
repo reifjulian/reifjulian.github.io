@@ -335,14 +335,16 @@
 
 <p>Here are the contents of an example <strong>stata_profile.do</strong> stored on Dropbox:</p>
 <div class="language-stata highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span><span class="w"> </span><span class="n">varabbrev</span><span class="w"> </span><span class="n">off</span>
+<span class="k">set</span><span class="w"> </span><span class="n">reshape_favor</span><span class="w"> </span><span class="n">speed</span>
+<span class="k">set</span><span class="w"> </span><span class="n">doeditbackup</span><span class="w"> </span><span class="n">off</span>
 <span class="kt">global</span><span class="w"> </span><span class="n">MyProject</span><span class="w"> </span><span class="s2">"$DROPBOX/my-project/analysis"</span>
 </code></pre></div></div>
 
-<p>The first line, <code class="language-plaintext highlighter-rouge">set varabbrev off</code>, is a command I want executed every time I open Stata on all my computers, for reasons <a href="#stata-coding-tips">I explain below</a>. The second line defines the location of the analysis for <a href="https://github.com/reifjulian/my-project">MyProject</a>, which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to <strong>stata_profile.do</strong>. Because all my computers are synced to Dropbox, I only have to do this once.</p>
+<p>The first line, <code class="language-plaintext highlighter-rouge">set varabbrev off</code>, is a command I want executed every time I open Stata on all my computers, for reasons <a href="#stata-coding-tips">I explain below</a>. The second line speeds up reshape (requires Stata 18 or later) and the third line instructs Stata not to create do-file editor backup (*.stswp) files. The last line defines the location of the analysis for <a href="https://github.com/reifjulian/my-project">MyProject</a>, which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to <strong>stata_profile.do</strong>. Because all my computers are synced to Dropbox, I only have to create a new global once per project.</p>
 
 <h2 id="r-profile">R profile</h2>
 
-<p>I write most of my code in Stata, including C++ plugins such as <a href="https://github.com/reifjulian/strgroup">strgroup</a>. On occasion, I will use an R function that is not available in Stata, such as <a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a>. In these cases I find it convenient to setup an R environment that is consistent with my Stata environment.</p>
+<p>I write most of my code in Stata, including C++ plugins such as <a href="https://github.com/reifjulian/strgroup">strgroup</a>. On occasion, I will use an R function that is not available in Stata, such as <a href="https://xgboost.readthedocs.io/en/latest/">XGBoost</a>. In these cases I like to create an R environment that aligns with my Stata environment.</p>
 
 <p>Similar to Stata, R automatically runs <strong>.Rprofile</strong> upon launch (if found). This file is typically stored in your home directory, whose location you can find by typing <code class="language-plaintext highlighter-rouge">normalizePath(path.expand("~"),winslash="/")</code> at the R prompt.</p>
 
@@ -460,7 +462,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
   <li>Automatically by uncommenting line 53 of <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">run.do</a></li>
 </ol>
 
-<p>If you don’t mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your R packages in the project subdirectory just like I did with Stata. See the commented out code in <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a> for an example. Following this example will result in a folder structure that looks like this:</p>
+<p>If you don’t mind potentially using up lots of disk space and want to ensure reproducibility, you can install your R packages in the project subdirectory. See the commented out code in <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a> for an example. Following this example will result in a folder structure that looks like this:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── analysis/

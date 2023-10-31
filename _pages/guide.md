@@ -57,14 +57,16 @@ This file contains settings specific to my PC, namely the location of my Dropbox
 Here are the contents of an example **stata_profile.do** stored on Dropbox:
 ```stata
 set varabbrev off
+set reshape_favor speed
+set doeditbackup off
 global MyProject "$DROPBOX/my-project/analysis"
 ```
 
-The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata-coding-tips). The second line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to do this once.
+The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata-coding-tips). The second line speeds up reshape (requires Stata 18 or later) and the third line instructs Stata not to create do-file editor backup (\*.stswp) files. The last line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to create a new global once per project.
 
 ## R profile
 
-I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an R function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I find it convenient to setup an R environment that is consistent with my Stata environment.
+I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an R function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I like to create an R environment that aligns with my Stata environment.
 
 Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the R prompt.
 
@@ -190,7 +192,7 @@ I am unaware of a version control statement for R, which means the behavior of i
 1. Automatically by uncommenting line 53 of [run.do](https://github.com/reifjulian/my-project/blob/master/analysis/run.do)
  
 
-If you don't mind potentially using up lots of disk space and want to ensure reproducibility, I highly recommend installing your R packages in the project subdirectory just like I did with Stata. See the commented out code in [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R) for an example. Following this example will result in a folder structure that looks like this:
+If you don't mind potentially using up lots of disk space and want to ensure reproducibility, you can install your R packages in the project subdirectory. See the commented out code in [_install_R_packages.R](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R) for an example. Following this example will result in a folder structure that looks like this:
 
 ```text
 .
