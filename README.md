@@ -11,8 +11,9 @@ I've made the following custom adjustments:
   - Added code to `/_includes/head/custom.html` to use the favicon `/assets/images/favicon.ico`
   - Added code to `/_includes/head/custom.html` to use custom syntax highlighting (`thankful_eyes`)
     - Syntax file was created by executing the following Ruby code: `rougify style thankful_eyes > assets/css/syntax.css`
+  - Added code to `/_includes/head/custom.html` to use newer Font Awesome icons (version 6.5.2)
   - Added Google Analytics code to `/_includes/head/custom.html`
-  - Added Stata syntax highlighting to Rouge (will be publicly available soon)
+  - Added Stata syntax highlighting to Rouge (will be publicly available when Github Pages updates to latest version of Rouge)
     - In the interim, add `gem "rouge", git: 'https://github.com/reifjulian/rouge', branch: 'stata'` to gemfile
 
 To deploy:
