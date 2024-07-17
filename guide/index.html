@@ -295,35 +295,35 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>Empirical research in economics has grown in importance thanks to improvements in computing power and the increased availability of rich datasets. Researchers  commonly estimate regressions with millions of observations derived from multiple datasets. Research teams frequently include multiple people working at different universities. Analyses employing confidential data must be performed remotely, often on a non-networked computer at a research data center. Cutting edge analyses may require thousands or millions of lines of code written in multiple languages.</p>
+        <p>Empirical research in economics has grown in importance due to advancements in computing power and the increased availability of rich administrative datasets. Researchers now commonly estimate regressions using millions of observations from multiple data sources. Often, research teams consist of members from different universities, collaborating on complex projects. Analyses involving confidential data is typically performed remotely, often on non-networked computers at research data centers. Cutting-edge analyses may require writing thousands or even millions of lines of code in multiple languages.</p>
 
-<p>These recent developments introduce complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Research suggests that the results from many published papers <a href="/research/reif.igpa.2021.reproducibility.pdf">cannot be reproduced</a> from the code and data provided by the original authors. The American Economic Association’s (AEA) new <a href="https://www.aeaweb.org/journals/policies/data-code">data and code availability policy</a> aims to improve this situation by imposing professional standards for coding and documentation. Unfortunately, most researchers (myself included) received little or no training in how to organize projects, write code, or document analyses.</p>
+<p>These recent developments introduce increased complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Studies suggest that the results from many published papers <a href="/research/reif.igpa.2021.reproducibility.pdf">cannot be reproduced</a> from the code and data provided by the original authors. To address this issue, the American Economic Association (AEA) has implemented a new <a href="https://www.aeaweb.org/journals/policies/data-code">data and code availability policy</a> to establish professional standards for coding and documentation. Unfortunately, most researchers, myself included, received little or no training in project organization, coding, or documentation.</p>
 
-<p>This guide describes how to set up a robust coding environment and write a “push-button” analysis in Stata. Its purpose is to help researchers:</p>
+<p>This guide outlines how to set up a robust coding environment and write a “push-button” analysis in Stata. Its purpose is to help researchers:</p>
 <ol>
   <li>Minimize coding errors</li>
   <li>Automate the creation of tables and figures</li>
   <li>Integrate Stata code with supporting R analyses</li>
   <li>Produce a replication package with the following features:
     <ul>
-      <li>Compliant with the AEA’s <a href="https://www.aeaweb.org/journals/policies/data-code">data and code availability policy</a></li>
-      <li>Cross-platform (Mac, Windows, Unix)</li>
-      <li>Runs on a non-networked computer (i.e., no need to download add-ons)</li>
+      <li>Compliance with the AEA’s <a href="https://www.aeaweb.org/journals/policies/data-code">data and code availability policy</a></li>
+      <li>Cross-platform compatibility (Mac, Windows, Unix)</li>
+      <li>Functionality on a non-networked computer (i.e., no need to download add-ons)</li>
     </ul>
   </li>
 </ol>
 
-<p>The guide includes an accompanying AEA-compliant <a href="https://github.com/reifjulian/my-project">sample replication package</a> that you are free to use as a template. Try it out and see how easy (or not!) it is to reproduce my example analysis. If you encounter any difficulties let me know.</p>
+<p>The guide includes an AEA-compliant <a href="https://github.com/reifjulian/my-project">sample replication package</a> that you can use as a template. Try it out and see how easy (or not!) it is to reproduce the example analysis. If you encounter any difficulties, please let me know.</p>
 
 <h1 id="setting-up-the-environment">Setting up the environment</h1>
 
-<p>I work on several projects at the same time, access them from multiple computers (laptop, home, work), and share them with multiple coauthors. Using multiple environments makes it hard to define the pathname (location) of a folder. A project’s location may be <strong>/Users/jreif/my-project</strong> on one computer and <strong>/Users/coauthor/my-project</strong> on another computer. You could manually change this pathname every time a different person or different computer runs the code, but this solution is cumbersome for large projects with many lines of code. Likewise, if you install an add-on on your local computer, it will not be available to your collaborators.</p>
+<p>I often work on several projects simultaneously, accessing them from multiple computers (laptop, home, work) and sharing them with multiple coauthors. Using multiple environments makes it challenging to define the pathname (location) of a folder. For instance, a project’s location may be <strong>/Users/jreif/my-project</strong> on one computer and <strong>/Users/coauthor/my-project</strong> on another. Manually changing this pathname every time a different person or computer runs the code is cumbersome, especially for large projects with many lines of code. Additionally, if you install an add-on on your local computer, it will not be available to your collaborators.</p>
 
-<p>Below I describe how I set up my working environment to address these challenges. Note that users are NOT required to do this in order to run my published code. But, setting up your environment like I do will make it easier to develop your analysis in environments with multiple computers and coauthors. I focus on a setting where code is written in Stata and R. Stata provides native support for running <a href="https://blog.stata.com/2020/08/18/stata-python-integration-part-1-setting-up-stata-to-use-python/">Python code</a>, which I do not discuss here.</p>
+<p>Below I describe how I set up my working environment to address these challenges. Note that users are NOT required to do this in order to run my published code. However, setting up your environment as I do will make it easier to develop your analysis in environments with multiple computers and coauthors. My focus is on a setting where code is written in Stata and R. Although Stata provides native support for running <a href="https://blog.stata.com/2020/08/18/stata-python-integration-part-1-setting-up-stata-to-use-python/">Python code</a>, I do not discuss that here.</p>
 
 <h2 id="dropbox">Dropbox</h2>
 
-<p>I use Dropbox to sync my projects across environments. Dropbox has several appealing features. It creates backups across multiple computers and the Dropbox server, and in my experience has fewer bugs than alternatives such as Box. Dropbox makes it easy to share files with coauthors. All files stored on Dropbox have the same relative paths, which is helpful when writing scripts (more on this below). <a href="#version-control-systems">Version control systems</a> can be used as an alternative or complement to Dropbox.</p>
+<p>I use Dropbox to sync my projects across different environments. Dropbox offers several appealing features. It creates backups across multiple computers and the Dropbox server, and in my experience has fewer bugs compared to alternatives like Box. Dropbox makes it easy to share files with coauthors. All files stored on Dropbox have the same relative paths, which simplifies pathnames when writing scripts (more on this below). <a href="#version-control-systems">Version control systems</a> can be used as an alternative or complement to Dropbox.</p>
 
 <h2 id="stata-profile">Stata profile</h2>
 
@@ -341,7 +341,7 @@
 <span class="k">run</span><span class="w"> </span><span class="s2">"$DROPBOX/stata_profile.do"</span>
 </code></pre></div></div>
 
-<p>This file contains settings specific to my PC, namely the location of my Dropbox folder. The Stata profile stored on my mac is identical except that it defines a different location for <code class="language-plaintext highlighter-rouge">DROPBOX</code>. I could also define the locations of all my projects in <strong>profile.do</strong>. But instead, I store those definitions, along with any other settings that are common across my computers, on Dropbox in a script called <strong>stata_profile.do</strong> and then call that script from <strong>profile.do</strong>.</p>
+<p>This file contains settings specific to my PC, namely the location of my Dropbox folder. The Stata profile stored on my mac is identical except that it defines a different location for <code class="language-plaintext highlighter-rouge">DROPBOX</code>. While I could define the locations of all my projects directly in <strong>profile.do</strong>, I instead store those definitions, along with any other settings common across my computers, on Dropbox in a script called <strong>stata_profile.do</strong>. I then call that script from <strong>profile.do</strong>.</p>
 
 <p>Here are the contents of an example <strong>stata_profile.do</strong> stored on Dropbox:</p>
 <div class="language-stata highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">set</span><span class="w"> </span><span class="n">varabbrev</span><span class="w"> </span><span class="n">off</span>
@@ -377,7 +377,7 @@
 
 <h2 id="version-control-systems">Version control systems</h2>
 
-<p>Version control systems such as Git and SVN are powerful and absolutely necessary for large software development collaborations. I myself use GitHub when developing my <a href="https://github.com/reifjulian/">software packages</a>. However, I personally find these systems unnecessary for academic analyses with a small number of coauthors and which are expected to end after publication. If you’re interested in version control, I recommend checking out <a href="https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html#1">Grant McDermott’s Git slides</a>.</p>
+<p>Version control systems like Git and SVN are essential for large software development collaborations. I myself use GitHub when developing my <a href="https://github.com/reifjulian/">software packages</a>. However, I generally find these systems unnecessary for academic analyses, which typically involve a small number of coauthors and conclude after publication. If you’re interested in learning more about version control, I recommend checking out <a href="https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html#1">Grant McDermott’s Git slides</a>.</p>
 
 <h1 id="organizing-the-project">Organizing the project</h1>
 
@@ -449,7 +449,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
   <li>These commands are updated over time, causing your code to break or produce different output.</li>
 </ol>
 
-<p>Many people do not appreciate how code updates can inhibit replication. Here is an example. You perform a Stata analysis using a new, user-written estimation command called, say, <code class="language-plaintext highlighter-rouge">regols</code>. You publish your paper, along with your replication code, but do not include the code for <code class="language-plaintext highlighter-rouge">regols</code>. Ten years later a researcher tries to replicate your analysis. The code breaks because she has not installed <code class="language-plaintext highlighter-rouge">regols</code>. She opens Stata and types <code class="language-plaintext highlighter-rouge">ssc install regols</code>, which installs the newest version of that command. But, in the intervening ten years the author of <code class="language-plaintext highlighter-rouge">regols</code> fixed a bug in how the standard errors are calculated. When the researcher runs your code with her updated version of <code class="language-plaintext highlighter-rouge">regols</code> she finds your estimates are no longer statistically significant. The researcher does not know whether this happens because you included the wrong dataset with your replication, or because there is mistake in the analysis code, or because you failed to correctly copy/paste your output into your publication, or because… Whatever the reason, she cannot replicate your published results and must now decide what to conclude.</p>
+<p>Many people do not realize how code updates can inhibit replication. Here is an example. Imagine you conduct a Stata analysis using a new, user-written estimation command called, say, <code class="language-plaintext highlighter-rouge">regols</code>. You publish your paper and include your replication code, but you do not include the code for <code class="language-plaintext highlighter-rouge">regols</code>. Ten years later a researcher tries to replicate your analysis. The code fails because she has not installed <code class="language-plaintext highlighter-rouge">regols</code>. She opens Stata and types <code class="language-plaintext highlighter-rouge">ssc install regols</code>, which installs the latest version of the command. However, in the intervening ten years, the author of <code class="language-plaintext highlighter-rouge">regols</code> fixed a bug in the calculation of standard errors. When the researcher runs your code with her updated version of <code class="language-plaintext highlighter-rouge">regols</code>, she finds that your estimates are no longer statistically significant. The researcher is unsure whether this discrepancy is due to an incorrect dataset, a mistake in the analysis code, an error that arose when copy/pasting your output into your publication, or… Whatever the reason, she cannot replicate your published results and must decide how to interpret this failure.</p>
 
 <p>Stata takes version control <a href="https://www.stata.com/features/integrated-version-control/">seriously</a>. You should always include a <code class="language-plaintext highlighter-rouge">version</code> statement in your <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a>. Writing <code class="language-plaintext highlighter-rouge">version 15</code> instructs all future versions of Stata to execute its functions the same way Stata 15 did. However, most add-on (user-written) packages are not version controlled.  To address this, I include a script called <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/_install_stata_packages.do">_install_stata_packages.do</a> in all my working projects. This script installs copies of any user-written packages used by the project into a subdirectory of the project folder: <strong>analysis/scripts/libraries/stata</strong>. Rerunning this script will install updated versions of these add-ons as desired. I delete this script when my project is ready to be published, which effectively locks down the code for these user-written packages and ensures I can replicate my Stata analysis forever into the future. In addition, including these user-written packages ensures my code will run on a non-networked computer that does not have access to the internet.</p>
 
@@ -467,14 +467,14 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
   <p>Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.</p>
 </div>
 
-<p>I am unaware of a version control statement for R, which means the behavior of its built-in functions may <a href="https://f.briatte.org/r/change-in-sample-function-r-3-6-0">depend</a> on what version of R you are running. As a second-best solution, my <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a> uses the Stata add-on command <a href="https://github.com/reifjulian/rscript">rscript</a> to check whether the user (1) is running a sufficiently recent version of R; and (2) has installed R libraries required by my analysis, such as tidyverse. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as tidyverse are very large (hundreds of megabytes) and–if you want to ensure cross-platform replicability–need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project’s file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README</a>, the user can install these packages in three different ways:</p>
+<p>I am unaware of a version control statement for R, which means the behavior of its built-in functions may <a href="https://f.briatte.org/r/change-in-sample-function-r-3-6-0">depend</a> on what version of R you are running. As a second-best solution, my <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a> uses the Stata add-on command <a href="https://github.com/reifjulian/rscript">rscript</a> to check whether the user (1) is running a sufficiently recent version of R; and (2) has installed R libraries required by my analysis, such as <code class="language-plaintext highlighter-rouge">tidyverse</code>. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as <code class="language-plaintext highlighter-rouge">tidyverse</code> are very large (hundreds of megabytes) and–if you want to ensure cross-platform replicability–need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project’s file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project <a href="https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf">README</a>, the user can install these packages in three different ways:</p>
 <ol>
   <li>Manually by typing, e.g., <code class="language-plaintext highlighter-rouge">install.packages(“tidyverse”)</code> at the R prompt</li>
   <li>Automatically by opening R and running <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a></li>
-  <li>Automatically by uncommenting line 53 of <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">run.do</a></li>
+  <li>Automatically by uncommenting line 44 of <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">run.do</a></li>
 </ol>
 
-<p>If you don’t mind potentially using up lots of disk space and want to ensure reproducibility, you can install your R packages in the project subdirectory. See the commented out code in <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a> for an example. Following this example will result in a folder structure that looks like this:</p>
+<p>If you don’t mind using up extra disk space and want to ensure reproducibility, you can install your R packages in the project subdirectory. See the commented out code in <a href="https://github.com/reifjulian/my-project/blob/master/analysis/scripts/programs/_install_R_packages.R">_install_R_packages.R</a> for an example. Following this example will result in a folder structure that looks like this:</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 └── analysis/
@@ -505,7 +505,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 
 <p>There are many ways to automate tables in Stata. Below I present my preferred method, which uses Stata add-ons I developed for prior projects. This method is targeted at people who use LaTeX and desire flexible control over their table formatting; users interested only in learning about how to save regression results can read about <code class="language-plaintext highlighter-rouge">regsave</code> and skip the part about <code class="language-plaintext highlighter-rouge">texsave</code>. For examples of the kinds of tables you can automate in Stata using my add-ons, see my papers on <a href="https://www.nber.org/workplacewellness/s/IL_Wellness_Study_1.pdf">workplace wellness</a> or <a href="https://julianreif.com/research/reif.aeri.2021.driving.pdf">teenage driving</a>. Popular alternatives to my add-ons include <a href="http://repec.sowi.unibe.ch/stata/estout/index.html">estout</a> and <a href="https://www.princeton.edu/~otorres/Outreg2.pdf">outreg2</a>.</p>
 
-<p>My method separates automation into two distinct steps. The first step uses <a href="https://github.com/reifjulian/regsave">regsave</a> to save regression output to a file. The second step uses <a href="https://github.com/reifjulian/texsave">texsave</a> to save the output in LaTeX format. In-between these two steps you can use Stata’s built-in data manipulation commands to organize your table however you like.</p>
+<p>My method separates table automation into two distinct steps. The first step uses <a href="https://github.com/reifjulian/regsave">regsave</a> to save regression output to a file. The second step uses <a href="https://github.com/reifjulian/texsave">texsave</a> to save the output in LaTeX format. In-between these two steps you can use Stata’s built-in data manipulation commands to organize your table however you like.</p>
 
 <h2 id="regsave">regsave</h2>
 
@@ -626,7 +626,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
 
 <h1 id="submission-checklist">Submission checklist</h1>
 
-<p>You completed your analysis, wrote up your results, and are ready to submit to a journal! Before doing so, check that all your numbers are reproducible. If there are any mistakes in the code, better to find them now rather than later! Follow these steps to replicate your analysis:</p>
+<p>You’ve completed your analysis, written up your results, and are ready to submit to a journal! Before doing so, ensure that all your numbers are reproducible. If there are any mistakes in the code, it’s better to catch them now rather than later! Follow these steps to replicate your analysis:</p>
 
 <ol>
   <li>
@@ -657,7 +657,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <ul>
       <li>Title and authors of the paper</li>
       <li>Required software, including version numbers</li>
-      <li>Clear instructions for how to run the analysis</li>
+      <li>Clear instructions on how to run the analysis</li>
       <li>Description of the raw data and where it is stored</li>
       <li>Explanations for missing data (e.g., data are confidential or proprietary) and how to obtain them</li>
       <li>Description of each script</li>
@@ -683,7 +683,7 @@ A typical analysis starts with raw data (e.g., a dataset downloaded from the web
     <p>Never use hard-coded paths like <strong>C:/Users/jreif/Dropbox/my-project</strong>. All pathnames should reference a global variable defined either in your Stata profile or in your <a href="https://github.com/reifjulian/my-project/blob/master/analysis/run.do">master script</a>. Anyone should be able to run your entire analysis from their computer without having to edit any scripts, with the exception of defining a single global variable in <strong>run.do</strong>.</p>
   </li>
   <li>
-    <p>Avoid spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!)</p>
+    <p>Avoid using spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!) Using lowercase letters and underscores or hyphens can help prevent these problems.</p>
   </li>
   <li>
     <p>Include <code class="language-plaintext highlighter-rouge">set varabbrev off</code> in your Stata profile.  This helps you avoid mistakes such as accidently <a href="https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf">referencing the wrong variable</a>.</p>
