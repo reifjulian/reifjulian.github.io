@@ -1,0 +1,201 @@
+[
+  {
+    "title": "Teenage Driving, Mortality, and Risky Behaviors",
+	"coauthors": "Jason Huh",
+    "publication": "*American Economic Review: Insights*, December 2021, 3(4): 523-39",
+	"media": [
+	  "[AEA Research Highlight](https://www.aeaweb.org/research/teen-driving-mortality-risky-behavior)",
+	],	
+	"other": [
+	  "[Article](https://www.aeaweb.org/articles?id=10.1257/aeri.20200653)",	
+	  "[Manuscript](../research/reif.aeri.2021.driving.pdf)",
+	  "[Data and code](https://github.com/reifjulian/driving)"
+	],
+	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that total mortality rises by 5.84 deaths per 100,000 (15%) at the minimum legal driving age cutoff, driven by an increase in motor vehicle fatalities of 4.92 deaths per 100,000 (44%). We also find that poisoning deaths, which are caused primarily by drug overdoses, rise by 0.31 deaths per 100,000 (29%) at the cutoff and that this effect is concentrated among females. Our findings show that teenage driving contributes to sex differences in risky drug use behaviors.",
+  },
+
+  {	  
+    "title": "Measuring the COVID-19 Mortality Burden in the United States: A Microsimulation Study",
+	"coauthors": "Hanke Heun-Johnson, Bryan Tysinger, and Darius Lakdawalla",
+    "publication": "*Annals of Internal Medicine*, 21 September 2021",
+	"media": [
+	  "[The Hill](https://thehill.com/policy/healthcare/573163-covid-19-pandemic-has-robbed-americans-of-9-million-birthdays-researcher)",
+	  "[Washington Post](https://www.washingtonpost.com/politics/2021/09/21/hidden-cost-coronavirus-death-toll-younger-americans/)",
+	  "[...](https://annals.altmetric.com/details/113766393/news)"
+	],
+	"other": [
+	  "[Article](https://www.acpjournals.org/doi/pdf/10.7326/M21-2239)",
+	  "[Manuscript](../research/reif.aim.2021.covid.pdf)",
+	  "[Supplementary materials](../research/reif.aim.2021.covid.supplements.pdf)",
+	  "[Data and code](https://www.openicpsr.org/openicpsr/project/147965/version/V1/view)",
+	],		
+	"abstract": "A full assessment of the COVID-19 pandemic’s mortality burden requires measuring years of life lost (YLLs) and accounting for quality-of-life differences. We use a state-transition microsimulation model to measure YLLs and quality-adjusted life-years (QALYs) lost from the COVID-19 pandemic for the US population ages 25 and over. Our estimates account for the age, sex, and race/ethnicity of decedents, along with: obesity, smoking behavior, lung disease, heart disease, diabetes, cancer, stroke, hypertension, dementia, and nursing home residence. We estimate that the COVID-19 pandemic resulted in 6.62 million QALYs lost (9.08 million YLLs) through March 13, 2021, with 3.6 million (54%) lost by those ages 25-64. The toll on Black and Hispanic communities was the greatest, especially among men 65+, who lost 1,138 and 1,371 QALYs per 10,000. Absent the pandemic, 38% of decedents would have experienced at or above-average life expectancies for their age-sex-race/ethnicity subgroup. Beyond simply excess deaths alone, the COVID-19 pandemic imposed greater life expectancy burden on those 25-64, including those with or at above-average life expectancies, and disproportionate burden on Black and Hispanic communities.",
+  },
+
+  {
+    "title": "Emergency Visits for Thunderstorm-Related Respiratory Illnesses Among Older Adults",
+	"coauthors": "Eric Zou, Christopher Worsham, Nolan Miller, David Molitor, and Anupam Jena",
+    "publication": "*JAMA Internal Medicine*, August 2020, 180(9): 1248-1250",
+	"media": [
+	  "[CNN](https://www.cnn.com/2020/08/10/health/thunderstorm-asthma-trnd-wellness)",
+	  "[Wall Street Journal](https://www.wsj.com/science/environment/the-surprising-link-between-thunderstorms-and-asthma-9b839319)",
+	  "[WebMD](https://www.webmd.com/asthma/news/20200811/as-climate-change-intensifies-storms-seniors-health-could-suffer-study)",
+	  "[...](https://jamanetwork.altmetric.com/details/88001113/news)",
+	],
+	"other": [
+	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2769087)",
+	  "[Manuscript](../research/reif.jamaim.2020.thunderstorm.pdf)"
+	],		
+	"abstract": "Thunderstorm-related atmospheric changes are expected to increase in severity with rising global temperatures. Although large-scale evidence is limited, vulnerable populations, such as older adults or those with common chronic respiratory diseases, like asthma or chronic obstructive pulmonary disease (COPD), are expected to be susceptible to negative health effects from these changes. The objective of this study was to determine whether increases in emergency department (ED) visits for acute respiratory illnesses occur among Medicare beneficiaries in the days surrounding thunderstorms across the continental US.",
+  },
+  
+  {
+    "title": "Effects of a Workplace Wellness Program on Employee Health, Health Beliefs, and Medical Use: A Randomized Clinical Trial",
+	"coauthors": "David Chan, Damon Jones, Laura Payne, and David Molitor",
+    "publication": "*JAMA Internal Medicine*, May 2020, 180(7): 952-960",
+	"media": [
+	  "[Health Affairs](https://www.healthaffairs.org/do/10.1377/hblog20200617.824130)",
+	  "[Inside Higher Ed](https://www.insidehighered.com/quicktakes/2020/06/01/university-wellness-plans-dont-work-so-well)",
+	  "[Kaiser Family Foundation](https://www.kff.org/private-insurance/issue-brief/trends-in-workplace-wellness-programs-and-evolving-federal-standards/)",
+	  "[...](https://jamanetwork.altmetric.com/details/82771201/news)",
+	],
+	"other": [
+	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2765690?guestAccessKey=e5e8e875-c27f-44c4-a5b1-bea7ea27af57)",
+	  "[Manuscript](../research/reif.jamaim.2020.wellness.pdf)",
+	  "[Study website](https://www.nber.org/programs-projects/projects-and-centers/illinois-workplace-wellness)",
+	  "[Data and code](https://github.com/reifjulian/illinois-wellness-data/tree/master/replications/jamaim_2020)"
+	],		
+	"abstract": "Many employers use workplace wellness programs to improve employee health and reduce medical costs, but randomized evaluations of their efficacy are rare. This randomized clinical trial of 4834 employees of the University of Illinois at Urbana-Champaign was conducted from August 9, 2016, to April 26, 2018. Members of the treatment group (n=3300) received incentives to participate in the workplace wellness program. Members of the control group (n=1534) did not participate in the wellness program. The 2-year workplace wellness program included financial incentives and paid time off for annual on-site biometric screenings, annual health risk assessments, and ongoing wellness activities (eg, physical activity, smoking cessation, and disease management). Measures taken at 12 and 24 months included clinician-collected biometrics (16 outcomes), administrative claims related to medical diagnoses (diabetes, hypertension, and hyperlipidemia) and medical use (office visits, inpatient visits, and emergency department visits), and self-reported health behaviors and health beliefs (14 outcomes). Among the 4834 participants, no significant effects of the program on biometrics, medical diagnoses, or medical use were seen after 12 or 24 months. A significantly higher proportion of employees in the treatment group than in the control group reported having a primary care physician after 24 months. The intervention significantly improved a set of employee health beliefs on average: participant beliefs about their chance of having a body mass index greater than 30, high cholesterol, high blood pressure, and impaired glucose level jointly decreased by 0.07 SDs; however, effects on individual belief measures were not significant."
+  },
+  
+  {
+    "title": "The Long-Run Dynamics of Electricity Demand: Evidence from Municipal Aggregation",
+	"coauthors": "Tatyana Deryugina and Alex MacKay",
+    "publication": "*American Economic Journal: Applied Economics*, January 2020, 12(1): 86-114",
+	"media": [
+	  "[Development Impact](https://blogs.worldbank.org/impactevaluations/adversarial-or-long-and-squiggly-test-plausibility-parallel-trends-difference)"
+	],
+	"other": [
+	  "[Article](https://www.aeaweb.org/articles?id=10.1257/app.20180256)",
+	  "[Manuscript](../research/reif.aejapp.2020.electricity.pdf)",
+	  "[Data and code](https://www.aeaweb.org/articles/attachments?retrieve=T4L0Q9GfQFPDW-SUf9ksDUN-bUiQxOB9)"
+	],	
+	"abstract": "We study the dynamics of residential electricity demand by exploiting a natural experiment that produced large and long-lasting price changes in over 250 Illinois communities. Using a flexible difference-in-differences matching approach that accounts for the effect of current, past, and future price changes on current demand, we estimate a one-year price elasticity of -0.16, a two-year elasticity of -0.22, and a long-run elasticity between -0.31 and -0.35. We also provide compelling evidence that consumers increased electricity usage ahead of these announced price changes. Our findings highlight the importance of accounting for consumption dynamics when evaluating energy policy."
+  },
+  
+  {
+    "title": "The Mortality and Medical Costs of Air Pollution: Evidence from Changes in Wind Direction",
+	"coauthors": "Tatyana Deryugina, Garth Heutel, Nolan Miller, and David Molitor",
+    "publication": "*American Economic Review*, December 2019, 109(12): 4178-4219",
+	"award": "Winner: [2020 iHEA Arrow Award for Best Paper in Health Economics](https://healtheconomics.org/awards/)",
+	"media": [
+	  "[Bloomberg](https://www.bloomberg.com/opinion/articles/2019-08-14/air-pollution-should-cause-conservatives-to-rethink-regulation)",
+	  "[Gizmodo](https://earther.gizmodo.com/reducing-air-pollution-saved-the-us-24-billion-on-elde-1841267976)",
+	  "[Medium](https://medium.com/luminate/air-pollutions-comeback-is-double-trouble-especially-for-children-91fa6f52a5bf)"
+	],
+	"other": [
+	  "[Article](https://www.aeaweb.org/articles?id=10.1257/aer.20180279)",
+	  "[Manuscript](../research/reif.aer.2019.pollution.pdf)",
+	  "[Errata](../research/reif.aer.2019.pollution.errata.pdf)",
+	  "[Slides](../research/reif.aer.2019.pollution.slides.pptx)",
+	  "[Data and code](https://www.aeaweb.org/doi/10.1257/aer.20180279.data)"
+	],	
+	"abstract": "We estimate the causal effects of acute fine particulate matter exposure on mortality, health care use, and medical costs among the US elderly using Medicare data. We instrument for air pollution using changes in local wind direction and develop a new approach that uses machine learning to estimate the life-years lost due to pollution exposure. Finally, we characterize treatment effect heterogeneity using both life expectancy and generic machine learning inference. Both approaches find that mortality effects are concentrated in about 25 percent of the elderly population."
+  },
+  
+  {
+    "title": "What Do Workplace Wellness Programs Do? Evidence from the Illinois Workplace Wellness Study",
+	"coauthors": "Damon Jones and David Molitor",
+    "publication": "*Quarterly Journal of Economics*, November 2019, 134(4): 1747-1791",
+	"award": "Winner: [NIHCM Foundation Research Award](https://nihcm.org/awards/research/winners)",
+	"media": [
+	  "[NBER Digest](http://www.nber.org/digest/apr18/apr18.pdf#page=3)",
+	  "[New York Times](https://www.nytimes.com/2018/08/06/upshot/employer-wellness-programs-randomized-trials.html)",
+	  "[Wall Street Journal](https://www.wsj.com/articles/the-problem-with-employee-wellness-programs-11645196400)",
+	  "[Washington Post](https://www.washingtonpost.com/opinions/your-workplace-wellness-program-probably-isnt-making-you-healthier/2018/08/07/ef1b254e-9a84-11e8-8d5e-c6c594024954_story.html)",
+	  "[...](https://www.nber.org/programs-projects/projects-and-centers/workplace-wellness/workplace-wellness-media)",
+	],
+	"other": [
+	  "[Article](https://academic.oup.com/qje/article/134/4/1747/5550759)",
+	  "[Manuscript](https://www.nber.org/sites/default/files/2020-02/IL_Wellness_Study_1.pdf)",
+	  "[Study website](https://www.nber.org/programs-projects/projects-and-centers/illinois-workplace-wellness)",
+	  "[Slides](../research/reif.qje.2019.wellness.slides.pdf)",
+	  "[Data and code](https://github.com/reifjulian/illinois-wellness-data/tree/master/replications/qje_2019)"
+	],	
+	"abstract": "Workplace wellness programs cover over 50 million US workers and are intended to reduce medical spending, increase productivity, and improve well-being. Yet, limited evidence exists to support these claims. We designed and implemented a comprehensive workplace wellness program for a large employer and randomly assigned program eligibility and financial incentives at the individual level for nearly 5,000 employees. We find strong patterns of selection: during the year prior to the intervention, program participants had lower medical expenditures and healthier behaviors than nonparticipants. The program persistently increased health screening rates, but we do not find significant causal effects of treatment on total medical expenditures, other health behaviors, employee productivity, or self-reported health status after more than two years. Our 95 percent confidence intervals rule out 84 percent of previous estimates on medical spending and absenteeism."
+  },
+  
+  {
+    "title": "A Model of Addiction and Social Interactions",
+	"coauthors": "",
+    "publication": "*Economic Inquiry*, April 2019, 57(2): 759-773",
+	"other": [
+	  "[Article](http://onlinelibrary.wiley.com/doi/10.1111/ecin.12709)",
+	  "[Manuscript](../research/reif.ei.2019.addiction.pdf)",
+	  "[Data and code](../research/reif.ei.2019.addiction.replication)"
+	],	
+	"abstract": "Many consumer behaviors are both addictive and social. Understanding how these two phenomena interact informs basic models of human behavior, and matters for policymakers when the behavior is regulated. I develop a new model of demand that incorporates both addiction and social interactions and show that, under certain conditions, social interactions reinforce the effects of addiction. I also show how the dynamics introduced by addiction can solve the pernicious problem of identifying the causal effects of social interactions. I then use the model to illustrate a new and important identification problem for studies of social interactions: existing estimates cannot be used to draw welfare conclusions or even to deduce whether social interactions increase aggregate demand. Finally, I develop a method which allows researchers to distinguish between two common forms of social interactions and draw welfare conclusions."
+  },
+  
+  {
+    "title": "Did Medicare Part D Reduce Mortality?",
+	"coauthors": "Jason Huh",
+    "publication": "*Journal of Health Economics*, May 2017, 53: 17-37",
+	"other": [
+	  "[Article](http://www.sciencedirect.com/science/article/pii/S0167629617300577)",
+	  "[Manuscript](../research/reif.jhe.2017.medicare.pdf)",
+	  "[Data and code](../research/reif.jhe.2017.medicare.replication.zip)"
+	],	
+	"abstract": "We investigate the implementation of Medicare Part D and estimate that this prescription drug benefit program reduced elderly mortality by 2.2 percent annually. This was driven primarily by a reduction in cardiovascular mortality, the leading cause of death for the elderly. There was no effect on deaths due to cancer, a condition whose drug treatments are covered under Medicare Part B. We validate these results by demonstrating that the changes in drug utilization following the implementation of Medicare Part D match the mortality patterns we observe. We calculate that the value of the mortality reduction is equal to $5 billion per year."
+  },
+  
+  {
+    "title": "The Insurance Value of Medical Innovation",
+	"coauthors": "Darius Lakdawalla and Anup Malani",
+    "publication": "*Journal of Public Economics*, January 2017, 145: 94-102",
+	"policy": [
+	  "[ICER technical brief](https://icer.org/wp-content/uploads/2020/10/Valuing-a-Cure-Technical-Brief.pdf)",
+	],	
+	"other": [
+	  "[Article](http://www.sciencedirect.com/science/article/pii/S0047272716301864)",
+	  "[Manuscript](../research/reif.jpube.2017.insurance.pdf)",
+	  "[Data and code](../research/reif.jpube.2017.insurance.replication.zip)"
+	],	
+	"abstract": "Economists think of medical innovation as a valuable but risky good, producing health benefits but increasing financial risk for consumers and healthcare payers. This perspective overlooks how innovation can lower physical risks borne by healthy patients facing the prospect of future disease. We present an alternative framework that accounts for all these sources of value and links them to the value of healthcare insurance. We show that any innovation worth buying reduces overall risk and generates positive insurance value on its own. We conduct a stylized numerical exercise to assess the potential empirical significance of our insights. Our calculations suggest that conventional methods meaningfully understate the value of historical health gains and disproportionately undervalue treatments for the most severe illnesses, where physical risk to consumers is the costliest. These calculations also suggest that the value of physical insurance from new technologies may exceed the financial spending risk that they pose."
+  },
+  
+  {
+    "title": "Interpreting Pre-trends as Anticipation: Impact on Estimated Treatment Effects from Tort Reform",
+	"coauthors": "Anup Malani",
+    "publication": "*Journal of Public Economics*, April 2015, 124: 1-17",
+	"other": [
+	  "[Article](http://www.sciencedirect.com/science/article/pii/S0047272715000122)",
+	  "[Manuscript](../research/reif.jpube.2015.anticipation.pdf)",
+	  "[Data and code](../research/reif.jpube.2015.anticipation.replication.zip)"
+	],	
+	"abstract": "While conducting empirical work, researchers sometimes observe changes in outcomes before adoption of a new policy. The conventional diagnosis is that treatment is endogenous. This observation is also consistent, however, with anticipation effects that arise naturally out of many theoretical models. This paper illustrates that distinguishing endogeneity from anticipation matters greatly when estimating treatment effects. It provides a framework for comparing different methods for estimating anticipation effects and proposes a new set of instrumental variables to address the problem that subjects' expectations are unobservable. Finally, this paper examines a specific set of tort reforms that was not targeted at physicians but was likely anticipated by them. Interpreting pre-trends as evidence of anticipation increases the estimated effect of these reforms by a factor of two compared to a model that ignores anticipation."
+  },
+  
+  {
+    "title": "Incentives for Reporting Disease Outbreaks",
+	"coauthors": "Ramanan Laxminarayan and Anup Malani",
+    "publication": "*PLOS One*, March 2014, 9(3): e90290",
+	"other": [
+	  "[Article](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0090290)",
+	  "[Manuscript](../research/reif.plosone.2014.incentives.pdf)",
+	  "[Data and code](../research/reif.plosone.2014.incentives.replication.zip)"
+	],	
+	"abstract": "Countries face conflicting incentives to report infectious disease outbreaks. Reports of outbreaks can prompt other countries to impose trade and travel restrictions, which has the potential to discourage reporting. However, reports can also bring medical assistance to contain the outbreak, including access to vaccines. We compiled data on reports of meningococcal meningitis from 54 African countries between 1966 and 2002, a period marked by two events: first, a large outbreak reported from many countries in 1987 associated with the Hajj that resulted in more stringent requirements for meningitis vaccination among pilgrims; and second, another large outbreak in Sub-Saharan Africa in 1996 that led to a new international mechanism to supply vaccines to countries reporting a meningitis outbreak. We find that the Hajj vaccination requirements started in 1988 were associated with reduced reporting, especially among countries with relatively fewer cases reported between 1966 and 1979. After the vaccine provision mechanism was in place in 1996, reporting among countries that had previously not reported meningitis outbreaks increased. These results indicate that countries may respond to changing incentives to report outbreaks when they can do so. In the long term, these incentives are likely to be more important than surveillance assistance in prompt reporting of outbreaks."
+  },
+  
+  {
+    "title": "The Relation Between Variance and Information Rent in Auctions",
+	"coauthors": "Brett Katzman and Jesse Schwartz",
+    "publication": "*International Journal of Industrial Organization*, March 2010, 28(2): 127-130",
+	"other": [
+	  "[Article](http://www.sciencedirect.com/science/article/pii/S0167718709000630)",
+	  "[Manuscript](../research/reif.ijio.2010.auctions.pdf)",
+	],	
+	"abstract": "This paper examines the conventional wisdom, expressed in McAfee and McMillan's (1987) widely cited survey paper on auctions, that links increased variance of bidder values to increased information rent. We find that although the conventional wisdom does indeed hold in their (1986) model of a linear contract auction, this relationship is an artifact of that particular model and cannot be generalized. Using Samuelson's (1987) model, which is similar but allows for unobservable costs, we show that increased variance does not always imply increased information rent. Finally, we give the appropriate measure of dispersion (different from variance) that provides the link between the bidder value distribution and information rent."
+  },  
+]

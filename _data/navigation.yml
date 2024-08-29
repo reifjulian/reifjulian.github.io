@@ -1,0 +1,49 @@
+main:
+  - title: "Home"
+    url: /    
+  - title: "CV"
+    url: /cv/reif.cv.pdf  
+  - title: "Research"
+    url: /research/
+  - title: "Software"
+    url: /software/
+    
+    
+guide:
+  - title: Setting up the environment
+    url: /guide/#setting-up-the-environment
+    children:
+      - title: "Dropbox"
+        url: /guide/#dropbox
+      - title: "Stata profile"
+        url: /guide/#stata-profile
+      - title: "R profile"
+        url: /guide/#r-profile
+      - title: "Version control systems"
+        url: /guide/#version-control-systems
+  - title: Organizing the project
+    url: /guide/#organizing-the-project
+    children:
+      - title: "Folder structure"
+        url: /guide/#folder-structure
+      - title: "Programs"
+        url: /guide/#programs
+      - title: "Libraries"
+        url: /guide/#libraries
+      - title: "Stata plugins (advanced)"
+        url: /guide/#stata-plugins-advanced
+  - title: Automating tables
+    url: /guide/#automating-tables
+    children:
+      - title: "regsave"
+        url: /guide/#regsave
+      - title: "texsave"
+        url: /guide/#texsave
+  - title: Submission checklist
+    url: /guide/#submission-checklist
+  - title: Stata coding tips
+    url: /guide/#stata-coding-tips
+  - title: Other helpful links
+    url: /guide/#other-helpful-links
+  - title: Acknowledgments
+    url: /guide/#acknowledgments

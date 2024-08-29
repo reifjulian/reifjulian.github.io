@@ -1,0 +1,48 @@
+[
+
+
+  {
+    "title": "The Long-run Effect of Air Pollution on Survival",
+	"coauthors": "Tatyana Deryugina",
+    "publication": "revisions requested from *American Economic Review*",
+	"media": [
+	  "[NBER Digest](https://www.nber.org/sites/default/files/2024-01/feb24.pdf#page=6)",
+	],	
+	"other": [
+	  "[Manuscript](../research/reif.wp.pollution.pdf)",
+	  "[Slides](../research/reif.wp.pollution.slides.pdf)"
+	],	
+	"abstract": "Many environmental hazards have long-run health effects, but quasi-experimental studies typically measure outcomes and treatment over short time periods. We develop a new framework for quantifying the effect of air pollution exposure on life expectancy. Using changes in wind direction as an instrument for daily sulfur dioxide levels, we first characterize the dynamic mortality effects of short-run exposure. We then incorporate these estimates into a demographic model to quantify the lifelong effects of a permanent reduction in air pollution exposure. Ninety percent of the survival benefits accrue after the first fifty years of life."
+  },
+  
+    {
+    "title": "Health Risk and the Value of Life",
+	"coauthors": "Daniel Bauer and Darius Lakdawalla",
+    "publication": "revisions requested from *Journal of Public Economics*",
+	"other": [
+	  "[Manuscript](../research/reif.wp.healthrisk.pdf)",
+	  "[Data and code](../research/reif.wp.healthrisk.replication.zip)"
+	],	
+	"abstract": "We develop a stochastic life-cycle framework for valuing health and longevity improvements and apply it to data on mortality, quality of life, and medical spending for adults with different comorbidities. Contrary to conventional theory, we find that sick adults are willing to pay over twice as much per quality-adjusted life-year (QALY) to reduce mortality risk than healthy adults, and that prevention of serious illness risk is worth more per QALY than prevention of mild illness risk. Our results provide a rational explanation for why people oppose a single threshold value for rationing care and why they invest less in prevention than in treatment."
+  },
+  
+    {
+    "title": "Access to Credit Reduces the Value of Insurance",
+	"coauthors": "Anup Malani and Sonia Jaffe",
+    "publication": "revisions requested from *Journal of Public Economics*",
+	"other": [
+	  "[Manuscript](../research/reif.wp.accesstocredit.pdf)"
+	],	
+	"abstract": "We analyze the value of insurance when individuals have access to credit markets. Loans allow consumers to smooth financial shocks over time, decreasing the value of consumption smoothing from insurance. We derive formulas for the value of insurance that can be taken to data, and show how that value depends on individual characteristics and features of loans. We estimate that access to a five-year loan decreases the values of community- and experience-rated insurance for the average beneficiary by $232-$366 (58-61%). Even for the sickest decile, this loan access reduces the value of community-rated insurance by $1,099 (17%)."
+  },
+  
+  {
+    "title": "Incentives and Habit Formation in Health Screenings: Evidence from the Illinois Workplace Wellness Study",
+	"coauthors": "Damon Jones and David Molitor",
+    "publication": "",
+	"other": [
+	  "[Manuscript](../research/reif.wp.habitformation.pdf)"
+	],	
+	"abstract": "We study habit formation in annual biometric health screenings using a field experiment that randomly assigned financial incentives to 4,799 employees over three years. Completing the first screening raised subsequent screenings by 32.4-36.0 percentage points (84%-90%) annually. Habit formation was similar whether employees were offered screenings as part of a comprehensive wellness program or just screenings alone, suggesting such habits can develop without frequent interactions. We rule out inattention as an explanation, using a subsample assigned more salient incentives. The long-run effect stems from the initial decision to participate, indicating a habit formation process with a one-shot mechanism."
+  },  
+]

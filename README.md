@@ -13,10 +13,8 @@ I've made the following custom adjustments:
     - Syntax file was created by executing the following Ruby code: `rougify style thankful_eyes > assets/css/syntax.css`
   - Added code to `/_includes/head/custom.html` to use newer Font Awesome icons (version 6.5.2)
   - Added Google Analytics code to `/_includes/head/custom.html`
-  - Added Stata syntax highlighting to Rouge (will be publicly available when Github Pages updates to latest version of Rouge)
-    - In the interim, add `gem "rouge", git: 'https://github.com/reifjulian/rouge', branch: 'stata'` to gemfile
 
-To deploy:
+To deploy a local build:
   1. Compile locally using Ruby: `bundle exec jekyll build`
   1. Copy contents of `_sites/` to root folder
   1. Copy `CNAME` to root folder

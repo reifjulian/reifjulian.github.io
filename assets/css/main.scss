@@ -1,0 +1,48 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+//////////////////
+// Custom css here
+//////////////////
+//$link-color: green;
+//$intro-transition  : none;
+//$global-transition : none;
+
+// Turn off blue underlines for hyperlinks
+a {
+    text-decoration: none;
+}
+
+
+//////////////////
+// Default minimal-mistakes settings
+//////////////////
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+//////////////////
+// More custom css here
+//////////////////
+
+// Make avatar larger in author sidebar
+.author__avatar {
+
+  img {
+	max-width: 100%;
+    border-radius: 0%;
+
+    @include breakpoint($large) {
+	  padding: 0px;
+    }
+  }
+}
+
+// Remove fading from author sidebar
+.sidebar {
+
+  @include breakpoint($large) {
+    opacity: 1;
+  }
+}

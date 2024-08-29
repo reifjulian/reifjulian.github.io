@@ -1,0 +1,100 @@
+[
+
+  {
+    "title": "Geographic differences in the mortality burden of the Covid-19 pandemic",
+	"coauthors": "Hanke Heun-Johnson and Siho Park",
+	"publication": "*IGPA Policy Spotlight*, 27 September 2023",
+	"other": [
+	  "[Article](https://igpa.uillinois.edu/wp-content/uploads/2023/09/IGPA20230731_Spotlight_Geographic_Difference_Mortality_COVID19_R4.pdf)",
+	  "[Manuscript](../research/reif.igpa.2023.covid.pdf)",
+	],	
+	"abstract": "This study examines how the mortality burden of the Covid-19 pandemic varied across US states during the time period April 2020 through December 2022. The disparities were substantial, with figures ranging from 318 years of life lost (YLL) per 10,000 population in New York to 1,285 YLL per 10,000 population in New Mexico. Illinois experienced a loss of 588 YLL per 10,000, situating it within the bottom third of states in terms of total loss of life. Overall, Southern and Western states exhibited the highest YLL, while Northeastern states, the upper Midwest, and the Pacific Northwest exhibited the lowest YLL. States that voted for the 2020 Republican presidential candidate experienced greater losses. This loss of life will have multifaceted implications for public finances.",	
+  },
+
+  {
+    "title": "The hidden cost of Covid-19: years of life lost among the young",
+	"coauthors": "Darius Lakdawalla",
+	"publication": "*Stat News*, 14 October 2021",
+	"other": [
+	  "[Article](https://www.statnews.com/2021/10/14/years-of-life-lost-among-the-young-hidden-cost-covid-19/)",
+	  "[Manuscript](../research/reif.stat.2021.covid.pdf)",
+	],	
+	"abstract": "",	
+  },
+  
+  {
+    "title": "Transparency in an Era of Data-Driven Policy: The Importance of Reproducible Research",
+	"coauthors": "David Molitor",
+	"publication": "*IGPA Policy Spotlight*, 14 October 2021",
+	"other": [
+	  "[Article](https://www.ideals.illinois.edu/items/119685)",
+	  "[Manuscript](../research/reif.igpa.2021.reproducibility.pdf)",
+	],	
+	"abstract": "In this Policy Spotlight, we review the evidence on the reproducibility of published social science research and discuss how to improve the reproducibility of future studies. We also use one of our own published studies to demonstrate how researchers can facilitate reproducibility.",	
+  },  
+
+  {
+    "title": "Economic Policy in President Biden’s First 100 Days",
+	"coauthors": "Nolan Miller",
+	"publication": "*University of Illinois Law Review Online*, 30 April 2021",
+	"other": [
+	  "[Article](https://www.illinoislawreview.org/symposium/first-100-days-biden/economic-policy-in-president-bidens-first-100-days/)",
+	  "[Manuscript](../research/reif.uilawreview.2021.biden.pdf)",
+	],	
+	"abstract": "In this article, we discuss six components of President Biden’s economic agenda: his response to the COVID-19 pandemic, domestic spending priorities, climate policy, tax policy, long-term fiscal policy, and immigration policy.",	
+  },
+
+  {
+    "title": "Air pollution policy should focus on the most vulnerable people, not just the most polluted places",
+	"coauthors": "Tatyana Deryugina, Nolan Miller, and David Molitor",
+	"publication": "*VoxEU*, 13 January 2021",
+	"other": [
+	  "[Article](https://voxeu.org/article/air-pollution-policy-should-focus-most-vulnerable-people-not-just-most-polluted-places)",
+	  "[Manuscript](../research/reif.voxeu.2021.pollution.pdf)",
+	],	
+	"abstract": "Policies aimed at reducing the harmful effects of air pollution on human health typically focus on improving air quality in polluted areas. This column suggests a shift in focus from targeting the most polluted places to serving the most vulnerable people. Basing air quality regulations on pollution levels may be less valuable than reducing air pollution in regions with vulnerable populations. Programmes that reduce poverty or improve access to health care may also lessen the recipients’ susceptibility to acute pollution exposure.",	
+  },
+  
+  {
+    "title": "Employee Wellness Programs: Reply",
+	"coauthors": "Damon Jones and David Molitor",
+	"publication": "*JAMA Internal Medicine*, 21 December  2020",
+	"other": [
+	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2774277)",
+	  "[Manuscript](../research/reif.jamaim.2020.reply.pdf)",
+	]
+  },  
+
+  {
+    "title": "The Illinois Workplace Wellness Study: Reply to Dr. Goetzel",
+	"coauthors": "Damon Jones and David Molitor",
+	"publication": "*American Journal of Health Promotion*, 24 February 2020",
+	"other": [
+	  "[Article](https://journals.sagepub.com/doi/full/10.1177/0890117120906661)",
+	  "[Manuscript](../research/reif.ajhp.2020.reply.pdf)",
+	],	
+	"abstract": "",	
+  },
+  {
+    "title": "Workplace Wellness: New Study Finds No Changes in Health Care Costs",
+	"coauthors": "Damon Jones and David Molitor",
+	"publication": "*Scientific American*, 19 March 2019",
+	"other": [
+	  "[Article](https://www.scientificamerican.com/article/a-reason-to-be-skeptical-of-the-workplace-wellness-industry)",
+	  "[Manuscript](../research/reif.sciam.2019.wellness.pdf)",
+	],	
+	"abstract": "",	
+  },
+
+  {
+    "title": "Tools to Address Illinois Revenue: Increasing Sin Taxes",
+	"publication": "*State Tax Notes*, June 2014, 707-711",
+	"other": [
+	  "[Article](http://www.taxnotes.com/state-tax-notes/excise-taxation/tools-address-illinois-revenue-increasing-sin-taxes/2014/06/23/483976)",
+	  "[Manuscript](../research/reif.stn.2014.sintax.pdf)",
+	],	
+	"abstract": "In this report, I estimate the revenue that could be generated by increasing Illinois sin taxes on cigarettes, alcohol, and gambling. I discuss the efficiency and distributional effects of those taxes, as well as potential savings from a reduction in cigarette and alcohol consumption.",	
+  },
+
+
+]
