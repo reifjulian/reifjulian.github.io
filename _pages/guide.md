@@ -71,7 +71,7 @@ I write most of my code in Stata, including C++ plugins such as [strgroup](https
 Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the R prompt.
 
 {: .notice--info}
-**R Tip:** Additional details regarding how R sets up its environment at startup are available in this [R programming guide](https://web.archive.org/web/20190907041505/https://csgillespie.github.io/efficientR/3-3-r-startup.html#r-startup).
+**R Tip:** Additional details regarding how R sets up its environment at startup are available [here](https://cran.r-project.org/web/packages/startup/vignettes/startup-intro.html).
 
 Here are the contents of my R profile, stored in **C:/Users/jreif/Documents/.Rprofile**:
 ```R
