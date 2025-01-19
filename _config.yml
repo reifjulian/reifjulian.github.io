@@ -59,7 +59,7 @@ author:
   name   : "Julian Reif"
   avatar : "/assets/images/reif.jpg"
   bio    : "Associate Professor of Finance and Economics"
-  links:
+  links:    
     - label: "CV"
       icon: "fa fa-fw fa-file-pdf"
       url: "/cv/reif.cv.pdf"
@@ -72,6 +72,12 @@ author:
     - label: "Bluesky"
       icon: "fa-brands fa-bluesky"
       url: "https://bsky.app/profile/julianreif.bsky.social"
+    - label: "Email"
+      icon: "fas fa-envelope"
+      url: "mailto:jreif@illinois.edu"
+    - label: "Phone"
+      icon: "fas fa-phone"
+      url: "tel:+12173000169"
 #    - label: "Twitter"
 #      icon: "fab fa-fw fa-twitter-square"
 #      url: "https://twitter.com/JulianReif"
