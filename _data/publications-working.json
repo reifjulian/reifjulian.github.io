@@ -36,13 +36,13 @@
   },
   
   {
-    "title": "Incentives and Habit Formation in Health Screenings: Evidence from the Illinois Workplace Wellness Study",
+    "title": "How Do Habits Form? Experimental Evidence from Health Screenings",
 	"coauthors": "Damon Jones and David Molitor",
     "publication": "",
 	"other": [
 	  "[Manuscript](../research/reif.wp.habitformation.pdf)"
 	],	
-	"abstract": "We study habit formation in annual biometric health screenings using a field experiment that randomly assigned financial incentives to 4,799 employees over three years. Completing the first screening raised subsequent screenings by 32.4-36.0 percentage points (84%-90%) annually. Habit formation was similar whether employees were offered screenings as part of a comprehensive wellness program or just screenings alone, suggesting such habits can develop without frequent interactions. We rule out inattention as an explanation, using a subsample assigned more salient incentives. The long-run effect stems from the initial decision to participate, indicating a habit formation process with a one-shot mechanism."
+	"abstract": "We study habit formation in annual biometric health screenings using a field experiment that randomly assigned financial incentives to 4,799 employees over three years. We document evidence of strong habit formation from initial exposure: completing the first screening raised subsequent screening rates by 32.4-36.0 percentage points (84%-90%) in the second and third years, with no evidence of decay. In contrast, completing the second screening had a minimal effect on screenings in the third year. This pattern contradicts an addiction mechanism, which predicts a stronger relationship for behaviors closer in time, and instead supports an experience-good model where consumers learn the value of screening through first exposure."
   },
   
   {
