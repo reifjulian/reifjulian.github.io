@@ -11,7 +11,7 @@
 	  "[Manuscript](../research/reif.wp.pollution.pdf)",
 	  "[Slides](../research/reif.wp.pollution.slides.pdf)"
 	],	
-	"abstract": "Many environmental hazards have long-run health effects, but quasi-experimental studies typically measure outcomes and treatment over short time periods. We develop a new framework for quantifying the effect of air pollution exposure on life expectancy. Using changes in wind direction as an instrument for daily sulfur dioxide levels, we first characterize the dynamic mortality effects of short-run exposure. We then incorporate these estimates into a demographic model to quantify the lifelong effects of a permanent reduction in air pollution exposure. Ninety percent of the survival benefits accrue after the first fifty years of life."
+	"abstract": "Many environmental hazards have long-run health effects, but quasi-experimental studies typically measure outcomes and treatment over short time periods. We develop a new framework for quantifying the effect of air pollution exposure on life expectancy. Using daily changes in wind direction as an instrument for air pollution, we first characterize the dynamic mortality effects of short-run exposure. We then incorporate these estimates into a demographic model to quantify the lifelong effects of a permanent reduction in air pollution exposure. Ninety percent of the survival benefits accrue after the first fifty years of life."
   },
   
     {
