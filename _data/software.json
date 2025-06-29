@@ -2,7 +2,7 @@
   {
     "Package": "[TextFileLoad](https://github.com/reifjulian/TextFileLoad)",
 	"Language": "C++",
-    "Description": "`TextFileLoad` is an ANSI-compliant class that enables programs to import data from text files in a user-friendly manner. Data can be loaded by column name or number and are automatically converted to the appropriate data types."
+    "Description": "`TextFileLoad` is an ANSI-compliant class for importing structured data from text files."
   },  
   {
     "Package": "[appendfile](https://github.com/reifjulian/appendfile)",
@@ -13,6 +13,11 @@
     "Package": "[autorename](https://github.com/reifjulian/autorename)",
 	"Language": "Stata",
     "Description": "`autorename` renames variables using a row of data. This can be useful when reading oddly formatted datasets."
+  },
+  {
+    "Package": "[dobatch](https://github.com/reifjulian/dobatch)",
+	"Language": "Stata",
+    "Description": "`dobatch` launches a do-file as a background batch process, allowing multiple do-files to execute in parallel."
   },  
   {
     "Package": "[regsave](https://github.com/reifjulian/regsave)",
