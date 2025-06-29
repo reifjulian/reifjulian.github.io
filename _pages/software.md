@@ -14,7 +14,7 @@ My Stata command `wyoung` (coauthored with Damon Jones and David Molitor) adjust
 # Software packages
 Source code and installation instructions for all my software packages are available on [GitHub](https://github.com/reifjulian). Stata packages can be installed using the `ssc` command. For example, type `ssc install regsave, replace` at the Stata prompt to install the `regsave` package. To install the latest version of all my Stata packages, execute the following code:
 ```stata
-foreach cmd in appendfile autorename regsave rscript sortobs strgroup svret texsave wyoung {
+foreach cmd in appendfile autorename dobatch regsave rscript sortobs strgroup svret texsave wyoung {
 
   ssc install `cmd', replace
   
