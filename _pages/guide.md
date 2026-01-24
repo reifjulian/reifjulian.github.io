@@ -41,7 +41,7 @@ Stata automatically runs the script **profile.do** upon launch (if found).
 
 <img src="../assets/guide/stata_profile.PNG" width="100%" title="Stata profile">
 
-**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/ado/personal/profile.do**.
+**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/users/jreif/ado/personal/profile.do**.
 
 Here are the contents of the Stata profile stored on my PC:
 ```stata
