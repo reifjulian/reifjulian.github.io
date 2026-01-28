@@ -41,7 +41,7 @@ Stata automatically runs the script **profile.do** upon launch (if found).
 
 <img src="../assets/guide/stata_profile.PNG" width="100%" title="Stata profile">
 
-**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/users/jreif/ado/personal/profile.do**.
+**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my Mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/users/jreif/ado/personal/profile.do**.
 
 Here are the contents of the Stata profile stored on my PC:
 ```stata
@@ -62,7 +62,7 @@ set doeditbackup off
 global MyProject "$DROPBOX/my-project/analysis"
 ```
 
-The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata-coding-tips). The second line speeds up reshape (requires Stata 18 or later) and the third line instructs Stata not to create do-file editor backup (\*.stswp) files. The last line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to create a new global once per project.
+The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata-coding-tips). The second line speeds up reshape (requires Stata 18 or later) and the third line instructs Stata not to create do-file editor backup (\*.stswp) files. The last line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice, my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to create a new global once per project.
 
 ## R profile
 
@@ -100,6 +100,7 @@ Version control systems like Git and SVN are essential for large software develo
 ## Folder structure
 
 A project includes lots of different parts: the analysis, the manuscript, related literature, grant proposals, etc. The analysis, which includes both code and data, should be kept in a distinct location. Keeping the analysis separate makes it easier to create a standalone replication package when the project is complete.
+
 A typical analysis starts with raw data (e.g., a dataset downloaded from the web). Scripts process these data and then run the analysis. Scripts and data should be stored in separate folders. The core directory structure for my analyses looks like this:
 
 
@@ -170,7 +171,7 @@ My code frequently employs user-written (add-on) Stata commands, such as [regsav
 
 Many people do not realize how code updates can inhibit replication. Here is an example. Imagine you conduct a Stata analysis using a new, user-written estimation command called, say, `regols`. You publish your paper and include your replication code, but you do not include the code for `regols`. Ten years later a researcher tries to replicate your analysis. The code fails because she has not installed `regols`. She opens Stata and types `ssc install regols`, which installs the latest version of the command. However, in the intervening ten years, the author of `regols` fixed a bug in the calculation of standard errors. When the researcher runs your code with her updated version of `regols`, she finds that your estimates are no longer statistically significant. The researcher is unsure whether this discrepancy is due to an incorrect dataset, a mistake in the analysis code, an error that arose when copy/pasting your output into your publication, or... Whatever the reason, she cannot replicate your published results and must decide how to interpret this failure.
 
-Stata takes version control [seriously](https://www.stata.com/features/integrated-version-control/). You should always include a `version` statement in your [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do). Writing `version 15` instructs all future versions of Stata to execute its functions the same way Stata 15 did. However, most add-on (user-written) packages are not version controlled.  To address this, I include a script called [_install_stata_packages.do](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/_install_stata_packages.do) in all my working projects. This script installs copies of any user-written packages used by the project into a subdirectory of the project folder: **analysis/scripts/libraries/stata**. Rerunning this script will install updated versions of these add-ons as desired. I delete this script when my project is ready to be published, which effectively locks down the code for these user-written packages and ensures I can replicate my Stata analysis forever into the future. In addition, including these user-written packages ensures my code will run on a non-networked computer that does not have access to the internet.
+Stata takes version control [seriously](https://www.stata.com/features/integrated-version-control/). You should always include a `version` statement in your [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do). Writing `version 15` instructs all future versions of Stata to execute its functions the same way Stata 15 did. However, most add-on (user-written) packages are not version controlled. To address this, I include a script called [_install_stata_packages.do](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/_install_stata_packages.do) in all my working projects. This script installs copies of any user-written packages used by the project into a subdirectory of the project folder: **analysis/scripts/libraries/stata**. Rerunning this script will install updated versions of these add-ons as desired. I delete this script when my project is ready to be published, which effectively locks down the code for these user-written packages and ensures I can replicate my Stata analysis forever into the future. In addition, including these user-written packages ensures my code will run on a non-networked computer that does not have access to the internet.
 
 Note: Stata automatically creates a record of the packages you installed in **analysis/scripts/libraries/stata/stata.trk**. This text file can be [accessed manually](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/libraries/stata/stata.trk), or viewed in Stata using the `ado describe` command. For example, run the following code to view the source URLs and installation dates for the Stata packages from my example project: `ado describe, from("https://julianreif.com/my-project/analysis/scripts/libraries/stata")`. This record will automatically be included as part of your replication package.
 
@@ -184,7 +185,7 @@ while `"`1'"' != "" {
 }
 adopath ++ "`ProjectDir'/scripts/libraries/stata"
 ```
-Note: these changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.
+Note: These changes apply only to the active Stata session. Closing and reopening Stata will revert to the default of searching in multiple folders.
 </div>
 
 I am unaware of a version control statement for R, which means the behavior of its built-in functions may [depend](https://f.briatte.org/r/change-in-sample-function-r-3-6-0) on what version of R you are running. As a second-best solution, my [master script](https://github.com/reifjulian/my-project/blob/master/analysis/run.do) uses the Stata add-on command [rscript](https://github.com/reifjulian/rscript) to check whether the user (1) is running a sufficiently recent version of R; and (2) has installed R libraries required by my analysis, such as `tidyverse`. As with Stata, it is possible to install these add-on packages into your project subdirectory. In practice, doing this in R creates headaches. Add-on packages such as `tidyverse` are very large (hundreds of megabytes) and--if you want to ensure cross-platform replicability--need to be installed separately for Mac, Unix, and Windows. Doing this for my sample replication project would increase that project's file size by nearly a gigabyte! I therefore again settled for a second-best solution and instead require the user to install these packages themselves. As described in my sample project [README](https://github.com/reifjulian/my-project/blob/master/analysis/README.pdf), the user can install these packages in three different ways: 
@@ -295,7 +296,7 @@ list
 
 <img src="../assets/guide/regsave_tbl.PNG" width="100%" title="Contents of my_table tempfile">
 
-This "wide" format is much more appropriate for a table. Of course, we still need to clean it up. For example, you may not want to report t-statistics or estimates of the constant term. In the next step below we will format the table and use `texsave` to output the table into a LaTeX file.
+This "wide" format is much more appropriate for a table. Of course, we still need to clean it up. For example, you may not want to report t-statistics or estimates of the constant term. In the next step below, we will format the table and use `texsave` to output the table into a LaTeX file.
 
 ## texsave
 
@@ -395,7 +396,7 @@ You've completed your analysis, written up your results, and are ready to submit
 
 - Avoid using spaces and capital letters in file and folder names. Case sensitivity varies across different file systems, and spaces create nuisances when working from the command line or with weblinks. (Your files and folders may eventually be made available online!) Using lowercase letters and underscores or hyphens can help prevent these problems.
 
-- Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidently [referencing the wrong variable](https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf).
+- Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidentally [referencing the wrong variable](https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf).
 
 - When working with large datasets, use Mauricio Bravo's [gtools](https://github.com/mcaceresb/stata-gtools) and Sergio Correia's [reghdfe](http://scorreia.com/software/reghdfe/).
 
@@ -443,7 +444,7 @@ isid r
 
 [Roger Koenker's guide on reproducibility](http://www.econ.uiuc.edu/~roger/research/repro)
 
-[Sean Higgin's Stata guide](https://github.com/skhiggins/Stata_guide)
+[Sean Higgins's Stata guide](https://github.com/skhiggins/Stata_guide)
 
 
 
