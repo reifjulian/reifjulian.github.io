@@ -8,7 +8,7 @@ sidebar:
 ---
 
 
-Empirical research in economics has grown in importance due to advancements in computing power and the increased availability of rich administrative datasets. Researchers now commonly estimate regressions using millions of observations from multiple data sources. Often, research teams consist of members from different universities, collaborating on complex projects. Analyses involving confidential data is typically performed remotely, often on non-networked computers at research data centers. Cutting-edge analyses may require writing thousands or even millions of lines of code in multiple languages. 
+Empirical research in economics has grown in importance due to advancements in computing power and the increased availability of rich administrative datasets. Researchers now commonly estimate regressions using millions of observations from multiple data sources. Often, research teams consist of members from different universities, collaborating on complex projects. Analyses involving confidential data are typically performed remotely, often on non-networked computers at research data centers. Cutting-edge analyses may require writing thousands or even millions of lines of code in multiple languages. 
 
 These recent developments introduce increased complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Studies suggest that the results from many published papers [cannot be reproduced](../research/reif.igpa.2021.reproducibility.pdf) from the code and data provided by the original authors. To address this issue, the American Economic Association (AEA) has implemented a new [data and code availability policy](https://www.aeaweb.org/journals/policies/data-code) to establish professional standards for coding and documentation. Unfortunately, most researchers, myself included, received little or no training in project organization, coding, or documentation. 
 
@@ -153,7 +153,7 @@ The folder **results/** contains all final output, including tables and figures.
     └── tables/
 ```
 
-To update the MyProject manuscript, copy **analysis/results/figures/** and **analysis/results/tables/** to **paper/**, which contains manuscript files. Additional documents such as literature references can be stored in **paper/** or in a separate, standalone folder at the top the project directory. 
+To update the MyProject manuscript, copy **analysis/results/figures/** and **analysis/results/tables/** to **paper/**, which contains manuscript files. Additional documents such as literature references can be stored in **paper/** or in a separate, standalone folder at the top of the project directory. 
 
 {: .notice--info}
 **LaTeX Tip:** Looking for a clean LaTeX template for your manuscript? Feel free to use my [sample manuscript](https://raw.githubusercontent.com/reifjulian/my-project/master/paper/my_paper.tex).
