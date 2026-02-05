@@ -1,50 +1,47 @@
 .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight {
-  color: #faf6e4;
-  background-color: #122b3b;
+  color: #000000;
+  background-color: #ebedf0;
+}
+.highlight .n {
+  color: #001080;
 }
 .highlight .gl {
-  color: #dee5e7;
-  background-color: #4e5d62;
+  color: #6e7781;
 }
 .highlight .gp {
-  color: #a8e1fe;
+  color: #0000ff;
   font-weight: bold;
 }
 .highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #6c8b9f;
+  color: #008000;
   font-style: italic;
 }
 .highlight .cp {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .err {
-  color: #fefeec;
-  background-color: #cc0000;
+  color: #ff0000;
+  background-color: transparent;
 }
 .highlight .gr {
-  color: #cc0000;
-  font-weight: bold;
-  font-style: italic;
+  color: #ff0000;
 }
 .highlight .k, .highlight .kd, .highlight .kv {
-  color: #f6dd62;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .o, .highlight .ow {
-  color: #4df4ff;
-  font-weight: bold;
+  color: #383a42;
 }
 .highlight .p, .highlight .pi {
-  color: #4df4ff;
+  color: #6a737d;
 }
 .highlight .gd {
-  color: #cc0000;
+  color: #a31515;
 }
 .highlight .gi {
-  color: #b2fd6d;
+  color: #098658;
 }
 .highlight .ge {
   font-style: italic;
@@ -53,124 +50,100 @@
   font-weight: bold;
 }
 .highlight .gt {
-  color: #dee5e7;
-  background-color: #4e5d62;
+  color: #ff0000;
 }
 .highlight .kc {
-  color: #f696db;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .kn {
-  color: #ffb000;
-  font-weight: bold;
+  color: #AF00DB;
 }
 .highlight .kp {
-  color: #ffb000;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .kr {
-  color: #ffb000;
-  font-weight: bold;
+  color: #AF00DB;
 }
 .highlight .gh {
-  color: #ffb000;
+  color: #0000ff;
   font-weight: bold;
 }
 .highlight .gu {
-  color: #ffb000;
+  color: #0000ff;
   font-weight: bold;
 }
 .highlight .kt {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #267f99;
 }
 .highlight .no {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #0070C1;
 }
 .highlight .nc {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #267f99;
 }
 .highlight .nd {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #795e26;
 }
 .highlight .nn {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #267f99;
 }
 .highlight .bp {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #267f99;
 }
 .highlight .ne {
-  color: #b2fd6d;
-  font-weight: bold;
+  color: #267f99;
 }
 .highlight .nl {
-  color: #ffb000;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .nt {
-  color: #ffb000;
-  font-weight: bold;
+  color: #800000;
 }
 .highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #f696db;
-  font-weight: bold;
+  color: #098658;
 }
 .highlight .ld {
-  color: #f696db;
-  font-weight: bold;
+  color: #098658;
 }
 .highlight .ss {
-  color: #f696db;
-  font-weight: bold;
+  color: #a31515;
 }
 .highlight .s, .highlight .sb, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .sr, .highlight .s1 {
-  color: #fff0a6;
-  font-weight: bold;
+  color: #a31515;
 }
 .highlight .sa {
-  color: #f6dd62;
-  font-weight: bold;
+  color: #0000ff;
 }
 .highlight .se {
-  color: #4df4ff;
-  font-weight: bold;
+  color: #ee0000;
 }
 .highlight .sc {
-  color: #4df4ff;
-  font-weight: bold;
+  color: #a31515;
 }
 .highlight .si {
-  color: #4df4ff;
-  font-weight: bold;
+  color: #a31515;
 }
 .highlight .nb {
-  font-weight: bold;
+  color: #795e26;
 }
 .highlight .ni {
-  color: #999999;
-  font-weight: bold;
+  color: #000000;
 }
 .highlight .w {
   color: #BBBBBB;
 }
 .highlight .go {
-  color: #BBBBBB;
+  color: #000000;
 }
 .highlight .nf, .highlight .fm {
-  color: #a8e1fe;
+  color: #795e26;
 }
 .highlight .py {
-  color: #a8e1fe;
+  color: #001080;
 }
 .highlight .na {
-  color: #a8e1fe;
+  color: #001080;
 }
 .highlight .nv, .highlight .vc, .highlight .vg, .highlight .vi, .highlight .vm {
-  color: #a8e1fe;
-  font-weight: bold;
+  color: #001080;
 }
