@@ -7,8 +7,10 @@ main:
     url: /research/
   - title: "Software"
     url: /software/
-    
-    
+  - title: "Guide"
+    url: /guide/
+
+
 guide:
   - title: Setting up the environment
     url: /guide/#setting-up-the-environment
