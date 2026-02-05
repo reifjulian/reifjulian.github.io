@@ -41,7 +41,7 @@ Stata automatically runs the script **profile.do** upon launch (if found).
 
 <img src="../assets/guide/stata_profile.PNG" width="100%" title="Stata profile">
 
-**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my Mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/users/jreif/ado/personal/profile.do**.
+**profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my Mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/Users/jreif/ado/personal/profile.do**.
 
 Here are the contents of the Stata profile stored on my PC:
 ```stata
@@ -68,12 +68,12 @@ The first line, `set varabbrev off`, is a command I want executed every time I o
 
 I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an R function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I like to create an R environment that aligns with my Stata environment.
 
-Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the R prompt.
+Similar to Stata, R automatically runs **.Rprofile** upon launch (if found). This file is typically stored in your home directory, whose location you can find by typing `normalizePath(path.expand("~"),winslash="/")` at the R prompt. On my Mac, I store this file in **/Users/jreif/.Rprofile**. On my PC, I store it in **C:/Users/jreif/Documents/.Rprofile**.
 
 {: .notice--info}
 **R Tip:** Additional details regarding how R sets up its environment at startup are available [here](https://cran.r-project.org/web/packages/startup/vignettes/startup-intro.html).
 
-Here are the contents of my R profile, stored in **C:/Users/jreif/Documents/.Rprofile**:
+Here are the contents of my R profile:
 ```R
 cat("Running .Rprofile...\n\n")
 
