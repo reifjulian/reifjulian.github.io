@@ -9,8 +9,8 @@ I've made the following custom adjustments:
 	- removes fading from the author sidebar
   - Commented out code in `/_includes/footer.html` to remove the RSS feed link from the bottom of the pages
   - Added code to `/_includes/head/custom.html` to use the favicon `/assets/images/favicon.ico`
-  - Added code to `/_includes/head/custom.html` to use custom syntax highlighting (`thankful_eyes`)
-    - Syntax file was created by executing the following Ruby code: `rougify style thankful_eyes > assets/css/syntax.css`
+  - Added code to `/_includes/head/custom.html` to use custom syntax highlighting (VS Code Light+)
+    - Syntax CSS (`assets/css/syntax.css`) uses colors matching the VS Code Light+ theme
   - Added code to `/_includes/head/custom.html` to use newer Font Awesome icons (version 6.5.2)
   - Added Google Analytics code to `/_includes/head/custom.html`
 

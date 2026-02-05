@@ -42,7 +42,7 @@ The `_pages/research.md` template iterates over these JSON files to render the r
 Custom overrides to the Minimal Mistakes theme:
 - `/assets/css/main.scss` - Removes hyperlink underlines, larger avatar, no sidebar fade
 - `/_includes/footer.html` - RSS feed link removed
-- `/_includes/head/custom.html` - Favicon, syntax highlighting (thankful_eyes), Font Awesome 6.5.2, Google Analytics
+- `/_includes/head/custom.html` - Favicon, syntax highlighting (VS Code Light+), Font Awesome 6.5.2, Google Analytics
 
 ### Key Configuration
 - Theme skin: `contrast`
