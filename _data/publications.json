@@ -1,10 +1,23 @@
 [
 
     {
+    "title": "Access to Credit Reduces the Value of Insurance",
+	"coauthors": "Anup Malani and Sonia Jaffe",
+    "publication": "*Journal of Public Economics*, 2026, 258: 105633",
+	"other": [
+	  "[Article](https://www.sciencedirect.com/science/article/pii/S0047272726000691)",
+	  "[Manuscript](../research/reif.jpube.2026.accesstocredit.pdf)",
+	  "[Data and code](https://github.com/reifjulian/reifjulian.github.io/releases/latest/download/reif.jpube.2026.accesstocredit.replication.zip)"
+	],	
+	"abstract": "We study how access to credit markets affects the value of insurance. Loans allow consumers to smooth financial shocks over time, reducing the incremental benefits provided by insurance. We derive tractable formulas for the value of insurance that can be taken to data and show how that value varies with loan features. We then apply our framework to health insurance.  Access to a five-year loan decreases the values of community- and experience-rated health insurance for the average two-person household by $232-$366 (58-61%). Even for the sickest decile, loan access reduces the value of community-rated insurance by $1,099 (17%). Our results suggest that greater credit availability can serve as a substitute for health insurance."
+  },
+
+    {
     "title": "Health Risk and the Value of Life",
 	"coauthors": "Daniel Bauer and Darius Lakdawalla",
     "publication": "*Journal of Public Economics*, 2025, 245: 105346",
 	"other": [
+	  "[Article](https://www.sciencedirect.com/science/article/pii/S0047272725000441)",
 	  "[Manuscript](../research/reif.jpube.2025.healthrisk.pdf)",
 	  "[Data and code](../research/reif.jpube.2025.healthrisk.replication.zip)"
 	],	
