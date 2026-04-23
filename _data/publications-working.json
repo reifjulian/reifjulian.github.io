@@ -13,17 +13,7 @@
 	],	
 	"abstract": "Many environmental hazards have long-run health effects, but quasi-experimental studies typically measure outcomes and treatment over short time periods. We develop a new framework for quantifying the effect of air pollution exposure on life expectancy. Using daily changes in wind direction as an instrument for air pollution, we first characterize the dynamic mortality effects of short-run exposure. We then incorporate these estimates into a demographic model to quantify the lifelong effects of a permanent reduction in air pollution exposure. Ninety percent of the survival benefits accrue after the first fifty years of life."
   },
-  
-    {
-    "title": "Access to Credit Reduces the Value of Insurance",
-	"coauthors": "Anup Malani and Sonia Jaffe",
-    "publication": "accepted by *Journal of Public Economics*",
-	"other": [
-	  "[Manuscript](../research/reif.wp.accesstocredit.pdf)",
-	  "[Data and code](https://github.com/reifjulian/reifjulian.github.io/releases/latest/download/reif.wp.accesstocredit.replication.zip)"
-	],	
-	"abstract": "We study how access to credit markets affects the value of insurance. Loans allow consumers to smooth financial shocks over time, reducing the incremental benefits provided by insurance. We derive tractable formulas for the value of insurance that can be taken to data and show how that value varies with loan features. We then apply our framework to health insurance.  Access to a five-year loan decreases the values of community- and experience-rated health insurance for the average two-person household by $232-$366 (58-61%). Even for the sickest decile, loan access reduces the value of community-rated insurance by $1,099 (17%). Our results suggest that greater credit availability can serve as a substitute for health insurance."
-  },
+
   
   {
     "title": "How Do Habits Form? Experimental Evidence from Health Screenings",
