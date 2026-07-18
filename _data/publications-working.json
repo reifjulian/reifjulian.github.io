@@ -14,17 +14,6 @@
 	"abstract": "Many environmental hazards have long-run health effects, but quasi-experimental studies typically measure outcomes and treatment over short time periods. We develop a new framework for quantifying the effect of air pollution exposure on life expectancy. Using daily changes in wind direction as an instrument for air pollution, we first characterize the dynamic mortality effects of short-run exposure. We then incorporate these estimates into a demographic model to quantify the lifelong effects of a permanent reduction in air pollution exposure. Ninety percent of the survival benefits accrue after the first fifty years of life."
   },
 
-  
-  {
-    "title": "How Do Habits Form? Experimental Evidence from Health Screenings",
-	"coauthors": "Damon Jones and David Molitor",
-    "publication": "",
-	"other": [
-	  "[Manuscript](../research/reif.wp.habitformation.pdf)"
-	],	
-	"abstract": "We study habit formation in annual biometric health screenings using a field experiment that randomly assigned financial incentives to 4,799 employees over three years. We document evidence of strong habit formation from initial exposure: completing the first screening raised subsequent screening rates by 32.4-36.0 percentage points (84%-90%) in the second and third years, with no evidence of decay. In contrast, completing the second screening had a minimal effect on screenings in the third year. This pattern contradicts an addiction mechanism, which predicts a stronger relationship for behaviors closer in time, and instead supports an experience-good model where consumers learn the value of screening through first exposure."
-  },
-  
   {
     "title": "The Effects of Deleting Medical Debt from Consumer Credit Reports",
 	"coauthors": "Victor Duarte, Julia Fonseca, and Divij Kohli",
@@ -34,6 +23,16 @@
 	],	
 	"abstract": "In April 2023, credit bureaus stopped reporting medical debt collections below $500. We study the effects of this information deletion on credit access and financial health. Regression discontinuity estimates comparing individuals just above and below the $500 threshold show that deletion reduced reported medical collections by 61 percent. We find no evidence of benefits over the subsequent two years. To interpret these findings, we build credit scoring models and show that medical debts, regardless of size, add minimal information for default prediction. Our results suggest that eliminating medical collections entirely from credit reports would be unlikely to affect credit outcomes."
   },  
+ 
+  {
+    "title": "How Do Habits Form? Experimental Evidence from Health Screenings",
+	"coauthors": "Damon Jones and David Molitor",
+    "publication": "",
+	"other": [
+	  "[Manuscript](../research/reif.wp.habitformation.pdf)"
+	],	
+	"abstract": "We study habit formation in annual biometric health screenings using a field experiment that randomly assigned financial incentives to 4,799 employees over three years. We document evidence of strong habit formation from initial exposure: completing the first screening raised subsequent screening rates by 32.4-36.0 percentage points (84%-90%) in the second and third years, with no evidence of decay. In contrast, completing the second screening had a minimal effect on screenings in the third year. This pattern contradicts an addiction mechanism, which predicts a stronger relationship for behaviors closer in time, and instead supports an experience-good model where consumers learn the value of screening through first exposure."
+  },
   
   {
     "title": "The Effect of US COVID-19 Excess Mortality on Social Security Outlays",
