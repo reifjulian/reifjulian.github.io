@@ -16,7 +16,8 @@
 title: Julian Reif
 email: jreif@illinois.edu
 description: >- # this means to ignore newlines until "baseurl:"
-  
+  Julian Reif is Associate Professor of Finance and Economics at the University
+  of Illinois. His research focuses on the determinants and value of health.
 #twitter_username: julianreif
 github_username: reifjulian
 minimal_mistakes_skin: contrast # dirt # air # default
@@ -36,16 +37,13 @@ include:
   - _pages
 
 # Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - CLAUDE.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
 
 # Plugins (previously gems:)
 plugins:

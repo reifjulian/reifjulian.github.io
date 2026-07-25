@@ -29,14 +29,14 @@
 	"coauthors": "Jason Huh",
     "publication": "*American Economic Review: Insights*, December 2021, 3(4): 523-39",
 	"media": [
-	  "[AEA Research Highlight](https://www.aeaweb.org/research/teen-driving-mortality-risky-behavior)",
+	  "[AEA Research Highlight](https://www.aeaweb.org/research/teen-driving-mortality-risky-behavior)"
 	],	
 	"other": [
 	  "[Article](https://www.aeaweb.org/articles?id=10.1257/aeri.20200653)",	
 	  "[Manuscript](../research/reif.aeri.2021.driving.pdf)",
 	  "[Data and code](https://github.com/reifjulian/driving)"
 	],
-	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that total mortality rises by 5.84 deaths per 100,000 (15%) at the minimum legal driving age cutoff, driven by an increase in motor vehicle fatalities of 4.92 deaths per 100,000 (44%). We also find that poisoning deaths, which are caused primarily by drug overdoses, rise by 0.31 deaths per 100,000 (29%) at the cutoff and that this effect is concentrated among females. Our findings show that teenage driving contributes to sex differences in risky drug use behaviors.",
+	"abstract": "We investigate the effect of teenage driving on mortality and risky behaviors in the United States using a regression discontinuity design. We estimate that total mortality rises by 5.84 deaths per 100,000 (15%) at the minimum legal driving age cutoff, driven by an increase in motor vehicle fatalities of 4.92 deaths per 100,000 (44%). We also find that poisoning deaths, which are caused primarily by drug overdoses, rise by 0.31 deaths per 100,000 (29%) at the cutoff and that this effect is concentrated among females. Our findings show that teenage driving contributes to sex differences in risky drug use behaviors."
   },
 
   {	  
@@ -52,9 +52,9 @@
 	  "[Article](https://www.acpjournals.org/doi/pdf/10.7326/M21-2239)",
 	  "[Manuscript](../research/reif.aim.2021.covid.pdf)",
 	  "[Supplementary materials](../research/reif.aim.2021.covid.supplements.pdf)",
-	  "[Data and code](https://www.openicpsr.org/openicpsr/project/147965/version/V1/view)",
+	  "[Data and code](https://www.openicpsr.org/openicpsr/project/147965/version/V1/view)"
 	],		
-	"abstract": "A full assessment of the COVID-19 pandemic’s mortality burden requires measuring years of life lost (YLLs) and accounting for quality-of-life differences. We use a state-transition microsimulation model to measure YLLs and quality-adjusted life-years (QALYs) lost from the COVID-19 pandemic for the US population ages 25 and over. Our estimates account for the age, sex, and race/ethnicity of decedents, along with: obesity, smoking behavior, lung disease, heart disease, diabetes, cancer, stroke, hypertension, dementia, and nursing home residence. We estimate that the COVID-19 pandemic resulted in 6.62 million QALYs lost (9.08 million YLLs) through March 13, 2021, with 3.6 million (54%) lost by those ages 25-64. The toll on Black and Hispanic communities was the greatest, especially among men 65+, who lost 1,138 and 1,371 QALYs per 10,000. Absent the pandemic, 38% of decedents would have experienced at or above-average life expectancies for their age-sex-race/ethnicity subgroup. Beyond simply excess deaths alone, the COVID-19 pandemic imposed greater life expectancy burden on those 25-64, including those with or at above-average life expectancies, and disproportionate burden on Black and Hispanic communities.",
+	"abstract": "A full assessment of the COVID-19 pandemic’s mortality burden requires measuring years of life lost (YLLs) and accounting for quality-of-life differences. We use a state-transition microsimulation model to measure YLLs and quality-adjusted life-years (QALYs) lost from the COVID-19 pandemic for the US population ages 25 and over. Our estimates account for the age, sex, and race/ethnicity of decedents, along with: obesity, smoking behavior, lung disease, heart disease, diabetes, cancer, stroke, hypertension, dementia, and nursing home residence. We estimate that the COVID-19 pandemic resulted in 6.62 million QALYs lost (9.08 million YLLs) through March 13, 2021, with 3.6 million (54%) lost by those ages 25-64. The toll on Black and Hispanic communities was the greatest, especially among men 65+, who lost 1,138 and 1,371 QALYs per 10,000. Absent the pandemic, 38% of decedents would have experienced at or above-average life expectancies for their age-sex-race/ethnicity subgroup. Beyond simply excess deaths alone, the COVID-19 pandemic imposed greater life expectancy burden on those 25-64, including those with or at above-average life expectancies, and disproportionate burden on Black and Hispanic communities."
   },
 
   {
@@ -65,13 +65,13 @@
 	  "[CNN](https://www.cnn.com/2020/08/10/health/thunderstorm-asthma-trnd-wellness)",
 	  "[Wall Street Journal](https://www.wsj.com/science/environment/the-surprising-link-between-thunderstorms-and-asthma-9b839319)",
 	  "[WebMD](https://www.webmd.com/asthma/news/20200811/as-climate-change-intensifies-storms-seniors-health-could-suffer-study)",
-	  "[...](https://jamanetwork.altmetric.com/details/88001113/news)",
+	  "[...](https://jamanetwork.altmetric.com/details/88001113/news)"
 	],
 	"other": [
 	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2769087)",
 	  "[Manuscript](../research/reif.jamaim.2020.thunderstorm.pdf)"
 	],		
-	"abstract": "Thunderstorm-related atmospheric changes are expected to increase in severity with rising global temperatures. Although large-scale evidence is limited, vulnerable populations, such as older adults or those with common chronic respiratory diseases, like asthma or chronic obstructive pulmonary disease (COPD), are expected to be susceptible to negative health effects from these changes. The objective of this study was to determine whether increases in emergency department (ED) visits for acute respiratory illnesses occur among Medicare beneficiaries in the days surrounding thunderstorms across the continental US.",
+	"abstract": "Thunderstorm-related atmospheric changes are expected to increase in severity with rising global temperatures. Although large-scale evidence is limited, vulnerable populations, such as older adults or those with common chronic respiratory diseases, like asthma or chronic obstructive pulmonary disease (COPD), are expected to be susceptible to negative health effects from these changes. The objective of this study was to determine whether increases in emergency department (ED) visits for acute respiratory illnesses occur among Medicare beneficiaries in the days surrounding thunderstorms across the continental US."
   },
   
   {
@@ -82,7 +82,7 @@
 	  "[Health Affairs](https://www.healthaffairs.org/do/10.1377/hblog20200617.824130)",
 	  "[Inside Higher Ed](https://www.insidehighered.com/quicktakes/2020/06/01/university-wellness-plans-dont-work-so-well)",
 	  "[Kaiser Family Foundation](https://www.kff.org/private-insurance/issue-brief/trends-in-workplace-wellness-programs-and-evolving-federal-standards/)",
-	  "[...](https://jamanetwork.altmetric.com/details/82771201/news)",
+	  "[...](https://jamanetwork.altmetric.com/details/82771201/news)"
 	],
 	"other": [
 	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2765690?guestAccessKey=e5e8e875-c27f-44c4-a5b1-bea7ea27af57)",
@@ -103,7 +103,7 @@
 	"other": [
 	  "[Article](https://www.aeaweb.org/articles?id=10.1257/app.20180256)",
 	  "[Manuscript](../research/reif.aejapp.2020.electricity.pdf)",
-	  "[Data and code](https://www.aeaweb.org/articles/attachments?retrieve=T4L0Q9GfQFPDW-SUf9ksDUN-bUiQxOB9)"
+	  "[Data and code](https://www.aeaweb.org/doi/10.1257/app.20180256.data)"
 	],	
 	"abstract": "We study the dynamics of residential electricity demand by exploiting a natural experiment that produced large and long-lasting price changes in over 250 Illinois communities. Using a flexible difference-in-differences matching approach that accounts for the effect of current, past, and future price changes on current demand, we estimate a one-year price elasticity of -0.16, a two-year elasticity of -0.22, and a long-run elasticity between -0.31 and -0.35. We also provide compelling evidence that consumers increased electricity usage ahead of these announced price changes. Our findings highlight the importance of accounting for consumption dynamics when evaluating energy policy."
   },
@@ -138,7 +138,7 @@
 	  "[New York Times](https://www.nytimes.com/2018/08/06/upshot/employer-wellness-programs-randomized-trials.html)",
 	  "[Wall Street Journal](https://www.wsj.com/articles/the-problem-with-employee-wellness-programs-11645196400)",
 	  "[Washington Post](https://www.washingtonpost.com/opinions/your-workplace-wellness-program-probably-isnt-making-you-healthier/2018/08/07/ef1b254e-9a84-11e8-8d5e-c6c594024954_story.html)",
-	  "[...](https://www.nber.org/programs-projects/projects-and-centers/workplace-wellness/workplace-wellness-media)",
+	  "[...](https://www.nber.org/programs-projects/projects-and-centers/workplace-wellness/workplace-wellness-media)"
 	],
 	"other": [
 	  "[Article](https://academic.oup.com/qje/article/134/4/1747/5550759)",
@@ -179,7 +179,7 @@
 	"coauthors": "Darius Lakdawalla and Anup Malani",
     "publication": "*Journal of Public Economics*, January 2017, 145: 94-102",
 	"policy": [
-	  "[ICER technical brief](https://icer.org/wp-content/uploads/2020/10/Valuing-a-Cure-Technical-Brief.pdf)",
+	  "[ICER technical brief](https://icer.org/wp-content/uploads/2020/10/Valuing-a-Cure-Technical-Brief.pdf)"
 	],	
 	"other": [
 	  "[Article](http://www.sciencedirect.com/science/article/pii/S0047272716301864)",
@@ -219,8 +219,8 @@
     "publication": "*International Journal of Industrial Organization*, March 2010, 28(2): 127-130",
 	"other": [
 	  "[Article](http://www.sciencedirect.com/science/article/pii/S0167718709000630)",
-	  "[Manuscript](../research/reif.ijio.2010.auctions.pdf)",
+	  "[Manuscript](../research/reif.ijio.2010.auctions.pdf)"
 	],	
 	"abstract": "This paper examines the conventional wisdom, expressed in McAfee and McMillan's (1987) widely cited survey paper on auctions, that links increased variance of bidder values to increased information rent. We find that although the conventional wisdom does indeed hold in their (1986) model of a linear contract auction, this relationship is an artifact of that particular model and cannot be generalized. Using Samuelson's (1987) model, which is similar but allows for unobservable costs, we show that increased variance does not always imply increased information rent. Finally, we give the appropriate measure of dispersion (different from variance) that provides the link between the bidder value distribution and information rent."
-  },  
+  }  
 ]

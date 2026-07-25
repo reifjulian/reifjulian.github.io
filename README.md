@@ -14,7 +14,7 @@ I've made the following custom adjustments:
   - Added code to `/_includes/head/custom.html` to use newer Font Awesome icons (version 6.5.2)
   - Added Google Analytics code to `/_includes/head/custom.html`
 
-To deploy a local build:
-  1. Compile locally using Ruby: `bundle exec jekyll build`
-  1. Copy contents of `_sites/` to root folder
-  1. Copy `CNAME` to root folder
+To deploy:
+  1. Push to the `master` branch. GitHub Pages builds and publishes the site automatically.
+
+To preview locally before deploying, run `bundle exec jekyll serve` and open http://localhost:4000.
