@@ -20,10 +20,10 @@ bundle exec jekyll serve
 
 Note: Changes to `_config.yml` require restarting the server.
 
-**Deploy process (manual):**
-1. Run `bundle exec jekyll build`
-2. Copy contents of `_site/` to root folder
-3. Copy `CNAME` to root folder
+**Deploy process:**
+Push to the `master` branch. GitHub Pages builds and publishes the site automatically (no manual build/copy step). `CLAUDE.md` and `README.md` are excluded from the built site via the `exclude` list in `_config.yml`.
+
+**Important:** The `_data/*.json` files must be valid strict JSON — no trailing commas.
 
 ## Architecture
 

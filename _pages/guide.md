@@ -1,4 +1,4 @@
-﻿---
+---
 title: Stata Coding Guide
 permalink: /guide/
 layout: single
