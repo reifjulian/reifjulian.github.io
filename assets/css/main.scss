@@ -46,3 +46,10 @@ a {
     opacity: 1;
   }
 }
+
+// Research page: space between publication entries. (The entry text sits in a
+// <p class="card-text"> followed by an optional <details> abstract; this gives
+// every entry the same 1.3em gap regardless of whether it has an abstract.)
+.card-body {
+  margin-bottom: 1.3em;
+}

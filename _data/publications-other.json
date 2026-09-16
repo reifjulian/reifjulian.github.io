@@ -15,7 +15,7 @@
 	"publication": "*IGPA Policy Spotlight*, 27 August 2024",
 	"other": [
 	  "[Article](https://igpa.uillinois.edu/wp-content/uploads/2024/08/Air-Pollution-Trends-in-Illinois-Policy-Spotlight.pdf)",
-	  "[Manuscript](../research/reif.igpa.2024.pollution.pdf)"
+	  "[Manuscript](/research/reif.igpa.2024.pollution.pdf)"
 	],	
 	"abstract": "This policy spotlight explains how Illinois’ air pollution is monitored, describes trends in air pollution levels, and discusses the potential health consequences. In Illinois, the highest pollution levels are in the Chicago area, though these levels have notably decreased over the past two decades. If recent progress continues, Illinois can expect significant increases in life expectancy and quality of life. However, events such as the 2023 Canadian wildfires underscore that pollution levels in Illinois could be severely disrupted by climate change."	
   },
@@ -26,7 +26,7 @@
 	"publication": "*IGPA Policy Spotlight*, 27 September 2023",
 	"other": [
 	  "[Article](https://igpa.uillinois.edu/wp-content/uploads/2023/09/IGPA20230731_Spotlight_Geographic_Difference_Mortality_COVID19_R4.pdf)",
-	  "[Manuscript](../research/reif.igpa.2023.covid.pdf)"
+	  "[Manuscript](/research/reif.igpa.2023.covid.pdf)"
 	],	
 	"abstract": "This study examines how the mortality burden of the Covid-19 pandemic varied across US states during the time period April 2020 through December 2022. The disparities were substantial, with figures ranging from 318 years of life lost (YLL) per 10,000 population in New York to 1,285 YLL per 10,000 population in New Mexico. Illinois experienced a loss of 588 YLL per 10,000, situating it within the bottom third of states in terms of total loss of life. Overall, Southern and Western states exhibited the highest YLL, while Northeastern states, the upper Midwest, and the Pacific Northwest exhibited the lowest YLL. States that voted for the 2020 Republican presidential candidate experienced greater losses. This loss of life will have multifaceted implications for public finances."	
   },
@@ -37,7 +37,7 @@
 	"publication": "*Stat News*, 14 October 2021",
 	"other": [
 	  "[Article](https://www.statnews.com/2021/10/14/years-of-life-lost-among-the-young-hidden-cost-covid-19/)",
-	  "[Manuscript](../research/reif.stat.2021.covid.pdf)"
+	  "[Manuscript](/research/reif.stat.2021.covid.pdf)"
 	],	
 	"abstract": ""	
   },
@@ -48,7 +48,7 @@
 	"publication": "*IGPA Policy Spotlight*, 14 October 2021",
 	"other": [
 	  "[Article](https://www.ideals.illinois.edu/items/119685)",
-	  "[Manuscript](../research/reif.igpa.2021.reproducibility.pdf)"
+	  "[Manuscript](/research/reif.igpa.2021.reproducibility.pdf)"
 	],	
 	"abstract": "In this Policy Spotlight, we review the evidence on the reproducibility of published social science research and discuss how to improve the reproducibility of future studies. We also use one of our own published studies to demonstrate how researchers can facilitate reproducibility."	
   },  
@@ -59,7 +59,7 @@
 	"publication": "*University of Illinois Law Review Online*, 30 April 2021",
 	"other": [
 	  "[Article](https://www.illinoislawreview.org/symposium/first-100-days-biden/economic-policy-in-president-bidens-first-100-days/)",
-	  "[Manuscript](../research/reif.uilawreview.2021.biden.pdf)"
+	  "[Manuscript](/research/reif.uilawreview.2021.biden.pdf)"
 	],	
 	"abstract": "In this article, we discuss six components of President Biden’s economic agenda: his response to the COVID-19 pandemic, domestic spending priorities, climate policy, tax policy, long-term fiscal policy, and immigration policy."	
   },
@@ -70,7 +70,7 @@
 	"publication": "*VoxEU*, 13 January 2021",
 	"other": [
 	  "[Article](https://voxeu.org/article/air-pollution-policy-should-focus-most-vulnerable-people-not-just-most-polluted-places)",
-	  "[Manuscript](../research/reif.voxeu.2021.pollution.pdf)"
+	  "[Manuscript](/research/reif.voxeu.2021.pollution.pdf)"
 	],	
 	"abstract": "Policies aimed at reducing the harmful effects of air pollution on human health typically focus on improving air quality in polluted areas. This column suggests a shift in focus from targeting the most polluted places to serving the most vulnerable people. Basing air quality regulations on pollution levels may be less valuable than reducing air pollution in regions with vulnerable populations. Programmes that reduce poverty or improve access to health care may also lessen the recipients’ susceptibility to acute pollution exposure."	
   },
@@ -81,7 +81,7 @@
 	"publication": "*JAMA Internal Medicine*, 21 December 2020",
 	"other": [
 	  "[Article](https://jamanetwork.com/journals/jamainternalmedicine/article-abstract/2774277)",
-	  "[Manuscript](../research/reif.jamaim.2020.reply.pdf)"
+	  "[Manuscript](/research/reif.jamaim.2020.reply.pdf)"
 	]
   },  
 
@@ -91,7 +91,7 @@
 	"publication": "*American Journal of Health Promotion*, 24 February 2020",
 	"other": [
 	  "[Article](https://journals.sagepub.com/doi/full/10.1177/0890117120906661)",
-	  "[Manuscript](../research/reif.ajhp.2020.reply.pdf)"
+	  "[Manuscript](/research/reif.ajhp.2020.reply.pdf)"
 	],	
 	"abstract": ""	
   },
@@ -101,7 +101,7 @@
 	"publication": "*Scientific American*, 19 March 2019",
 	"other": [
 	  "[Article](https://www.scientificamerican.com/article/a-reason-to-be-skeptical-of-the-workplace-wellness-industry)",
-	  "[Manuscript](../research/reif.sciam.2019.wellness.pdf)"
+	  "[Manuscript](/research/reif.sciam.2019.wellness.pdf)"
 	],	
 	"abstract": ""	
   },
@@ -110,8 +110,8 @@
     "title": "Tools to Address Illinois Revenue: Increasing Sin Taxes",
 	"publication": "*State Tax Notes*, June 2014, 707-711",
 	"other": [
-	  "[Article](http://www.taxnotes.com/state-tax-notes/excise-taxation/tools-address-illinois-revenue-increasing-sin-taxes/2014/06/23/483976)",
-	  "[Manuscript](../research/reif.stn.2014.sintax.pdf)"
+	  "[Article](https://www.taxnotes.com/state-tax-notes/excise-taxation/tools-address-illinois-revenue-increasing-sin-taxes/2014/06/23/483976)",
+	  "[Manuscript](/research/reif.stn.2014.sintax.pdf)"
 	],	
 	"abstract": "In this report, I estimate the revenue that could be generated by increasing Illinois sin taxes on cigarettes, alcohol, and gambling. I discuss the efficiency and distributional effects of those taxes, as well as potential savings from a reduction in cigarette and alcohol consumption."	
   }

@@ -1,6 +1,7 @@
 ---
 title: Stata Coding Guide
 permalink: /guide/
+description: "A practical guide to organizing a Stata research project: setting up a reproducible coding environment, folder structure, automating tables with regsave and texsave, and producing an AEA-compliant replication package."
 layout: single
 classes: wide
 sidebar:
@@ -10,7 +11,7 @@ sidebar:
 
 Empirical research in economics has grown in importance due to advancements in computing power and the increased availability of rich administrative datasets. Researchers now commonly estimate regressions using millions of observations from multiple data sources. Often, research teams consist of members from different universities, collaborating on complex projects. Analyses involving confidential data are typically performed remotely, often on non-networked computers at research data centers. Cutting-edge analyses may require writing thousands or even millions of lines of code in multiple languages. 
 
-These recent developments introduce increased complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Studies suggest that the results from many published papers [cannot be reproduced](../research/reif.igpa.2021.reproducibility.pdf) from the code and data provided by the original authors. To address this issue, the American Economic Association (AEA) has implemented a new [data and code availability policy](https://www.aeaweb.org/journals/policies/data-code) to establish professional standards for coding and documentation. Unfortunately, most researchers, myself included, received little or no training in project organization, coding, or documentation. 
+These recent developments introduce increased complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Studies suggest that the results from many published papers [cannot be reproduced](/research/reif.igpa.2021.reproducibility.pdf) from the code and data provided by the original authors. To address this issue, the American Economic Association (AEA) has implemented a new [data and code availability policy](https://www.aeaweb.org/journals/policies/data-code) to establish professional standards for coding and documentation. Unfortunately, most researchers, myself included, received little or no training in project organization, coding, or documentation. 
 
 This guide outlines how to set up a robust coding environment and write a "push-button" analysis in Stata. Its purpose is to help researchers:
 1. Minimize coding errors
@@ -25,21 +26,21 @@ The guide includes an AEA-compliant [sample replication package](https://github.
 
 
 
-# Setting up the environment
+## Setting up the environment
 
 I often work on several projects simultaneously, accessing them from multiple computers (laptop, home, work) and sharing them with multiple coauthors. Using multiple environments makes it challenging to define the pathname (location) of a folder. For instance, a project's location may be **/Users/jreif/my-project** on one computer and **/Users/coauthor/my-project** on another. Manually changing this pathname every time a different person or computer runs the code is cumbersome, especially for large projects with many lines of code. Additionally, if you install an add-on on your local computer, it will not be available to your collaborators.
 
 Below I describe how I set up my working environment to address these challenges. Note that users are NOT required to do this in order to run my published code. However, setting up your environment as I do will make it easier to develop your analysis in environments with multiple computers and coauthors. My focus is on a setting where code is written in Stata and R. Although Stata provides native support for running [Python code](https://blog.stata.com/2020/08/18/stata-python-integration-part-1-setting-up-stata-to-use-python/), I do not discuss that here.
 
-## Dropbox
+### Dropbox
 
 I use Dropbox to sync my projects across different environments. Dropbox offers several appealing features. It creates backups across multiple computers and the Dropbox server, and in my experience has fewer bugs compared to alternatives like Box. Dropbox makes it easy to share files with coauthors. All files stored on Dropbox have the same relative paths, which simplifies pathnames when writing scripts (more on this below). [Version control systems](#version-control-systems) can be used as an alternative or complement to Dropbox.
 
-## Stata profile
+### Stata profile
 
 Stata automatically runs the script **profile.do** upon launch (if found).
 
-<img src="../assets/guide/stata_profile.PNG" width="100%" title="Stata profile">
+<img src="/assets/guide/stata_profile.PNG" width="100%" alt="Stata profile" title="Stata profile">
 
 **profile.do** must be stored in one of the paths searched by Stata. Type `adopath` at the Stata prompt to view a list of the eligible paths for your particular computer. On my Mac, I store this file in **/Users/jreif/Documents/Stata/ado/personal/profile.do**. On my PC, I store it in **C:/Users/jreif/ado/personal/profile.do**.
 
@@ -64,7 +65,7 @@ global MyProject "$DROPBOX/my-project/analysis"
 
 The first line, `set varabbrev off`, is a command I want executed every time I open Stata on all my computers, for reasons [I explain below](#stata-coding-tips). The second line speeds up reshape (requires Stata 18 or later) and the third line instructs Stata not to create do-file editor backup (\*.stswp) files. The last line defines the location of the analysis for [MyProject](https://github.com/reifjulian/my-project), which I stored on Dropbox. In practice, my Stata profile defines a large number of globals, one for every project I am working on. Whenever I start a new project, I define a new global for it and add it to **stata_profile.do**. Because all my computers are synced to Dropbox, I only have to create a new global once per project.
 
-## R profile
+### R profile
 
 I write most of my code in Stata, including C++ plugins such as [strgroup](https://github.com/reifjulian/strgroup). On occasion, I will use an R function that is not available in Stata, such as [XGBoost](https://xgboost.readthedocs.io/en/latest/). In these cases I like to create an R environment that aligns with my Stata environment.
 
@@ -90,14 +91,14 @@ As with my Stata profile, my R profile in turn runs a second script located at t
 Sys.setenv(MyProject = file.path(Sys.getenv("DROPBOX"), "my-project/analysis"))
 ```
 
-## Version control systems
+### Version control systems
 
 Version control systems like Git and SVN are essential for large software development collaborations. I myself use GitHub when developing my [software packages](https://github.com/reifjulian/). However, I generally find these systems unnecessary for academic analyses, which typically involve a small number of coauthors and conclude after publication. If you're interested in learning more about version control, I recommend checking out [Grant McDermott's Git slides](https://raw.githack.com/uo-ec607/lectures/master/02-git/02-Git.html#1).
 
 
-# Organizing the project
+## Organizing the project
 
-## Folder structure
+### Folder structure
 
 A project includes lots of different parts: the analysis, the manuscript, related literature, grant proposals, etc. The analysis, which includes both code and data, should be kept in a distinct location. Keeping the analysis separate makes it easier to create a standalone replication package when the project is complete.
 
@@ -159,13 +160,13 @@ To update the MyProject manuscript, copy **analysis/results/figures/** and **ana
 {: .notice--info}
 **LaTeX Tip:** Looking for a clean LaTeX template for your manuscript? Feel free to use my [sample manuscript](https://raw.githubusercontent.com/reifjulian/my-project/master/paper/my_paper.tex).
 
-## Programs
+### Programs
 
 Programs (AKA functions, subroutines) are additional pieces of code called by your scripts. These might be do-files, ado-files, or scripts written in another programming language such as R. An introduction to ado-files is available on the [Stata blog](https://blog.stata.com/2015/11/10/programming-an-estimation-command-in-stata-a-first-ado-command). Because programs are not called directly by the master script, **run.do**, I usually store them in the subdirectory **scripts/programs/**. This reduces clutter in large projects with many scripts and many subroutines.
 
-## Libraries
+### Libraries
 
-My code frequently employs user-written (add-on) Stata commands, such as [regsave](https://github.com/reifjulian/regsave) or [reghdfe](http://scorreia.com/software/reghdfe/install.html). To ensure replication, it is *very important* to include copies of these programs with your code:
+My code frequently employs user-written (add-on) Stata commands, such as [regsave](https://github.com/reifjulian/regsave) or [reghdfe](https://scorreia.com/software/reghdfe/install.html). To ensure replication, it is *very important* to include copies of these programs with your code:
 1. A user can't run your code without it.
 1. These commands are updated over time, causing your code to break or produce different output.
 
@@ -214,21 +215,21 @@ If you don't mind using up extra disk space and want to ensure reproducibility, 
 ```
 Other alternatives--used frequently by serious users of R--include [packrat](https://rstudio.github.io/packrat/), [renv](https://rstudio.github.io/renv/articles/renv.html), and [groundhog](https://groundhogr.com/).
 
-### Stata plugins (advanced)
+#### Stata plugins (advanced)
 
 Most Stata add-ons are written in Stata or Mata, which are cross-platform languages that run on any computer with a copy of Stata. A small number of Stata add-ons are written in C/C++ and must be compiled to a plugin (AKA dynamically linked library, or DLL) that is specific to your computer's architecture. Mauricio Bravo provides a nice [example](https://mcaceresb.github.io/stata/plugins/2017/02/15/writing-stata-plugins-example.html) of the benefits of plugins.
 
 If you write C/C++ code for Stata, I encourage you to compile it for multiple platforms and include all platform-specific plugins as part of your replication package. See [gtools](https://github.com/mcaceresb/stata-gtools) and [strgroup](https://github.com/reifjulian/strgroup) for examples of how to write a program that autodetects which plugin to call based on your computer's architecture. 
 
-# Automating tables
+## Automating tables
 
 Automating your tables and figures facilitates data updates and minimizes mistakes that can arise when transferring results from Stata to your manuscript. Automating figures is easy using Stata's `graph export` command. Automating tables usually requires customized add-ons. 
 
-There are many ways to automate tables in Stata. Below I present my preferred method, which uses Stata add-ons I developed for prior projects. This method is targeted at people who use LaTeX and desire flexible control over their table formatting; users interested only in learning about how to save regression results can read about `regsave` and skip the part about `texsave`. For examples of the kinds of tables you can automate in Stata using my add-ons, see my papers on [workplace wellness](https://www.nber.org/workplacewellness/s/IL_Wellness_Study_1.pdf) or [teenage driving](https://julianreif.com/research/reif.aeri.2021.driving.pdf). Popular alternatives to my add-ons include [estout](http://repec.sowi.unibe.ch/stata/estout/index.html) and [outreg2](https://www.princeton.edu/~otorres/Outreg2.pdf).
+There are many ways to automate tables in Stata. Below I present my preferred method, which uses Stata add-ons I developed for prior projects. This method is targeted at people who use LaTeX and desire flexible control over their table formatting; users interested only in learning about how to save regression results can read about `regsave` and skip the part about `texsave`. For examples of the kinds of tables you can automate in Stata using my add-ons, see my papers on [workplace wellness](https://www.nber.org/workplacewellness/s/IL_Wellness_Study_1.pdf) or [teenage driving](https://julianreif.com/research/reif.aeri.2021.driving.pdf). Popular alternatives to my add-ons include [estout](https://repec.sowi.unibe.ch/stata/estout/index.html) and [outreg2](https://www.princeton.edu/~otorres/Outreg2.pdf).
 
 My method separates table automation into two distinct steps. The first step uses [regsave](https://github.com/reifjulian/regsave) to save regression output to a file. The second step uses [texsave](https://github.com/reifjulian/texsave) to save the output in LaTeX format. In-between these two steps you can use Stata's built-in data manipulation commands to organize your table however you like.
 
-## regsave
+### regsave
 
 `regsave` is a Stata add-on that stores regression results. To install the latest version, run the following at your Stata prompt:
 ```stata
@@ -263,7 +264,7 @@ use "`results'", clear
 list
 ```
 
-<img src="../assets/guide/regsave.PNG" width="100%" title="Contents of results tempfile">
+<img src="/assets/guide/regsave.PNG" width="100%" alt="Contents of results tempfile" title="Contents of results tempfile">
 
 The file contains the regression coefficients, standard errors, t-statistics, p-values, etc. from each of the four regressions. We could have saved more information, such as confidence intervals, by specifying the appropriate option. Type `help regsave` to see the full set of options. 
 
@@ -294,11 +295,11 @@ use "`my_table'", clear
 list
 ```
 
-<img src="../assets/guide/regsave_tbl.PNG" width="100%" title="Contents of my_table tempfile">
+<img src="/assets/guide/regsave_tbl.PNG" width="100%" alt="Contents of my_table tempfile" title="Contents of my_table tempfile">
 
 This "wide" format is much more appropriate for a table. Of course, we still need to clean it up. For example, you may not want to report t-statistics or estimates of the constant term. In the next step below, we will format the table and use `texsave` to output the table into a LaTeX file.
 
-## texsave
+### texsave
 
 [texsave](https://github.com/reifjulian/texsave) is a Stata add-on that saves a dataset as a LaTeX text file. To install the latest version, type the following at your Stata prompt:
 
@@ -334,7 +335,7 @@ list
 
 This code first removes output I didn't want to report in this table, such as t-statistics and estimates of the constant term. It then labels the four columns of estimates. As we shall see, those Stata labels will serve as column headers in the LaTeX table. The code then rewrites `r2` using LaTeX math syntax. The final lines of the code provide more descriptive labels for the regressors. Typing `list` shows that our table now looks like this:
 
-<img src="../assets/guide/regsave_tbl_clean.PNG" width="100%" title="Cleaned table">
+<img src="/assets/guide/regsave_tbl_clean.PNG" width="100%" alt="Cleaned table" title="Cleaned table">
 
 {: .notice--info}
 **LaTeX Tip 1:** You can indicate a math environment in LaTeX using either `\(...\)` or `$...$` syntax. It's usually easier to use the `\(...\)` syntax because `$` marks global macros in Stata.
@@ -353,9 +354,9 @@ texsave using "$MyProject/results/tables/my_regressions.tex", autonumber varlabe
 
 Finally, we can copy the output file, **my_regressions.tex**, to **paper/tables/** and then link to it from our LaTeX [manuscript](https://github.com/reifjulian/my-project/blob/master/paper/my_paper.tex) using the LaTeX code `\input{tables/my_regressions.tex}`. After compiling the manuscript, our table looks like this:
 
-<img src="../assets/guide/table_pdf.PNG" width="100%" title="PDF LaTeX table">
+<img src="/assets/guide/table_pdf.PNG" width="100%" alt="PDF LaTeX table" title="PDF LaTeX table">
 
-# Submission checklist
+## Submission checklist
 
 You've completed your analysis, written up your results, and are ready to submit to a journal! Before doing so, ensure that all your numbers are reproducible. If there are any mistakes in the code, it's better to catch them now rather than later! Follow these steps to replicate your analysis:
 
@@ -388,7 +389,7 @@ You've completed your analysis, written up your results, and are ready to submit
 {: .notice--info}
 **Tip:** Step 3--confirming output--can be tedious. Including `assert` statements in Stata, or `stopifnot()` statements in R, makes checking output easier. For example, if the main result of your study is a regression estimate of $1.2 million, include an assertion in your code that will fail should this number change following a new data update. Stata examples are available in this [sample script](https://github.com/reifjulian/my-project/blob/master/analysis/scripts/4_make_tables_figures.do).
 
-# Stata coding tips
+## Stata coding tips
 
 - Use forward slashes for pathnames (`$DROPBOX/project` not `$DROPBOX\project`). Backslashes are an escape character in Stata and can cause problems depending on what operating system you are running. Using forward slashes ensures cross-platform compatibility.
 
@@ -398,7 +399,7 @@ You've completed your analysis, written up your results, and are ready to submit
 
 - Include `set varabbrev off` in your Stata profile.  This helps you avoid mistakes such as accidentally [referencing the wrong variable](https://ifs.org.uk/sites/default/files/output_url_files/stata_gotchasJan2014.pdf).
 
-- When working with large datasets, use Mauricio Bravo's [gtools](https://github.com/mcaceresb/stata-gtools) and Sergio Correia's [reghdfe](http://scorreia.com/software/reghdfe/).
+- When working with large datasets, use Mauricio Bravo's [gtools](https://github.com/mcaceresb/stata-gtools) and Sergio Correia's [reghdfe](https://scorreia.com/software/reghdfe/).
 
 - Rewrite your code frequently and make it readable. Provide helpful comments in the code and make your variable names meaningful (but short). Provide more detailed descriptions using the `label variable` command. Always include units in the label.
 
@@ -425,14 +426,14 @@ isid r
 ```
 
 
-# Other helpful links
+## Other helpful links
 
 [Asjad Naqvi's Stata-to-LaTeX guide](https://medium.com/the-stata-guide/the-stata-to-latex-guide-6e7ed5622856)
 
 [AEA Data Editor's guide](https://aeadataeditor.github.io/aea-de-guidance/)
 - Additional guidance at the [Social Science Data Editors site](https://social-science-data-editors.github.io/guidance/)
 
-[Dan Sullivan's best practices for coding](http://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
+[Dan Sullivan's best practices for coding](https://www.danielmsullivan.com/pages/tutorial_workflow_3bestpractice.html)
 
 [Gentzkow and Shapiro coding guide](https://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)
 
@@ -449,6 +450,6 @@ isid r
 
 
 
-# Acknowledgments
+## Acknowledgments
 
 The coding practices outlined in this guide have been developed over many years. I would especially like to thank my frequent collaborators Tatyana Deryugina and David Molitor for providing many helpful suggestions that have improved my project organization. I also thank Grant McDermott for several helpful conversations regarding version control and reproducibility in R.

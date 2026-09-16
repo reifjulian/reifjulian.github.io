@@ -1,6 +1,7 @@
 ---
 title: Research
 permalink: /research/
+description: "Publications, working papers, book chapters, and grants by Julian Reif, covering the health effects of air pollution, Medicare, medical innovation, medical debt, and workplace wellness programs."
 layout: splash
 ---
 
@@ -29,11 +30,11 @@ layout: splash
         <p class="card-text">
 	  	<b>{{ item.title }} </b><br>
 	  	  
-	  	{% if item.coauthors != blank %} with {{ item.coauthors }} <br> {% endif %}
+	  	{% if item.coauthors and item.coauthors != "" %} with {{ item.coauthors }} <br> {% endif %}
 	  	  
-	  	{% if item.publication != blank %} {{ item.publication | replace_first: '*', '<span style="color:FireBrick"><em>' | replace_first: '*', '</em></span>' }} <br>  {% endif %}
+	  	{% if item.publication and item.publication != "" %} {{ item.publication | replace_first: '*', '<span style="color:FireBrick"><em>' | replace_first: '*', '</em></span>' }} <br>  {% endif %}
 	  	
-	  	{% if item.award != blank %} {{ item.award | markdownify | remove:'<p>' | remove:'</p>'}} <br>  {% endif %}
+	  	{% if item.award and item.award != "" %} {{ item.award | markdownify | remove:'<p>' | remove:'</p>'}} <br>  {% endif %}
     
 	  	{% for m in item.media %}
 	  	  {% if forloop.first %} Media: {% endif %}
@@ -56,13 +57,13 @@ layout: splash
 	  	  {% endif %}		  
 	  	{% endfor %}		  
     
-	  	{% if item.abstract != blank %}
+	    </p>
+	  	{% if item.abstract and item.abstract != "" %}
 	  	  <details>
 	  		<summary style="margin-top: -1.3em; ">Abstract</summary>
 	  		<p class="notice" style="margin-top:0 !important">{{ item.abstract }}</p>
 	  	  </details>
 	  	{% endif %}
-	    </p>
       </div>
     {% endfor %}
   
@@ -73,11 +74,10 @@ layout: splash
     <h2>Works in progress</h2>
   </div>
   <div class="card-body">
-   
-   "Peer Effects in the Workplace: Evidence from the Illinois Workplace Wellness Study" (with Alden Cheng, Damon Jones and David Molitor)<br><br>   
-
-   "Does Medicare Improve Quality of Life?"<br>
-
+    {% for item in site.data.publications-wip %}
+      "{{ item.title }}"{% if item.coauthors and item.coauthors != "" %} (with {{ item.coauthors }}){% endif %}<br>
+      {% unless forloop.last %}<br>{% endunless %}
+    {% endfor %}
   </div>
   
   
@@ -91,7 +91,7 @@ layout: splash
 	<b>{{ item.title }}</b> <br>
     {{ item.role }}, with {{ item.coauthors }} <br>
 	
-	{% if item.details != blank %}
+	{% if item.details and item.details != "" %}
       {{ item.details }} <br> 
       {{ item.amount }} <br>
       {% if forloop.last == false %} <br> {% endif %}
@@ -101,7 +101,7 @@ layout: splash
       {% for g in item.other %}
         <tr style="border-style:hidden">
         <td style="text-indent:25px">{{ g.entity }}, </td>
-        {% if g.number != blank %} <td align="left">{{ g.number }},</td>{% endif %}
+        {% if g.number and g.number != "" %} <td align="left">{{ g.number }},</td>{% endif %}
         <td align="left">{{ g.date }},</td>
         <td align="left">{{ g.amount }}</td>
         </tr>
