@@ -1,6 +1,7 @@
 ---
 title: Software
 permalink: /software/
+description: "Stata and R software by Julian Reif, including wyoung (multiple hypothesis testing), regsave, texsave, rscript, and other packages available on SSC and GitHub."
 layout: splash
 ---
 

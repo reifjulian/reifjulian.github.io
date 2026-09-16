@@ -9,28 +9,49 @@
 # 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+# These are used to personalize your new site. If you like, you can edit these
+# variables in the HTML files where they are accessed via {{ site.title }},
+# {{ site.email }}, and so on. You can create any custom variable you would
+# like, and they will be accessible in the templates via {{ site.myvariable }}.
 title: Julian Reif
 email: jreif@illinois.edu
-description: >- # this means to ignore newlines until "baseurl:"
+description: >- # this means to ignore newlines until "url:"
   Julian Reif is Associate Professor of Finance and Economics at the University
   of Illinois. His research focuses on the determinants and value of health.
-#twitter_username: julianreif
+url: https://julianreif.com
+locale: en-US
 github_username: reifjulian
 minimal_mistakes_skin: contrast # dirt # air # default
 search: false
 repository: reifjulian/reifjulian.github.io
+
+# SEO / social sharing
+# Default image used for Open Graph and Twitter/Bluesky link previews
+og_image: /assets/images/reif.jpg
+og_image_alt: "Photo of Julian Reif"
+# Structured data (schema.org Person) emitted on the home page.
+# The links become "sameAs" entries, which help search engines connect this
+# site to the corresponding profiles. Add ORCID, SSRN, RePEc, NBER, etc. here.
+social:
+  type: Person
+  name: Julian Reif
+  links:
+    - https://scholar.google.com/citations?user=Tpe9XEcAAAAJ
+    - https://github.com/reifjulian
+    - https://bsky.app/profile/julianreif.bsky.social
+# Site ownership verification codes (paste the value from each console)
+google_site_verification: # e.g. "abc123..." from https://search.google.com/search-console
+bing_site_verification:   # from https://www.bing.com/webmasters
+
+# There is no blog/feed on this site, so do not advertise /feed.xml in <head>
+atom_feed:
+  hide: true
 
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:categories/:title/
-#paginate: 5 # amount of posts to show
-paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
@@ -47,10 +68,7 @@ exclude:
 
 # Plugins (previously gems:)
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
-  - jekyll-gist
-  - jemoji
   - jekyll-include-cache
 
 author:
@@ -84,17 +102,6 @@ footer:
   links:
 
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
   # _pages
   - scope:
       path: "_pages"
@@ -102,10 +109,3 @@ defaults:
     values:
       layout: single
       author_profile: false
-
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
