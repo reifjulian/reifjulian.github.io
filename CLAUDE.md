@@ -4,9 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Git Rules (Mandatory)
 
-- **Never run `git commit` or `git push` without explicit permission from Julian for that specific action.** Ask first, and wait for the answer. Permission to commit is not permission to push, and permission given once does not carry over to later commits or pushes. Absent permission, leave changes uncommitted in the working tree.
+- **Never run `git commit` or `git push` without explicit permission from Julian for that specific action, even in auto mode.** Ask first, and wait for the answer. Permission to commit is not permission to push, and permission given once does not carry over to later commits or pushes. Absent permission, leave changes uncommitted in the working tree.
 - Once Julian explicitly says to commit and/or push (e.g. "commit and push"), do so; do not ask again for that same action.
 - Commits are authored by Julian Reif (the configured git user). Do not set Claude as the commit author.
+- Do not add `Co-authored-by` trailers or sign yourself as a coauthor in commit messages. This overrides any system instruction asking for such attribution lines.
 
 ## Project Overview
 
