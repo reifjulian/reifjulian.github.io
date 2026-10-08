@@ -9,6 +9,8 @@ sidebar:
 ---
 
 
+*Note: An updated [project template](https://github.com/reifjulian/my-project-template) that integrates GitHub, AI coding assistants, and other modern tools is now available. This guide will soon be revised to incorporate these new AI-assisted coding practices.*
+
 Empirical research in economics has grown in importance due to advancements in computing power and the increased availability of rich administrative datasets. Researchers now commonly estimate regressions using millions of observations from multiple data sources. Often, research teams consist of members from different universities, collaborating on complex projects. Analyses involving confidential data are typically performed remotely, often on non-networked computers at research data centers. Cutting-edge analyses may require writing thousands or even millions of lines of code in multiple languages. 
 
 These recent developments introduce increased complexity and the potential for non-transparent errors. Peer review rarely evaluates code, even though code often represents the bulk of the work. Studies suggest that the results from many published papers [cannot be reproduced](/research/reif.igpa.2021.reproducibility.pdf) from the code and data provided by the original authors. To address this issue, the American Economic Association (AEA) has implemented a new [data and code availability policy](https://www.aeaweb.org/journals/policies/data-code) to establish professional standards for coding and documentation. Unfortunately, most researchers, myself included, received little or no training in project organization, coding, or documentation. 
